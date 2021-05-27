@@ -6,6 +6,8 @@ import com.pv.Entity.Producto;
 
 public interface ProductoService {
 	
+	public abstract void insert(Producto producto);
 	public abstract Collection<Producto> findAll();
+	public abstract Producto findById(Integer idProducto);
 	
 }

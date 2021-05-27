@@ -1,16 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="ISO-8859-1"%> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="css/Main.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/Index.js"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 <title>Página Principal</title>
 </head>
 <body>
@@ -45,27 +54,51 @@
 	</header>
 	
 	<div align="center">
-		<table>
-				<% int count = 0; %>
-				<c:forEach var="producto" items="${bProducto}">
-					<th>
-						<p>      
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</p><br>
-						<a href="#"><b>${producto.nombre}</b></a> <br>
+		<table id="tblProductos" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre de Producto</th>
+                <th>Precio por Unidad</th>
+                <th>Stock</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="producto" items="${bProducto}">
+				<tr>
+					<td>
+						<a href="<c:url value='/Producto/${producto.productoId}'/>">
+							<b>${producto.nombre}</b>
+						</a>
+					</td>
+					<td>
 						${producto.precioUnidad}
-					</th>
-					<% count += 1;
-						if(count == 5){
-					%>
-							<tr>
-					<%
-							count = 0;
-						}
-					%>
-				</c:forEach>
+					</td>
+					<td>
+						${producto.stock}
+					</td>
+					<td>
+						${producto.descripcion}
+					</td>
+					<td>
+						<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }"/>
+							<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" 
+								width="160" height="130" style="border: 5px solid; color: black;"/>
+					</td>
+				</tr>
+			</c:forEach>
+         </tbody>
+        <tfoot>
+            <tr>
+                <th>Nombre de Producto</th>
+                <th>Precio por Unidad</th>
+                <th>Stock</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
+            </tr>
+        </tfoot>
+				
 		</table>
 	</div>
 	

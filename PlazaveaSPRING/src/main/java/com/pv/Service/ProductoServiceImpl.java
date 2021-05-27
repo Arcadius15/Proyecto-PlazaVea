@@ -21,4 +21,16 @@ public class ProductoServiceImpl implements ProductoService {
 		return repository.findAll();
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Producto findById(Integer idProducto) {
+		return repository.findById(idProducto).orElse(null);
+	}
+
+	@Override
+	@Transactional
+	public void insert(Producto producto) {
+		repository.save(producto);
+	}
+
 }

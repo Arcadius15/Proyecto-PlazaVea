@@ -1,7 +1,6 @@
 package com.pv.Controller;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pv.Entity.Usuario;
 import com.pv.Service.LoginService;
-import com.pv.Service.ProductoService;
 
 @Controller
 public class LoginController {
@@ -21,17 +19,24 @@ public class LoginController {
 	@Qualifier("loginServiceDB")
 	private LoginService logService;
 	
-	@Autowired
-	private ProductoService productoService;
-	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@RequestMapping(value="/Index",method = RequestMethod.GET)
-	public String index_GET(Map map) {
-		map.put("bProducto", productoService.findAll());
-		
-		return "/Home/Index";
+	@RequestMapping(value="/Login",method = RequestMethod.GET)
+	public String login_GET(Model model) {
+		Usuario log = new Usuario();
+		model.addAttribute("login",log);
+		return "/Login/Login";
 	}
-
+	
+	@RequestMapping(value="/Login",method = RequestMethod.POST)
+	public String login_POST(Usuario login) {
+		Collection<Usuario> lista = logService.findAll();
+		for (Usuario log : lista) {
+			if (log.getCorreo().equals(login.getCorreo()) && log.getContrasenia().equals(login.getContrasenia())) {
+				return "redirect:/Index";
+			}
+		}
+		return "redirect:/Home/Error";
+	}
+	
 	@RequestMapping(value="/ERROR",method = RequestMethod.GET)
 	public String error_GET() {
 		return "/Home/Error";

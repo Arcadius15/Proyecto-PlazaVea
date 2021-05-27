@@ -2,6 +2,7 @@ package com.pv.Entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -35,6 +36,10 @@ public class Producto implements Serializable{
 	private Integer stock;
 	@Column(nullable = false)
 	private String descripcion;
+	@Column
+	private String nombreImagen;
+	@Column(columnDefinition = "longblob")
+	private byte[] file;
 	public Integer getProductoId() {
 		return productoId;
 	}
@@ -69,14 +74,43 @@ public class Producto implements Serializable{
 	public Producto() {
 	}
 	
-	public Producto(Integer productoId, String nombre, Double precioUnidad, Integer stock, String descripcion) {
+	public String getNombreImagen() {
+		return nombreImagen;
+	}
+	public void setNombreImagen(String nombreImagen) {
+		this.nombreImagen = nombreImagen;
+	}
+	public byte[] getFile() {
+		return file;
+	}
+	public void setFile(byte[] file) {
+		this.file = file;
+	}
+	
+	public String getBase64Image() {
+		String base64Image = Base64.getEncoder().encodeToString(file);
+		return base64Image;
+	}
+
+	public Producto(Integer productoId, String nombre, Double precioUnidad, Integer stock, String descripcion,
+			String nombreImagen, byte[] file, Collection<OrdenDetalle> itemsOrdenDetalle, Categoria categoria,
+			Proveedor proveedor) {
 		this.productoId = productoId;
 		this.nombre = nombre;
 		this.precioUnidad = precioUnidad;
 		this.stock = stock;
 		this.descripcion = descripcion;
+		this.nombreImagen = nombreImagen;
+		this.file = file;
+		this.itemsOrdenDetalle = itemsOrdenDetalle;
+		this.categoria = categoria;
+		this.proveedor = proveedor;
 	}
-	
+
+
+
+
+
 	@OneToMany(mappedBy = "producto")
 	private Collection<OrdenDetalle> itemsOrdenDetalle = new ArrayList<>();
 	public Collection<OrdenDetalle> getItemsOrdenDetalle() {
