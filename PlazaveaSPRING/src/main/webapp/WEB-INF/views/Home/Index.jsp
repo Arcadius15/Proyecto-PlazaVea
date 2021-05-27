@@ -54,7 +54,7 @@
 	</header>
 	
 	<div align="center">
-		<table id="tblProductos" class="table table-striped table-bordered" style="width:100%">
+		<table id="tblProductos" class="table table-danger table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>Nombre de Producto</th>
