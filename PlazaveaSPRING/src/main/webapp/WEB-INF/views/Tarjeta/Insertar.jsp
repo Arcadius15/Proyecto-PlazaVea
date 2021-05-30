@@ -49,7 +49,6 @@
 		
 			<form:form class="form-login" method="post" modelAttribute="tarjeta"  >
 			<h5>Ingresar Tarjeta</h5>
-			Tarjeta ID: <form:input class="controls" type="text" path="tarjetaId" value=""/><br>
 			N° Tarjeta : <form:input class="controls" type="number" path="nroTarjeta" value = ""/><br>
 			CVV : <form:input class="controls" type="number" path="cvv" value = ""/><br>
 			Fecha Vencimiento : <form:input class="controls" type="date" path="fechavencimiento" value = ""/><br>
