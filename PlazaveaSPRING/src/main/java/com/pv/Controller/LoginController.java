@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.pv.Entity.Cliente;
 import com.pv.Entity.Usuario;
+import com.pv.Service.ClienteService;
 import com.pv.Service.LoginService;
 
 @Controller
@@ -18,6 +20,9 @@ public class LoginController {
 	@Autowired
 	@Qualifier("loginServiceDB")
 	private LoginService logService;
+	
+	@Autowired
+	private ClienteService clienteService;
 	
 	@RequestMapping(value="/Login",method = RequestMethod.GET)
 	public String login_GET(Model model) {
@@ -71,6 +76,20 @@ public class LoginController {
 	@RequestMapping(value="/Registro",method = RequestMethod.POST)
 	public String registro_POST(Usuario login) {
 		logService.insert(login);
+		
+		return "redirect:/DatosReg";
+	}
+	
+	@RequestMapping(value="/DatosReg",method = RequestMethod.GET)
+	public String datosReg_GET(Model model) {
+		model.addAttribute("cliente", new Cliente());
+		
+		return "/Login/DatosReg";
+	}
+	
+	@RequestMapping(value="/DatosReg",method = RequestMethod.POST)
+	public String datosReg_POST(Cliente cliente) {
+		clienteService.insert(cliente);
 		
 		return "redirect:/RegSuccess";
 	}
