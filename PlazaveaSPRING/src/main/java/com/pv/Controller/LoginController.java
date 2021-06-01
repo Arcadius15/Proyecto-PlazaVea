@@ -70,28 +70,14 @@ public class LoginController {
 	
 	@RequestMapping(value="/Registro",method = RequestMethod.GET)
 	public String registro_GET(Model model) {
-		model.addAttribute("login", new Usuario());
+		model.addAttribute("cliente", new Cliente());
 		
 		return "/Login/Registro";
 	}
 	
 	@RequestMapping(value="/Registro",method = RequestMethod.POST)
-	public String registro_POST(Usuario login) {
-		logService.insert(login);
-		
-		return "redirect:/Login_DatosReg";
-	}
-	
-	@RequestMapping(value="/Login_DatosReg",method = RequestMethod.GET)
-	public String datosReg_GET(Model model) {
-		model.addAttribute("cliente", new Cliente());
-		
-		return "/Login/DatosReg";
-	}
-	
-	@RequestMapping(value="/Login_DatosReg",method = RequestMethod.POST)
-	public String datosReg_POST(Cliente cliente) {
-		cliente.setUserCliente(logService.findById(logService.getMaxId()));
+	public String registro_POST(Cliente cliente) {
+		logService.insert(cliente.getUserCliente());
 		
 		clienteService.insert(cliente);
 		

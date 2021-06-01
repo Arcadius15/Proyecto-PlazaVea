@@ -46,13 +46,24 @@
 		</nav>
 	</header>
 	
-	<form:form class="form-login" method="post" modelAttribute="login">
+	<form:form class="form-login" method="post" modelAttribute="cliente">
 		<h5>Registrar Usuario</h5>
 		
-		<form:input class="controls" type="text" path="correo" value=""
+		<form:input class="controls" type="text" path="userCliente.correo" value=""
 			placeholder="Correo"/>
-		<form:input class="controls" type="password" path="contrasenia" value=""
+		<form:input class="controls" type="password" path="userCliente.contrasenia" value=""
 			placeholder="Contraseña"/>
+			
+		<p></p>
+		
+		<form:input class="controls" type="text" path="nombre" value=""
+			placeholder="Nombre"/>
+		<form:input class="controls" type="text" path="apellido" value=""
+			placeholder="Apellido"/>
+		<form:input class="controls" type="number" path="dni" value=""
+			placeholder="DNI"/>
+		<form:input class="controls" type="text" path="telefono" value=""
+			placeholder="Número telefónico"/>
 			
 		<input class="buttons" type="submit" name="" value="Registrar">
 		
