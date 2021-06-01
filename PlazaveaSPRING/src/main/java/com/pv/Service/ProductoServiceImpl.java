@@ -33,4 +33,10 @@ public class ProductoServiceImpl implements ProductoService {
 		repository.save(producto);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Collection<Producto> findByName(String nombre) {
+		return repository.findByName(nombre);
+	}
+
 }
