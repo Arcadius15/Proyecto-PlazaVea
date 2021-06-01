@@ -4,8 +4,10 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -77,18 +79,20 @@ public class LoginController {
 	public String registro_POST(Usuario login) {
 		logService.insert(login);
 		
-		return "redirect:/DatosReg";
+		return "redirect:/Login_DatosReg/" + login.getUsuarioId();
 	}
 	
-	@RequestMapping(value="/DatosReg",method = RequestMethod.GET)
+	@RequestMapping(value="/Login_DatosReg/{usuarioId}",method = RequestMethod.GET)
 	public String datosReg_GET(Model model) {
 		model.addAttribute("cliente", new Cliente());
 		
 		return "/Login/DatosReg";
 	}
 	
-	@RequestMapping(value="/DatosReg",method = RequestMethod.POST)
-	public String datosReg_POST(Cliente cliente) {
+	@RequestMapping(value="/Login_DatosReg/{usuarioId}",method = RequestMethod.POST)
+	public String datosReg_POST(Cliente cliente, @PathVariable("usuarioId") Integer usuarioId) {
+		cliente.setUserCliente(logService.findById(usuarioId));
+		
 		clienteService.insert(cliente);
 		
 		return "redirect:/RegSuccess";

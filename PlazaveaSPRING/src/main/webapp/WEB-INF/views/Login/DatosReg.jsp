@@ -55,10 +55,8 @@
 			placeholder="Apellido"/>
 		<form:input class="controls" type="number" path="dni" value=""
 			placeholder="DNI"/>
-		<form:input class="controls" type="text" path="numero" value=""
+		<form:input class="controls" type="text" path="telefono" value=""
 			placeholder="Número telefónico"/>
-			
-		<form:input class="controls" type="hidden" path="usuario.usuarioId" value=""/>
 			
 		<input class="buttons" type="submit" name="" value="Registrar">
 		
