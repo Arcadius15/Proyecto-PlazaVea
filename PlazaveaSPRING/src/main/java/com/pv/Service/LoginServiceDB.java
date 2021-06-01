@@ -48,6 +48,12 @@ public class LoginServiceDB implements LoginService{
 	public Collection<Usuario> findAll() {
 		return repository.findAll();
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Integer getMaxId() {
+		return repository.getMaxId();
+	}
 	
 
 }

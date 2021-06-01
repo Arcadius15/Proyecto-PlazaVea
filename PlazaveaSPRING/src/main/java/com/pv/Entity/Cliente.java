@@ -36,19 +36,15 @@ public class Cliente implements Serializable{
 	private String dni;
 	@Column(nullable = false)
 	private String telefono;
-	@Column(nullable = false)
+	@Column
 	private String direccion;
-	@Column(nullable = false)
-	private String nroTarjeta;
-	public Cliente(Integer clienteId, String nombre, String apellido, String dni, String telefono, String direccion,
-			String nroTarjeta) {
+	public Cliente(Integer clienteId, String nombre, String apellido, String dni, String telefono, String direccion) {
 		this.clienteId = clienteId;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 		this.telefono = telefono;
 		this.direccion = direccion;
-		this.nroTarjeta = nroTarjeta;
 	}
 	public Cliente() {
 	}
@@ -87,12 +83,6 @@ public class Cliente implements Serializable{
 	}
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
-	public String getNroTarjeta() {
-		return nroTarjeta;
-	}
-	public void setNroTarjeta(String nroTarjeta) {
-		this.nroTarjeta = nroTarjeta;
 	}
 	
 	@OneToOne

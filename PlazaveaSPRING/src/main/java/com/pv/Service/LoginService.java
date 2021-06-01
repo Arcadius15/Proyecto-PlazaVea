@@ -11,5 +11,6 @@ public interface LoginService {
 	public abstract void delete(Integer userId);
 	public abstract Usuario findById(Integer userId);
 	public abstract Collection<Usuario> findAll();
-
+	public abstract Integer getMaxId ();
+	
 }
