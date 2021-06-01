@@ -2,6 +2,8 @@ package com.pv.Controller;
 
 import java.util.Collection;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.query.Param;
@@ -34,10 +36,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/Login",method = RequestMethod.POST)
-	public String login_POST(Usuario login) {
+	public String login_POST(Usuario login, HttpSession session) {
 		Collection<Usuario> lista = logService.findAll();
 		for (Usuario log : lista) {
 			if (log.getCorreo().equals(login.getCorreo()) && log.getContrasenia().equals(login.getContrasenia())) {
+				session.setAttribute("usuarioId", log.getUsuarioId());
 				return "redirect:/Index";
 			}
 		}
