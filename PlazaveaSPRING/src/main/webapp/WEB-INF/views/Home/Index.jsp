@@ -100,9 +100,9 @@
 				style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh);">
 				<div class="row">
 					<div class="col-md-12">
-						<div id="OfertasCarrusel" class="carousel slide"
+						<div id="OfertasCarrusel" class="carousel carousel-dark slide"
 							data-bs-ride="carousel">
-							<div class="carousel-inner">
+							<div class="carousel-inner" align="center">
 								<div class="carousel-item active">
 									<img src="img/oferta1.jpg" class="d-block w-100" alt="...">
 								</div>
@@ -110,7 +110,7 @@
 									<div class="carousel-item">
 										<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 										<a href="<c:url value='/Producto/${producto.productoId}'/>">
-											<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" />
+											<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="1224px" height="679px"/>
 										</a>
 									</div>
 								</c:forEach>

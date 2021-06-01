@@ -94,6 +94,8 @@
 		</div>
 	</nav>
 	
+	
+	<!-- BODY -->
 	<form:form class="form-login" method="post" modelAttribute="cliente">
 		<h5>Registrar Usuario</h5>
 		
@@ -127,6 +129,8 @@
 	<br />
 	<br />
 	<br />
+	
+	<!-- FOOTER -->
 	
 	<footer th:fragment="footer" class="text-right text-white fixed-bottom"
 		style="background-color: #ae1500;">
