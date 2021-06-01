@@ -63,6 +63,7 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="#">Servicio
 							al Cliente</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">${sessionScope.usuarioId}</a></li>
 				</ul>
 
 
