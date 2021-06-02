@@ -28,11 +28,11 @@
 </head>
 
 <!--Header-->
-<body background="img/background.jpg" style="background-size: cover;">
+<body background='<c:url value="img/background.jpg"/>' style="background-size: cover;">
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"> <img src="img/vea2.png" alt=""
+			<a class="navbar-brand" href="#"> <img src='<c:url value="img/vea2.png"/>' alt=""
 				width="85" height="45">
 			</a>
 			<button class="navbar-toggler" type="button"
@@ -109,10 +109,11 @@
 						</c:otherwise>
 					</c:choose>
 				</div>
-				<form class="d-flex">
-					<input class="form-control me-2" type="search"
-						placeholder="Buscar Productos" aria-label="Search" id="btnBuscar">
-				</form>
+				<div class="d-flex">
+					<input class="form-control me-1 " type="text"
+						placeholder="Buscar Productos" id="btnBuscar" autocomplete="off">
+					<button type="button" class="btn btn-primary btn-sm" onclick='buscar()'>Buscar</button>
+				</div>
 			</div>
 		</div>
 	</nav>
@@ -299,5 +300,6 @@
 		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 		crossorigin="anonymous"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/Index.js"></script>
 </body>
 </html>

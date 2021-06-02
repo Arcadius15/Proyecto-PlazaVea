@@ -26,7 +26,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 <title>Insert title here</title>
 </head>
-<body>
+<body background="img/background.jpg" >
 <nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
 		<div class="container-fluid">
@@ -100,7 +100,7 @@
 	<div>
 		<form:form name="" method="post" modelAttribute="producto" enctype="multipart/form-data">
 			Id: <form:input type="number" path="productoId" readonly="true"/><br>
-			Nombre: <form:label type="text" path="nombre"/><br>
+			Nombre: <form:input type="text" path="nombre"/><br>
 			Precio por Unidad: <form:input type="number" path="precioUnidad"/><br>
 			Stock Disponible: <form:input type="text" path="stock"/><br>
 			Descripcion: <form:input type="text" path="descripcion"/><br>
@@ -117,6 +117,6 @@
 	</div>
 	
 
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
 </body>
 </html>
