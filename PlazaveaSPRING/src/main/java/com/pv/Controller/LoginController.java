@@ -92,4 +92,11 @@ public class LoginController {
 		return "/Login/RegSuccess";
 	}
 	
+	@RequestMapping(value="/Logout", method = RequestMethod.GET)
+	public String logout_GET(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:/Index";
+	}
+	
 }
