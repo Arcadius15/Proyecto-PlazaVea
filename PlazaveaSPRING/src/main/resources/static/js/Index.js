@@ -1,4 +1,5 @@
+$('#btnBuscar').on('keypress',function(e){
+	
+});
 
-$(document).ready(function() {
-    $('#tblProductos').DataTable();
-} );
+

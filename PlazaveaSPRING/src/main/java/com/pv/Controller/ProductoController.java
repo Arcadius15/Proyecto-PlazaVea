@@ -1,6 +1,7 @@
 package com.pv.Controller;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,13 @@ public class ProductoController {
 		producto.setFile(picture.getBytes());
 		productoService.insert(producto);
 		return "redirect:/Index";
+	}
+	
+	@RequestMapping(value = "/findProducto/{nombre}",method = RequestMethod.GET)
+	public String finProducto_GET(Model model,@PathVariable String nombre) {
+		Collection<Producto> productoMod = productoService.findByName(nombre);
+		model.addAttribute("producto",productoMod);
+		return "/Producto/findProducto";
 	}
 
 
