@@ -39,4 +39,9 @@ public class ClienteServiceImpl implements ClienteService {
 		return repository.findAll();
 	}
 
+	@Override
+	public Integer findByUserId(Integer usuarioId) {
+		return repository.findByUserId(usuarioId);
+	}
+
 }
