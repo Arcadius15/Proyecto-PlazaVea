@@ -60,11 +60,11 @@ public class ProductoController {
 		return "redirect:/Index";
 	}
 	
-	@RequestMapping(value = "/findProducto/{nombre}",method = RequestMethod.GET)
+	@RequestMapping(value = "/FindProducto/{nombre}",method = RequestMethod.GET)
 	public String finProducto_GET(Model model,@PathVariable String nombre) {
 		Collection<Producto> productoMod = productoService.findByName(nombre);
 		model.addAttribute("producto",productoMod);
-		return "/Producto/findProducto";
+		return "/Producto/FindProducto";
 	}
 
 

@@ -33,7 +33,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"> <img src="img/vea2.png" alt=""
+			<a class="navbar-brand" href="#"> <img src="../img/vea2.png" alt=""
 				width="85" height="45">
 			</a>
 			<button class="navbar-toggler" type="button"
@@ -70,22 +70,44 @@
 
 				<div class="collapse navbar-collapse d-flex"
 					id="navbarSupportedContent">
-					<ul class="navbar-nav ml-auto p-2">
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								<i class="far fa-user"></i> Mi usuario
-						</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#"><i
-										class="fas fa-user-circle"></i> Iniciar Sesion</a></li>
-								<li><a class="dropdown-item" href="#"><i
-										class="fas fa-address-card"></i> Registrar</a></li>
-								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#"><i
-										class="fas fa-archive"></i> Gestionar Pedido</a></li>
-							</ul></li>
-					</ul>
+					<c:choose>
+						<c:when test="${sessionScope.usuario == null}">
+							<ul class="navbar-nav ml-auto p-2">
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+									role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										<i class="far fa-user"></i> Mi usuario
+								</a>
+									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+										<li><a class="dropdown-item" href="<c:url value='/Login'/>"><i
+												class="fas fa-user-circle"></i> Iniciar Sesion</a></li>
+										<li><a class="dropdown-item" href="#"><i
+												class="fas fa-address-card"></i> Registrar</a></li>
+										<li><hr class="dropdown-divider"></li>
+										<li><a class="dropdown-item" href="#"><i
+												class="fas fa-archive"></i> Gestionar Pedido</a></li>
+									</ul></li>
+							</ul>
+						</c:when>
+						<c:otherwise>
+							<ul class="navbar-nav ml-auto p-2">
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+									role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										<i class="far fa-user"></i> Bienvenido ${sessionScope.usuario.nombre} !
+								</a>
+									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+										<li><a class="dropdown-item" href="#"><i
+												class="fas fa-user-circle"></i> Editar Datos Personales </a></li>
+										<li><a class="dropdown-item" href="<c:url value='/Logout'/>"><i
+												class="fas fa-address-card"></i> Cerrar Sesión </a></li>
+										<li><hr class="dropdown-divider"></li>
+										<li><a class="dropdown-item" href="#"><i
+												class="fas fa-archive"></i> Gestionar Pedido</a></li>
+									</ul></li>
+							</ul>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<form class="d-flex">
 					<input class="form-control me-2" type="search"
