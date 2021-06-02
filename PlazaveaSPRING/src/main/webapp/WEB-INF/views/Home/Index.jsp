@@ -99,7 +99,7 @@
 									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 										<li><a class="dropdown-item" href="#"><i
 												class="fas fa-user-circle"></i> Editar Datos Personales </a></li>
-										<li><a class="dropdown-item" href="#"><i
+										<li><a class="dropdown-item" href="<c:url value='/Logout'/>"><i
 												class="fas fa-address-card"></i> Cerrar Sesión </a></li>
 										<li><hr class="dropdown-divider"></li>
 										<li><a class="dropdown-item" href="#"><i
