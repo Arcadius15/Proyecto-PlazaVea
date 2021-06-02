@@ -27,10 +27,13 @@
 	
 <title>Cambiar Contraseña</title>
 </head>
-<body>
+<body background="img/vea.jpg" style="background-size: cover;">
+
 	<!--Header-->
+	
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
+		
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#"> <img src="img/vea2.png" alt=""
 				width="85" height="45">
@@ -93,29 +96,57 @@
 			</div>
 		</div>
 	</nav>
+	<div style="padding-top : 150px" >
+		<div class="container" style="background-color: #cf260f; padding : 50px;">
+		
+				<form:form class="form-login" name="" method="post" modelAttribute="login">
+				
+					<center><FONT FACE="impact" SIZE=6 COLOR="white"> Cambiar Contraseña</FONT></center>
+					
+						<div class="mb-3 ">
+							<form:input class="form-control form-control-lg" type="number" path="usuarioId" placeholder="ID"/>
+						</div>	
+						<div class="mb-3">	
+							<form:input class="form-control form-control-lg" type="email" path="correo" placeholder="Correo"/>
+							
+						</div>	
+						<div class="mb-3 ">	
+							<form:input class="form-control form-control-lg" type="password" path="contrasenia" placeholder="Contraseña"/>
+						</div>	
+						<div class="mb-3 ">	
+							<input class="form-control form-control-lg" type="password" name="confPass" placeholder="Confirmar Contraseña"/>
+						</div>		
+						
+						<div class="d-grid gap-2 col-6 mx-auto">
+							<input class="btn btn-primary btn-lg" type="submit" name="" value="Cambiar">
+						</div>
+				</form:form>
 	
-	<form:form class="form-change" name="" method="post" modelAttribute="login">
-		<h5>Cambiar Contraseña</h5>
-	
-		<form:input class="controls" type="number" path="usuarioId" placeholder="ID"/><br>
-		<form:input class="controls" type="text" path="correo" placeholder="Correo"/>
-		<br>
-		<form:input class="controls" type="password" path="contrasenia" placeholder="Contraseña"/><br>
-		<input class="controls" type="password" name="confPass" placeholder="Confirmar Contraseña"/>
-		<br>
-		<br>
-
-		<input class="buttons" type="submit" name="" value="Cambiar">
-		<p></p>
-	</form:form>
-	
-	<br><br>
-	
-	<footer th:fragment="footer" class="text-right text-white fixed-bottom"
-		style="background-color: #ae1500;">
-		<div class="container">
-			<p>Plaza Vea &copy 2021</p>
 		</div>
+	</div>
+	<!--Final-->
+	<footer class="text-white fixed-bottom"
+		style="background-color: #cf260f;">
+		<ul class="nav text-left">
+			<li class="nav-item"><a class="nav-link text-reset disabled"
+				href="#">Plaza Vea Copyright &copy; <script>
+					document.write(new Date().getFullYear())
+				</script>
+			</a></li>
+			<li class="nav-item"><a class="nav-link text-reset"
+				href="https://www.facebook.com/plazaVeaOficial/" target="_blank"><i
+					class="fab fa-facebook"></i>Facebook</a></li>
+			<li class="nav-item"><a class="nav-link text-reset"
+				href="https://www.instagram.com/plazavea.oficial" target="_blank"><i
+					class="fab fa-instagram"></i>Instagram</a></li>
+			<li class="nav-item"><a class="nav-link text-reset"
+				href="https://twitter.com/plazavea" target="_blank"><i
+					class="fab fa-twitter"></i>Twitter</a></li>
+		</ul>
 	</footer>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+		crossorigin="anonymous"></script>
 </body>
 </html>

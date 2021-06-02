@@ -27,7 +27,7 @@
 
 <title>Login</title>
 </head>
-<body>
+<body background="img/vea.jpg" style="background-size: cover;">
 	<!--Header-->
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
@@ -93,41 +93,52 @@
 			</div>
 		</div>
 	</nav>
-
-	<form:form class="form-login" method="post" modelAttribute="login">
-		<h5>Formulario Login</h5>
+	<div style="padding-top : 150px" >
+	<div class="container" style="background-color: #cf260f; padding : 50px;">
+			<form:form class="form-login" method="post" modelAttribute="login">
+				<center><FONT FACE="impact" SIZE=6 COLOR="white"> Formulario Login</FONT></center>
+					<div class="mb-3 ">
+						<form:input class="form-control form-control-lg" type="email" path="correo" value=""
+							placeholder="Correo"/>
+					</div>	
+					<div class="mb-3 ">
+						<form:input class="form-control form-control-lg" type="password" path="contrasenia" value=""
+							placeholder="Contraseña"/>
+					</div>
+					<div class="d-grid gap-2 col-6 mx-auto">
+						<input class="btn btn-primary btn-lg" type="submit" name="" value="Ingresar">
+					</div>
+				
+					<h5 align="center"><a class="nav-link"  href="<c:url value='/ChangePassword'/>">¿Olvidaste tu Contraseña?</a></h5>
+				
 		
-		<form:input class="controls" type="text" path="correo" value=""
-			placeholder="Correo"/>
-		<form:input class="controls" type="password" path="contrasenia" value=""
-			placeholder="Contraseña"/>
-			
-		<input class="buttons" type="submit" name="" value="Ingresar">
-		
-		<p>
-			<a href="<c:url value='/ChangePassword'/>">¿Olvidaste tu Contraseña?</a>
-		</p>
-
-	</form:form>
 	
-	<p></p>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-
-	<footer th:fragment="footer" class="text-right text-white fixed-bottom"
-		style="background-color: #ae1500;">
-		<div class="container">
-			<p>Plaza Vea &copy 2021</p>
-		</div>
+			</form:form>
+	</div>
+	</div>
+<!--Final-->
+	<footer class="text-white fixed-bottom"
+		style="background-color: #cf260f;">
+		<ul class="nav text-left">
+			<li class="nav-item"><a class="nav-link text-reset disabled"
+				href="#">Plaza Vea Copyright &copy; <script>
+					document.write(new Date().getFullYear())
+				</script>
+			</a></li>
+			<li class="nav-item"><a class="nav-link text-reset"
+				href="https://www.facebook.com/plazaVeaOficial/" target="_blank"><i
+					class="fab fa-facebook"></i>Facebook</a></li>
+			<li class="nav-item"><a class="nav-link text-reset"
+				href="https://www.instagram.com/plazavea.oficial" target="_blank"><i
+					class="fab fa-instagram"></i>Instagram</a></li>
+			<li class="nav-item"><a class="nav-link text-reset"
+				href="https://twitter.com/plazavea" target="_blank"><i
+					class="fab fa-twitter"></i>Twitter</a></li>
+		</ul>
 	</footer>
-
-</body>
-
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+		crossorigin="anonymous"></script>
 </body>
 </html>
