@@ -40,7 +40,7 @@ public class LoginController {
 		Collection<Usuario> lista = logService.findAll();
 		for (Usuario log : lista) {
 			if (log.getCorreo().equals(login.getCorreo()) && log.getContrasenia().equals(login.getContrasenia())) {
-				session.setAttribute("usuarioId", log.getUsuarioId());
+				session.setAttribute("usuario", clienteService.findById(clienteService.findByUserId(log.getUsuarioId())));
 				return "redirect:/Index";
 			}
 		}
