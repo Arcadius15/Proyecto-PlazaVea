@@ -1,6 +1,8 @@
 package com.pv.Controller;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -24,9 +26,17 @@ public class TarjetaController {
 	private TarjetaServiceImpl tarjetaService;
 	
 	@RequestMapping(value = "/VerMetodoPago", method = RequestMethod.GET)
-	public String Insertar_GET(Model model,Map map) {
+	public String Insertar_GET(Model model,Map map,HttpSession session) {
+		Cliente usuario = (Cliente) session.getAttribute("usuario");
 		model.addAttribute("tarjeta",new Tarjeta());
-		map.put("bTarjetas", tarjetaService.findAll());
+		Collection <Tarjeta> tarjeta =  new ArrayList<>();
+		for (Tarjeta obj : tarjetaService.findAll()) {
+			if (obj.getCliente().getClienteId().equals(usuario.getClienteId())) {
+				tarjeta.add(obj);
+			}
+			
+		}
+		map.put("bTarjetas",tarjeta);
 		return "/Tarjeta/Insertar";
 		
 	}
