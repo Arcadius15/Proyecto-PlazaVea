@@ -53,7 +53,9 @@ public class UsuarioController {
 		
 		Cliente cliente = (Cliente) session.getAttribute("usuario");
 		
-		if (cliente.getDireccion() != null || cliente.getDireccion() != "") {
+		if (cliente.getDireccion() == null) {
+			;
+		}else {
 			String[] parts = cliente.getDireccion().split("<br>");
 			
 			request.setAttribute("pais", parts[0]);
