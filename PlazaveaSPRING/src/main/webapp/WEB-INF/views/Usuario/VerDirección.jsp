@@ -161,40 +161,68 @@
 	                		<center><FONT FACE="impact" SIZE=6 COLOR="black">Editar Dirección</FONT></center>
 	                	</c:otherwise>
 	                </c:choose>
-						<input name="clienteId" type="hidden" value="${sessionScope.usuario.clienteId}"/>
-						
-						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px; padding-top: 10px">
-							<label for="exampleFormControlInput1" class="form-label">País:</label>
-							<input class="form-control form-control-lg" name="pais" type="text" placeholder="Ingrese un País"/>
-						</div>
-						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">Departamento:</label>
-							<input class="form-control form-control-lg" name="departamento" type="text" placeholder="Ingrese un Departamento"/>
-						</div>
-						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">Distrito:</label>
-							<input class="form-control form-control-lg" name="distrito" type="text" placeholder="Ingrese un Distrito"/>
-						</div>
-						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">Avenida:</label>
-							<input class="form-control form-control-lg" name="avenida" type="text" placeholder="Ingrese una Avenida"/>
-						</div>
-						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">Calle y Número:</label>
-							<input class="form-control form-control-lg" name="calle" type="text" placeholder="Ingrese una Calle con Número de Casa"/>
-						</div>
-						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">Referencia:</label>
-							<input class="form-control form-control-lg" name="referencia" type="text" placeholder="Ingrese una Referencia"/>
-						</div>
 						
 						<c:choose>
 		                	<c:when test="${sessionScope.usuario.direccion == null}">
+		                		<input name="clienteId" type="hidden" value="${sessionScope.usuario.clienteId}"/>
+						
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px; padding-top: 10px">
+									<label for="exampleFormControlInput1" class="form-label">País:</label>
+									<input class="form-control form-control-lg" name="pais" type="text" placeholder="Ingrese un País" required/>
+								</div>
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+									<label for="exampleFormControlInput1" class="form-label">Departamento:</label>
+									<input class="form-control form-control-lg" name="departamento" type="text" placeholder="Ingrese un Departamento" required/>
+								</div>
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+									<label for="exampleFormControlInput1" class="form-label">Distrito:</label>
+									<input class="form-control form-control-lg" name="distrito" type="text" placeholder="Ingrese un Distrito" required/>
+								</div>
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+									<label for="exampleFormControlInput1" class="form-label">Avenida:</label>
+									<input class="form-control form-control-lg" name="avenida" type="text" placeholder="Ingrese una Avenida" required/>
+								</div>
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+									<label for="exampleFormControlInput1" class="form-label">Calle y Número:</label>
+									<input class="form-control form-control-lg" name="calle" type="text" placeholder="Ingrese una Calle con Número de Casa" required/>
+								</div>
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+									<label for="exampleFormControlInput1" class="form-label">Referencia (opcional):</label>
+									<input class="form-control form-control-lg" name="referencia" type="text" placeholder="Ingrese una Referencia"/>
+								</div>
+		                	
 		                		<div class="d-grid gap-2 col-6 mx-auto">
 									<input class="btn btn-primary btn-lg" type="submit" name="" value="Registrar Dirección">
 								</div>
 		                	</c:when>
 		                	<c:otherwise>
+		                		<input name="clienteId" type="hidden" value="${sessionScope.usuario.clienteId}"/>
+						
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px; padding-top: 10px">
+									<label for="exampleFormControlInput1" class="form-label">País:</label>
+									<input class="form-control form-control-lg" name="pais" type="text" placeholder="Ingrese un País" value="${pais}" required/>
+								</div>
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+									<label for="exampleFormControlInput1" class="form-label">Departamento:</label>
+									<input class="form-control form-control-lg" name="departamento" type="text" placeholder="Ingrese un Departamento" value="${departamento}" required/>
+								</div>
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+									<label for="exampleFormControlInput1" class="form-label">Distrito:</label>
+									<input class="form-control form-control-lg" name="distrito" type="text" placeholder="Ingrese un Distrito" value="${distrito}" required/>
+								</div>
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+									<label for="exampleFormControlInput1" class="form-label">Avenida:</label>
+									<input class="form-control form-control-lg" name="avenida" type="text" placeholder="Ingrese una Avenida" value="${avenida}" required/>
+								</div>
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+									<label for="exampleFormControlInput1" class="form-label">Calle y Número:</label>
+									<input class="form-control form-control-lg" name="calle" type="text" placeholder="Ingrese una Calle con Número de Casa" value="${calle}" required/>
+								</div>
+								<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+									<label for="exampleFormControlInput1" class="form-label">Referencia (opcional):</label>
+									<input class="form-control form-control-lg" name="referencia" type="text" placeholder="Ingrese una Referencia" value="${referencia}"/>
+								</div>
+		                	
 		                		<div class="d-grid gap-2 col-6 mx-auto">
 									<input class="btn btn-primary btn-lg" type="submit" name="" value="Editar Dirección">
 								</div>

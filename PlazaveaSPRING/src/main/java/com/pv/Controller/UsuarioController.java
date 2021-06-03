@@ -46,9 +46,25 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value = "/VerDireccion", method = RequestMethod.GET)
-	public String verDireccion_GET(HttpSession session) {
+	public String verDireccion_GET(HttpSession session, HttpServletRequest request) {
 		if (session.getAttribute("usuario") == null) {
 			return "redirect:/Index";
+		}
+		
+		Cliente cliente = (Cliente) session.getAttribute("usuario");
+		
+		if (cliente.getDireccion() != null || cliente.getDireccion() != "") {
+			String[] parts = cliente.getDireccion().split("<br>");
+			
+			request.setAttribute("pais", parts[0]);
+			request.setAttribute("departamento", parts[1]);
+			request.setAttribute("distrito", parts[2]);
+			request.setAttribute("avenida", parts[3]);
+			request.setAttribute("calle", parts[4]);
+			
+			if(parts.length == 6) {
+				request.setAttribute("referencia", parts[5]);
+			}
 		}
 		
 		return "/Usuario/VerDirección";
