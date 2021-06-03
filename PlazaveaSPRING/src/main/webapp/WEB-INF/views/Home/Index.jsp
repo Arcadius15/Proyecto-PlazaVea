@@ -168,7 +168,7 @@
 													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
 												</a>
 												<div align="center">
-													<label for="exampleFormControlInput1" class="form-label">${producto.nombre}</label> - 
+													<label for="exampleFormControlInput1" class="form-label">${producto.nombre}</label> -- 
 													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
 												</div>
 											</div>
@@ -180,7 +180,7 @@
 													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
 												</a>
 												<div align="center">
-													<label for="exampleFormControlInput1" class="form-label">${producto.nombre}</label> - 
+													<label for="exampleFormControlInput1" class="form-label">${producto.nombre}</label> -- 
 													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
 												</div>
 											</div>
