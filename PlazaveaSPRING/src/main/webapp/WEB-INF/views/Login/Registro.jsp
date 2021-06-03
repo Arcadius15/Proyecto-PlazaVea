@@ -27,7 +27,7 @@
 
 <title>Registrarse</title>
 </head>
-<body background="img/vea.jpg" style="background-size: cover;">
+<body background="img/background.jpg" style="background-size: cover;">
 
 	<!--Header-->
 	

@@ -27,7 +27,7 @@
 
 <title>Login</title>
 </head>
-<body background="img/vea.jpg" style="background-size: cover;">
+<body background="img/background.jpg" style="background-size: cover;">
 	<!--Header-->
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">

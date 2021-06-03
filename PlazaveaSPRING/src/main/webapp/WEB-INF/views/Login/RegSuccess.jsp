@@ -26,7 +26,7 @@
 	
 <title>Registro Exitoso</title>
 </head>
-<body background="img/vea.jpg" style="background-size: cover;">
+<body background="img/background.jpg" style="background-size: cover;">
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
 		<div class="container-fluid">
@@ -41,7 +41,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item active"><a class="nav-link" href="#">Pagina
+					<li class="nav-item active"><a class="nav-link" href="<c:url value='/Index'/>">Pagina
 							Principal</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -74,9 +74,9 @@
 								<i class="far fa-user"></i> Mi usuario
 						</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#"><i
+								<li><a class="dropdown-item" href="<c:url value='/Login'/>"><i
 										class="fas fa-user-circle"></i> Iniciar Sesion</a></li>
-								<li><a class="dropdown-item" href="#"><i
+								<li><a class="dropdown-item" "<c:url value='/Registro'/>"><i
 										class="fas fa-address-card"></i> Registrar</a></li>
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" href="#"><i
@@ -96,7 +96,7 @@
 	<br><br><br>
 	
 	
-	<h1 align="center"><b>Registro Exitoso</b></h1>
+	<h1 style=color:white align="center" ><b>Registro Exitoso</b></h1>
 	
 	<br><br><br>
 	<h4 align="center"><a class="nav-link" href="<c:url value='/Login'/>">Inicie Sesión Ahora</a></h4> <br><br><br>

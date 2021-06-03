@@ -27,7 +27,7 @@
 	
 <title>Cambiar Contraseña</title>
 </head>
-<body background="img/vea.jpg" style="background-size: cover;">
+<body background="img/background.jpg" style="background-size: cover;">
 
 	<!--Header-->
 	
@@ -95,6 +95,8 @@
 			</div>
 		</div>
 	</nav>
+	
+	<!-- Cuerpo  -->
 	<div style="padding-top : 150px" >
 		<div class="container" style="background-color: #cf260f; padding : 50px;">
 		
