@@ -8,7 +8,7 @@ import com.pv.Entity.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
 	
-	@Query(value="select cliente_id from cliente where usuario_id = :usuarioId", nativeQuery = true)
-	public abstract Integer findByUserId(@Param("usuarioId") Integer usuarioId);
+	@Query(value="select * from cliente where usuario_id = :usuarioId", nativeQuery = true)
+	public abstract Cliente findByUserId(@Param("usuarioId") Integer usuarioId);
 	
 }
