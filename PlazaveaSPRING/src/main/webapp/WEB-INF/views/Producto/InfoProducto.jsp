@@ -27,12 +27,12 @@
 	
 <title>Informacion del Producto</title>
 </head>
-<body background="img/vea.jpg" style="background-size: cover;">
+<body background="../img/background.jpg" style="background-size: cover;">
 		<nav class="navbar navbar-expand-lg navbar-dark"
 				style="background-color: #cf260f;">
 				
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#"> <img src="img/vea2.png" alt=""
+					<a class="navbar-brand" href="#"> <img src="../img/vea2.png" alt=""
 						width="85" height="45">
 					</a>
 					<button class="navbar-toggler" type="button"
@@ -94,23 +94,26 @@
 			</nav>
 	
 	
-	<div class="card mb-3" style="max-width: 540px;">
+	<div style="padding-top : 100px"  >
+	<div class="container text-center" style="background-color: #cf260f; padding : 50px; height 500px;">
+	
+	<div class="card bg-warning border-ligth mb-3" style="max-width: 10500px;">
   <div class="row g-0">
-    <div class="col-md-4">
-      <img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="190" height="250"
-							style="border: 3px solid; color: black;"/>
+    <div class="col-md-5">
+      <img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="300" height="360"
+							style="border: 0px solid; padding : 10px "/>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
       <div class="card-body">
       <br>
-        <h5 class="card-title">Informacion del Producto</h5>
+        <h3 class="card-title">Informacion del Producto</h3>
         <form:form name="" method="post" modelAttribute="producto" enctype="multipart/form-data">
         
        
-        <span>Nombre:  &nbsp </span><span>${producto.nombre }</span><br>
-        <span>Precio por Unidad: &nbsp</span><span>S./ ${producto.precioUnidad }0</span><br>
-        <span>Stock Disponible: &nbsp</span><span>${producto.stock} unidades</span><br>
-        <span>Descripción: &nbsp</span><span>${producto.descripcion }</span><br>
+        <p style=" font-size: 15pt" >Nombre:  &nbsp <span>${producto.nombre }</span><br></p>
+        <p style=" font-size: 15pt" >Precio por Unidad: &nbsp<span>S./ ${producto.precioUnidad }0</span> </p>
+        <p style=" font-size: 15pt" > Stock Disponible: &nbsp<span>${producto.stock} unidades</span></p>
+        <p style=" font-size: 15pt" >Descripción: &nbsp<span>${producto.descripcion }</span></p>
         <br>
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
 			  <button type="submit" class="btn btn-primary active">Añadir a Carrito</button>
@@ -123,7 +126,8 @@
     </div>
   </div>
 </div>
-	
+	</div>
+	</div>
 <!--Final-->
 	<footer class="text-white fixed-bottom"
 		style="background-color: #cf260f;">
