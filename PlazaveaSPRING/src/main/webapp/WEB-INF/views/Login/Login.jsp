@@ -43,8 +43,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item active"><a class="nav-link" href="#">Pagina
-							Principal</a></li>
+					<li class="nav-item active"><a class="nav-link" href="<c:url value='/Index'/>">Pagina Principal</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,9 +75,9 @@
 								<i class="far fa-user"></i> Mi usuario
 						</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#"><i
+								<li><a class="dropdown-item" href="<c:url value='/Login'/>"><i
 										class="fas fa-user-circle"></i> Iniciar Sesion</a></li>
-								<li><a class="dropdown-item" href="#"><i
+								<li><a class="dropdown-item" href="<c:url value='/Registro'/>"><i
 										class="fas fa-address-card"></i> Registrar</a></li>
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" href="#"><i
@@ -95,11 +94,12 @@
 	</nav>
 	<div style="padding-top : 150px" >
 	<div class="container" style="background-color: #cf260f; padding : 50px;">
-			<form:form class="form-login" method="post" modelAttribute="login">
+			<form:form class="form-login" method="post" modelAttribute="login" autocomplete="off">
 				<center><FONT FACE="impact" SIZE=6 COLOR="white"> Formulario Login</FONT></center>
 					<div class="mb-3 ">
-						<form:input class="form-control form-control-lg" type="email" path="correo" value=""
-							placeholder="Correo"/>
+						<form:input class="form-control form-control-lg" type="email" path="correo" value="" 
+							placeholder="Correo"  />
+					
 					</div>	
 					<div class="mb-3 ">
 						<form:input class="form-control form-control-lg" type="password" path="contrasenia" value=""

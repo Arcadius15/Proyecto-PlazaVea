@@ -46,7 +46,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item active"><a class="nav-link" href="#">Pagina
+					<li class="nav-item active"><a class="nav-link" href="<c:url value='/Index'/>">Pagina
 							Principal</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -81,9 +81,9 @@
 								<i class="far fa-user"></i> Mi usuario
 						</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#"><i
+								<li><a class="dropdown-item" href="<c:url value='/Login'/>"><i
 										class="fas fa-user-circle"></i> Iniciar Sesion</a></li>
-								<li><a class="dropdown-item" href="#"><i
+								<li><a class="dropdown-item" href="<c:url value='/Registro'/>"><i
 										class="fas fa-address-card"></i> Registrar</a></li>
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" href="#"><i
@@ -103,7 +103,7 @@
 		<div style="padding-top : 150px" >
 		<div class="container" style="background-color: #cf260f; padding : 50px;">
 		
-			<form:form class="form-login" method="post" modelAttribute="cliente">
+			<form:form class="form-login" method="post" modelAttribute="cliente" autocomplete="off">
 			
 				<center><FONT FACE="impact" SIZE=6 COLOR="white"> Registrar Usuario</FONT></center>
 			
@@ -132,12 +132,12 @@
 				<div class="mb-3">
 					<div class="row">
 						<div class="col">
-							<form:input class="form-control form-control-lg" type="number" path="dni" value=""
-								placeholder="DNI"/>
+							<form:input class="form-control form-control-lg" type="text"  path="dni" value="" 
+								placeholder="DNI" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="8"/>
 						</div>
 						<div class="col">
-							<form:input class="form-control form-control-lg" type="number" path="telefono" value=""
-								placeholder="Número telefónico" />
+							<form:input class="form-control form-control-lg" type="text" path="telefono" value="" 
+								placeholder="Número telefónico" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="9"/>
 						</div>
 					</div>
 				</div>
@@ -148,6 +148,11 @@
 		</form:form>
 	</div>	
 </div>
+
+<script>
+
+
+</script>
 	
 	<!--Final-->
 	<footer class="text-white fixed-bottom"
