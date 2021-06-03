@@ -133,7 +133,7 @@
             </div>
             <!-- Formulario con Datos -->
             <div class="col-md-9" style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh); margin: auto;">
-			     <div class="card bg-warning" style="padding: 20px; margin-left: 120px; margin-right: 120px; margin-top: 50px;">
+			     <div class="card bg-warning" style="margin-top: 20px;">
 					<div class="card-header text-center" >
 			            <h3>
 			                <b>
@@ -156,10 +156,35 @@
 			                    <label for="ExpDate" class="form-label">Fecha de Expiracion</label>
 			                    <form:input type="date" path="fechavencimiento" class="form-control" id="ExpDate"/>
 			                  </div>
-			                <button type="submit" class="btn btn-success" style="margin-left: 15px;">Submit</button>
+			                <button type="submit" class="btn btn-success" style="margin-left: 15px;">Agregar</button>
 			              </form:form>
 					</div>
 				</div>
+				<table class="table table-hover table-bordered table-dark" style="margin-top: 30px;">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Numero de Tarjeta</th>
+							<th>Fecha de vencimiento</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="tarjeta" items="${bTarjetas}">
+						<tr>
+							<td>${tarjeta.tarjetaId}</td>
+							<td>${tarjeta.nroTarjeta}</td>
+							<td>${tarjeta.fechavencimiento}</td>
+							<td>
+								<button type="button" class="btn btn-primary btn-sm">Editar</button>
+								<button type="button" class="btn btn-secondary btn-sm">Eliminar</button>
+							</td>
+						</tr>
+					</c:forEach>
+
+					</tbody>
+				  </table>
+				
             </div>
         </div>
     </div>

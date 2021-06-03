@@ -1,6 +1,8 @@
 package com.pv.Controller;
 
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,9 @@ public class TarjetaController {
 	private TarjetaServiceImpl tarjetaService;
 	
 	@RequestMapping(value = "/VerMetodoPago", method = RequestMethod.GET)
-	public String Insertar_GET(Model model) {
+	public String Insertar_GET(Model model,Map map) {
 		model.addAttribute("tarjeta",new Tarjeta());
-		
+		map.put("bTarjetas", tarjetaService.findAll());
 		return "/Tarjeta/Insertar";
 		
 	}
