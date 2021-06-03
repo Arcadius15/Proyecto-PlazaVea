@@ -135,6 +135,7 @@
             <div class="col-md-9" style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh); margin: auto;">
                 <form:form class="form-login" method="post" modelAttribute="usuarioData">
 					<center><FONT FACE="impact" SIZE=6 COLOR="black"> Datos Personales - ${sessionScope.usuario.nombre}</FONT></center>
+						<form:input path="clienteId" type="hidden"/>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px; padding-top: 10px">
 							<label for="exampleFormControlInput1" class="form-label">Nombre:</label>
 							<form:input class="form-control form-control-lg" type="text" path="nombre" value="${sessionScope.usuario.nombre}"
@@ -156,6 +157,7 @@
 								placeholder="Ingrese un Número Telefónico"/>
 						</div>
 						<hr>
+						<form:input path="userCliente.usuarioId" type="hidden"/>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
 							<label for="exampleFormControlInput1" class="form-label">Correo Electrónico:</label>
 							<form:input class="form-control form-control-lg" type="email" path="userCliente.correo" value="${sessionScope.usuario.userCliente.correo}"
