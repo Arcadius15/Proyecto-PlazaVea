@@ -1,5 +1,8 @@
 package com.pv.Controller;
 
+import java.net.http.HttpRequest;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +44,30 @@ public class UsuarioController {
 		session.setAttribute("usuario", cliente);
 		
 		return "redirect:/VerDatos";
+	}
+	
+	@RequestMapping(value = "/VerDireccion", method = RequestMethod.GET)
+	public String verDireccion_GET() {
+		return "/Usuario/VerDirección";
+	}
+	
+	@RequestMapping(value = "/VerDireccion", method = RequestMethod.POST)
+	public String verDireccion_POST(HttpServletRequest request, HttpSession session) {
+		String direccion = request.getParameter("pais") + "<br>" 
+							+ request.getParameter("departamento") + "<br>"
+							+ request.getParameter("distrito") + "<br>"
+							+ request.getParameter("avenida") + "<br>"
+							+ request.getParameter("calle") + "<br>"
+							+ request.getParameter("referencia");
+		
+		Cliente cliente = clienteService.findById(Integer.parseInt(request.getParameter("clienteId")));
+		cliente.setDireccion(direccion);
+		
+		clienteService.update(cliente);
+		
+		session.setAttribute("usuario", cliente);
+		
+		return "redirect:/VerDireccion";
 	}
 	
 }

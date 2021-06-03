@@ -24,7 +24,7 @@
 	href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-<title>Ver Datos</title>
+<title>Ver Dirección</title>
 </head>
 
 <body background='<c:url value="img/background.jpg"/>' style="background-size: cover;">
@@ -124,54 +124,83 @@
         	<!-- List Group -->
             <div class="col-md-3" style="background: #eef111; padding-top: 15px" >
 				<div class="list-group">
-				  <a href="<c:url value='/VerDatos'/>" class="list-group-item list-group-item-action active" aria-current="true">
-				    Datos Personales
+				  <a href="<c:url value='/VerDatos'/>" class="list-group-item list-group-item-action" aria-current="true">Datos Personales</a>
+				  <a href="<c:url value='/VerDirección'/>" class="list-group-item list-group-item-action active">
+				  	Dirección
 				  </a>
-				  <a href="<c:url value='/VerDireccion'/>" class="list-group-item list-group-item-action">Dirección</a>
 				  <a href="<c:url value='/VerMetodoPago'/>" class="list-group-item list-group-item-action">Métodos de Pago</a>
 				</div>
             </div>
-            <!-- Formulario con Datos -->
+            <!-- Dirección -->
             <div class="col-md-9" style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh); margin: auto;">
-                <form:form class="form-login" method="post" modelAttribute="usuarioData" accept-charset="utf-8">
-					<center><FONT FACE="impact" SIZE=6 COLOR="black"> Datos Personales - ${sessionScope.usuario.nombre}</FONT></center>
-						<form:input path="clienteId" type="hidden"/>
+                
+                <c:choose>
+                	<c:when test="${sessionScope.usuario.direccion == null}">
+                		<div class="card">
+						  <div class="card-body">
+						    <p class="card-text">No se ha añadido ninguna dirección.</p>
+						  </div>
+						</div>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="card">
+						  <div class="card-body">
+						  	<h5 class="card-title">Dirección:</h5>
+						    <p class="card-text">${sessionScope.usuario.direccion}</p>
+						  </div>
+						</div>
+                	</c:otherwise>
+                </c:choose>
+                <hr>
+                <form class="form-login" name = "" method="post" accept-charset="utf-8">
+                	<c:choose>
+	                	<c:when test="${sessionScope.usuario.direccion == null}">
+	                		<center><FONT FACE="impact" SIZE=6 COLOR="black">Registrar Dirección</FONT></center>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<center><FONT FACE="impact" SIZE=6 COLOR="black">Editar Dirección</FONT></center>
+	                	</c:otherwise>
+	                </c:choose>
+						<input name="clienteId" type="hidden" value="${sessionScope.usuario.clienteId}"/>
+						
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px; padding-top: 10px">
-							<label for="exampleFormControlInput1" class="form-label">Nombre:</label>
-							<form:input class="form-control form-control-lg" type="text" path="nombre" value="${sessionScope.usuario.nombre}"
-								placeholder="Ingrese un Nombre"/>
-						</div>	
-						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">Apellido:</label>
-							<form:input class="form-control form-control-lg" type="text" path="apellido" value="${sessionScope.usuario.apellido}"
-								placeholder="Ingrese un Apellido"/>
+							<label for="exampleFormControlInput1" class="form-label">País:</label>
+							<input class="form-control form-control-lg" name="pais" type="text" placeholder="Ingrese un País"/>
 						</div>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">DNI:</label>
-							<form:input class="form-control form-control-lg" type="number" path="dni" value="${sessionScope.usuario.dni}"
-								placeholder="Ingrese un DNI"/>
+							<label for="exampleFormControlInput1" class="form-label">Departamento:</label>
+							<input class="form-control form-control-lg" name="departamento" type="text" placeholder="Ingrese un Departamento"/>
 						</div>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">Número Telefónico:</label>
-							<form:input class="form-control form-control-lg" type="text" path="telefono" value="${sessionScope.usuario.telefono}"
-								placeholder="Ingrese un Número Telefónico"/>
-						</div>
-						<hr>
-						<form:input path="userCliente.usuarioId" type="hidden"/>
-						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">Correo Electrónico:</label>
-							<form:input class="form-control form-control-lg" type="email" path="userCliente.correo" value="${sessionScope.usuario.userCliente.correo}"
-								placeholder="Ingrese un Correo"/>
+							<label for="exampleFormControlInput1" class="form-label">Distrito:</label>
+							<input class="form-control form-control-lg" name="distrito" type="text" placeholder="Ingrese un Distrito"/>
 						</div>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">Contraseña:</label>
-							<form:input class="form-control form-control-lg" type="password" path="userCliente.contrasenia" value="${sessionScope.usuario.userCliente.contrasenia}"
-								placeholder="Ingrese una Contraseña"/>
+							<label for="exampleFormControlInput1" class="form-label">Avenida:</label>
+							<input class="form-control form-control-lg" name="avenida" type="text" placeholder="Ingrese una Avenida"/>
 						</div>
-						<div class="d-grid gap-2 col-6 mx-auto">
-							<input class="btn btn-primary btn-lg" type="submit" name="" value="Guardar Cambios">
+						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+							<label for="exampleFormControlInput1" class="form-label">Calle y Número:</label>
+							<input class="form-control form-control-lg" name="calle" type="text" placeholder="Ingrese una Calle con Número de Casa"/>
 						</div>
-				</form:form>
+						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+							<label for="exampleFormControlInput1" class="form-label">Referencia:</label>
+							<input class="form-control form-control-lg" name="referencia" type="text" placeholder="Ingrese una Referencia"/>
+						</div>
+						
+						<c:choose>
+		                	<c:when test="${sessionScope.usuario.direccion == null}">
+		                		<div class="d-grid gap-2 col-6 mx-auto">
+									<input class="btn btn-primary btn-lg" type="submit" name="" value="Registrar Dirección">
+								</div>
+		                	</c:when>
+		                	<c:otherwise>
+		                		<div class="d-grid gap-2 col-6 mx-auto">
+									<input class="btn btn-primary btn-lg" type="submit" name="" value="Editar Dirección">
+								</div>
+		                	</c:otherwise>
+		                </c:choose>				
+				</form>
             </div>
         </div>
     </div>
