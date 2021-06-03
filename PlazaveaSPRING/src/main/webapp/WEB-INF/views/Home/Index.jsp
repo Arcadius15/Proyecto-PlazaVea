@@ -159,15 +159,34 @@
 						<div id="Categoria1" class="carousel slide"
 							data-bs-ride="carousel">
 							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
+								<c:forEach var="producto" items="${bProducto}">
+									<c:choose>
+										<c:when test="${producto == bProducto[0]}">
+											<div class="carousel-item active">
+												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
+												<a href="<c:url value='/Producto/${producto.productoId}'/>">
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+												</a>
+												<div align="center">
+													<label for="exampleFormControlInput1" class="form-label">${producto.nombre}</label> - 
+													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
+												</div>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div class="carousel-item">
+												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
+												<a href="<c:url value='/Producto/${producto.productoId}'/>">
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+												</a>
+												<div align="center">
+													<label for="exampleFormControlInput1" class="form-label">${producto.nombre}</label> - 
+													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
+												</div>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</div>
 							<button class="carousel-control-prev" type="button"
 								data-bs-target="#Categoria1" data-bs-slide="prev">
