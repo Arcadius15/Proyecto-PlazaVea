@@ -121,6 +121,7 @@
 	<!-- Cuerpo -->
 	<form:form method="post" modelAttribute="usuarioData">
 		Nombre: <form:input type="text" path="nombre"/><br>
+		
 	</form:form>
 
 	<!--Final-->
