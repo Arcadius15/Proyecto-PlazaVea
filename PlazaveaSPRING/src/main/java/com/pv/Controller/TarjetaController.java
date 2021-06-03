@@ -63,4 +63,30 @@ public class TarjetaController {
 		return "redirect:/VerMetodoPago";
 	}
 	
+	@RequestMapping(value = "/TarjetaEditar/{tarjetaId}", method = RequestMethod.GET)
+	public String tarjetaEditar_GET(Model model, Map map, HttpSession session, @PathVariable("tarjetaId") Integer tarjetaId) {
+		if (session.getAttribute("usuario") == null) {
+			return "redirect:/Index";
+		}
+		
+		Cliente usuario = (Cliente) session.getAttribute("usuario");
+		model.addAttribute("tarjeta",tarjetaService.findById(tarjetaId));
+		Collection <Tarjeta> tarjeta =  new ArrayList<>();
+		for (Tarjeta obj : tarjetaService.findAll()) {
+			if (obj.getCliente().getClienteId().equals(usuario.getClienteId())) {
+				tarjeta.add(obj);
+			}
+			
+		}
+		map.put("bTarjetas",tarjeta);
+		return "/Tarjeta/Editar";
+	}
+	
+	@RequestMapping(value = "/TarjetaEditar/{tarjetaId}", method = RequestMethod.POST)
+	public String tarjetaEditar_POST(Tarjeta tarjeta) {
+		tarjetaService.update(tarjeta);
+		
+		return "redirect:/VerMetodoPago";
+	}
+	
 }

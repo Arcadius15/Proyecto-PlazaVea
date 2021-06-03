@@ -27,12 +27,12 @@
 <title>Ver Datos</title>
 </head>
 
-<body background='<c:url value="img/background.jpg"/>' style="background-size: cover;">
+<body background='<c:url value="../img/background.jpg"/>' style="background-size: cover;">
 	<!--Header-->
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="<c:url value='/Index'/>"> <img src='<c:url value="img/vea2.png"/>' alt=""
+			<a class="navbar-brand" href="<c:url value='/Index'/>"> <img src='<c:url value="../img/vea2.png"/>' alt=""
 				width="85" height="45">
 			</a>
 			<button class="navbar-toggler" type="button"
@@ -143,20 +143,22 @@
 			        </div>
 					<div class="card-body">
 						<form:form method="post" modelAttribute="tarjeta">
+							<form:input type="hidden" path="tarjetaId"/>
+							<form:input type="hidden" path="cliente.clienteId"/>
 			                <div class="mb-3 col-12">
-			                  <label for="nroCTA" class="form-label">Numero de Tarjeta</label>
+			                  <label for="nroCTA" class="form-label">Número de Tarjeta</label>
 			                  <form:input type="text" path="nroTarjeta" class="form-control" id="nroCTA" aria-describedby="PayMethod" maxlength="20"/>
-			                  <div id="PayMethod" class="form-text">Debe ingresar su numero de tarjeta de Debito o Credito.</div>
+			                  <div id="PayMethod" class="form-text">Debe ingresar su número de tarjeta de Débito o Crédito.</div>
 			                </div>
 			                <div class="mb-3 col-2">
 			                  <label for="CVVinput" class="form-label">CVV</label>
 			                  <form:input type="password" path="cvv" class="form-control" id="CVVinput" maxlength="3"/>
 			                </div>
 			                <div class="mb-3 col-4" style="padding-bottom: 20px;">
-			                    <label for="ExpDate" class="form-label">Fecha de Expiracion</label>
+			                    <label for="ExpDate" class="form-label">Fecha de Expiración</label>
 			                    <form:input type="date" path="fechavencimiento" class="form-control" id="ExpDate"/>
 			                  </div>
-			                <button type="submit" class="btn btn-success" style="margin-left: 15px;">Agregar</button>
+			                <button type="submit" class="btn btn-success" style="margin-left: 15px;">Editar</button>
 			              </form:form>
 					</div>
 				</div>
@@ -214,6 +216,6 @@
 		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 		crossorigin="anonymous"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/Index.js"></script>
+	<script type="text/javascript" src="../js/Index.js"></script>
 </body>
 </html>
