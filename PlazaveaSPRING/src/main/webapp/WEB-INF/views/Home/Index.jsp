@@ -32,7 +32,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"> <img src='<c:url value="img/vea2.png"/>' alt=""
+			<a class="navbar-brand" href="<c:url value='/Index'/>"> <img src='<c:url value="img/vea2.png"/>' alt=""
 				width="85" height="45">
 			</a>
 			<button class="navbar-toggler" type="button"
@@ -43,7 +43,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item active"><a class="nav-link" href="#">Pagina
+					<li class="nav-item active"><a class="nav-link" href="<c:url value='/Index'/>">Pagina
 							Principal</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -94,7 +94,7 @@
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 									role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										<i class="far fa-user"></i> Bienvenido ${sessionScope.usuario.nombre} !
+										<i class="far fa-user"></i> Bienvenido <b>${sessionScope.usuario.nombre}</b>!
 								</a>
 									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 										<li><a class="dropdown-item" href="<c:url value='/VerDatos'/>"><i
@@ -135,7 +135,7 @@
 									<div class="carousel-item">
 										<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 										<a href="<c:url value='/Producto/${producto.productoId}'/>">
-											<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="1224px" height="679px"/>
+											<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="1090px" height="605px"/>
 										</a>
 									</div>
 								</c:forEach>
@@ -305,13 +305,13 @@
 			</a></li>
 			<li class="nav-item"><a class="nav-link text-reset"
 				href="https://www.facebook.com/plazaVeaOficial/" target="_blank"><i
-					class="fab fa-facebook"></i>Facebook</a></li>
+					class="fab fa-facebook"></i> Facebook</a></li>
 			<li class="nav-item"><a class="nav-link text-reset"
 				href="https://www.instagram.com/plazavea.oficial" target="_blank"><i
-					class="fab fa-instagram"></i>Instagram</a></li>
+					class="fab fa-instagram"></i> Instagram</a></li>
 			<li class="nav-item"><a class="nav-link text-reset"
 				href="https://twitter.com/plazavea" target="_blank"><i
-					class="fab fa-twitter"></i>Twitter</a></li>
+					class="fab fa-twitter"></i> Twitter</a></li>
 		</ul>
 	</footer>
 	<script

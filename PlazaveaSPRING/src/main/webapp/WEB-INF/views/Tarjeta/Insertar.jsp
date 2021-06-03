@@ -127,8 +127,8 @@
 				  <a href="<c:url value='/VerDatos'/>" class="list-group-item list-group-item-action" aria-current="true">
 				    Datos Personales
 				  </a>
-				  <a href="#" class="list-group-item list-group-item-action">Dirección</a>
-				  <a href="#" class="list-group-item list-group-item-action  active">Métodos de Pago</a>
+				  <a href="<c:url value='/VerDireccion'/>" class="list-group-item list-group-item-action">Dirección</a>
+				  <a href="<c:url value='/VerMetodoPago'/>" class="list-group-item list-group-item-action  active">Métodos de Pago</a>
 				</div>
             </div>
             <!-- Formulario con Datos -->

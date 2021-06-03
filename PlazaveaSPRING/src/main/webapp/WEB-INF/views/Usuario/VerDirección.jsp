@@ -119,7 +119,7 @@
 	</nav>
 
 	<!-- Cuerpo -->
-	<div class="container" style="padding: 20px;">
+	<div class="container" style="padding: 20px 20px 40px 20px;">
         <div class="row">
         	<!-- List Group -->
             <div class="col-md-3" style="background: #eef111; padding-top: 15px" >
