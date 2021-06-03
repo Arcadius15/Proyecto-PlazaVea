@@ -27,7 +27,7 @@
 </head>
 
 <!--Header-->
-<body background='<c:url value="img/background.jpg"/>' style="background-size: cover;">
+<body background='<c:url value="../img/background.jpg"/>' style="background-size: cover;">
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
 		<div class="container-fluid">

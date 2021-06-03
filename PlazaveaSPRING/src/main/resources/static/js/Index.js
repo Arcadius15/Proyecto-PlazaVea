@@ -1,5 +1,6 @@
-function buscar(){
+function buscar() {
 	const valor = $('#btnBuscar').val();
-	const url = `/findProducto/{$valor}`;
+	const url = `/pv/findProducto/` + valor;
 	location.href = url;
 }
+

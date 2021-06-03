@@ -12,7 +12,7 @@ import com.pv.Entity.Producto;
 
 public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 	
-	@Query(value =  "select * from producto where nombre like :nombre",nativeQuery = true)
+	@Query(value =  "select * from producto where nombre like CONCAT('%',:nombre,'%')",nativeQuery = true)
 	public abstract Collection<Producto> findByName(@Param("nombre") String nombre);
 
 }
