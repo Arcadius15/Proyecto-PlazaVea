@@ -177,7 +177,7 @@
 							<td>${tarjeta.fechavencimiento}</td>
 							<td>
 								<button type="button" class="btn btn-primary btn-sm">Editar</button>
-								<button type="button" class="btn btn-secondary btn-sm">Eliminar</button>
+								<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='<c:url value="/TarjetaEliminar/${tarjeta.tarjetaId}"/>'">Eliminar</button>
 							</td>
 						</tr>
 					</c:forEach>

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,6 +28,10 @@ public class TarjetaController {
 	
 	@RequestMapping(value = "/VerMetodoPago", method = RequestMethod.GET)
 	public String Insertar_GET(Model model,Map map,HttpSession session) {
+		if (session.getAttribute("usuario") == null) {
+			return "redirect:/Index";
+		}
+		
 		Cliente usuario = (Cliente) session.getAttribute("usuario");
 		model.addAttribute("tarjeta",new Tarjeta());
 		Collection <Tarjeta> tarjeta =  new ArrayList<>();
@@ -51,4 +56,11 @@ public class TarjetaController {
 		
 	}
 
+	@RequestMapping(value = "/TarjetaEliminar/{tarjetaId}", method = RequestMethod.GET)
+	public String tarjetaEliminar_GET(@PathVariable("tarjetaId") Integer tarjetaId) {
+		tarjetaService.delete(tarjetaId);
+		
+		return "redirect:/VerMetodoPago";
+	}
+	
 }
