@@ -12,12 +12,7 @@ import com.pv.Entity.Producto;
 
 public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 	
-<<<<<<< HEAD
-	@Query(value =  "select * from producto p where p.nombre like %:nombre%",nativeQuery = true)
-	Collection<Producto> findByName(@Param("nombre")String nombre);
-=======
 	@Query(value =  "select * from producto where nombre like :nombre",nativeQuery = true)
 	public abstract Collection<Producto> findByName(@Param("nombre") String nombre);
->>>>>>> branch 'master' of https://github.com/Arcadius15/Proyecto-PlazaVea.git
 
 }

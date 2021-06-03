@@ -31,12 +31,8 @@
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
 		<div class="container-fluid">
-<<<<<<< HEAD
-			<a class="navbar-brand" href="#"> 
-=======
 			<a class="navbar-brand" href="#"> <img src="../img/vea2.png" alt=""
 				width="85" height="45">
->>>>>>> branch 'master' of https://github.com/Arcadius15/Proyecto-PlazaVea.git
 			</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

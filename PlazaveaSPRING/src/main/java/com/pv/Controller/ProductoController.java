@@ -60,7 +60,6 @@ public class ProductoController {
 		return "redirect:/Index";
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping(value = "/findProducto/{valor}",method = RequestMethod.GET)
 	public String findProducto_GET(Model model,@PathVariable String valor) {
 		Collection<Producto> productoMod = productoService.findByName(valor);
@@ -72,13 +71,6 @@ public class ProductoController {
 	@RequestMapping(value = "/findProducto/{valor}",method = RequestMethod.POST)
 	public String findProducto_POST(@PathVariable String valor) {
 		return "redirect:/findProducto/"+valor;
-=======
-	@RequestMapping(value = "/FindProducto/{nombre}",method = RequestMethod.GET)
-	public String finProducto_GET(Model model,@PathVariable String nombre) {
-		Collection<Producto> productoMod = productoService.findByName(nombre);
-		model.addAttribute("producto",productoMod);
-		return "/Producto/FindProducto";
->>>>>>> branch 'master' of https://github.com/Arcadius15/Proyecto-PlazaVea.git
 	}
 
 
