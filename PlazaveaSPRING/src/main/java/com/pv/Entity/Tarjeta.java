@@ -35,7 +35,7 @@ public class Tarjeta implements Serializable{
 	private String nroTarjeta;
 	@Column(nullable = false)
 	private Integer cvv;
-	@DateTimeFormat(pattern = "MM-dd-yyyy",iso = ISO.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd",iso = ISO.DATE)
 	private LocalDate fechavencimiento;
 	
 	public Integer getTarjetaId() {

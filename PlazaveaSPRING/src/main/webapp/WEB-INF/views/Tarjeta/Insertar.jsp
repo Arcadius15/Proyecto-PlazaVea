@@ -142,22 +142,22 @@
 			            </h3>
 			        </div>
 					<div class="card-body">
-						<form>
+						<form:form method="post" modelAttribute="tarjeta">
 			                <div class="mb-3 col-12">
 			                  <label for="nroCTA" class="form-label">Numero de Tarjeta</label>
-			                  <input type="text" class="form-control" id="nroCTA" aria-describedby="PayMethod" maxlength="20">
+			                  <form:input type="text" path="nroTarjeta" class="form-control" id="nroCTA" aria-describedby="PayMethod" maxlength="20"/>
 			                  <div id="PayMethod" class="form-text">Debe ingresar su numero de tarjeta de Debito o Credito.</div>
 			                </div>
 			                <div class="mb-3 col-2">
 			                  <label for="CVVinput" class="form-label">CVV</label>
-			                  <input type="password" class="form-control" id="CVVinput" maxlength="3">
+			                  <form:input type="password" path="cvv" class="form-control" id="CVVinput" maxlength="3"/>
 			                </div>
-			                <div class="mb-3 col-3" style="padding-bottom: 20px;">
+			                <div class="mb-3 col-4" style="padding-bottom: 20px;">
 			                    <label for="ExpDate" class="form-label">Fecha de Expiracion</label>
-			                    <input type="date" class="form-control" id="ExpDate">
+			                    <form:input type="date" path="fechavencimiento" class="form-control" id="ExpDate"/>
 			                  </div>
 			                <button type="submit" class="btn btn-success" style="margin-left: 15px;">Submit</button>
-			              </form>
+			              </form:form>
 					</div>
 				</div>
             </div>
