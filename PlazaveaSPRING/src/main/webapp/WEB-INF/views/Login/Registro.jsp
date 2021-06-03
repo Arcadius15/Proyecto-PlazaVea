@@ -98,6 +98,8 @@
 			</div>
 		</div>
 	</nav>
+	
+	<!-- Cuerpo -->
 		<div style="padding-top : 150px" >
 		<div class="container" style="background-color: #cf260f; padding : 50px;">
 		
@@ -135,12 +137,12 @@
 						</div>
 						<div class="col">
 							<form:input class="form-control form-control-lg" type="number" path="telefono" value=""
-								placeholder="Número telefónico"/>
+								placeholder="Número telefónico" />
 						</div>
 					</div>
 				</div>
 				<div class="d-grid gap-2 col-6 mx-auto">	
-				<input class="btn btn-primary btn-lg" type="submit" name="" value="Registrar">
+				<button class="btn btn-primary btn-lg" type="submit" name="">Registrar</button>
 				</div>	
 			<p></p>
 		</form:form>

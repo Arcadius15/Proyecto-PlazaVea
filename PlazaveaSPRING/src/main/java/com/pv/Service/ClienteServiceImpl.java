@@ -40,7 +40,7 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public Integer findByUserId(Integer usuarioId) {
+	public Cliente findByUserId(Integer usuarioId) {
 		return repository.findByUserId(usuarioId);
 	}
 

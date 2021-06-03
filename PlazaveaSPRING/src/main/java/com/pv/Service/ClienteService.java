@@ -10,6 +10,6 @@ public interface ClienteService {
 	public abstract void update (Cliente cliente);
 	public abstract Cliente findById (Integer clienteId);
 	public abstract Collection<Cliente> findAll ();
-	public abstract Integer findByUserId (Integer usuarioId);
+	public abstract Cliente findByUserId (Integer usuarioId);
 	
 }

@@ -1,5 +1,6 @@
-$('#btnBuscar').on('keypress',function(e){
-	
-});
-
+function buscar() {
+	const valor = $('#btnBuscar').val();
+	const url = `/pv/findProducto/` + valor;
+	location.href = url;
+}
 
