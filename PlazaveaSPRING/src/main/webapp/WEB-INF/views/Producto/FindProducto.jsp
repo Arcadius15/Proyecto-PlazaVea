@@ -31,7 +31,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"> <img src="../img/vea2.png" alt=""
+			<a class="navbar-brand" href="<c:url value='/Index'/>"> <img src='<c:url value="../img/vea2.png"/>' alt=""
 				width="85" height="45">
 			</a>
 			<button class="navbar-toggler" type="button"
@@ -42,15 +42,15 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item active"><a class="nav-link" href="#">Pagina
+					<li class="nav-item"><a class="nav-link" href="<c:url value='/Index'/>">Página
 							Principal</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Categorias </a>
+							Categorías </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="#">Supermercado</a></li>
-							<li><a class="dropdown-item" href="#">Tecnologia</a></li>
+							<li><a class="dropdown-item" href="#">Tecnología</a></li>
 							<li><a class="dropdown-item" href="#">Hogar</a></li>
 							<li><a class="dropdown-item" href="#">Muebles</a></li>
 							<li><a class="dropdown-item" href="#">Deporte</a></li>
@@ -68,6 +68,7 @@
 
 				<div class="collapse navbar-collapse d-flex"
 					id="navbarSupportedContent">
+					
 					<c:choose>
 						<c:when test="${sessionScope.usuario == null}">
 							<ul class="navbar-nav ml-auto p-2">
@@ -78,8 +79,8 @@
 								</a>
 									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 										<li><a class="dropdown-item" href="<c:url value='/Login'/>"><i
-												class="fas fa-user-circle"></i> Iniciar Sesion</a></li>
-										<li><a class="dropdown-item" href="#"><i
+												class="fas fa-user-circle"></i> Iniciar Sesión</a></li>
+										<li><a class="dropdown-item" href="<c:url value='/Registro'/>"><i
 												class="fas fa-address-card"></i> Registrar</a></li>
 										<li><hr class="dropdown-divider"></li>
 										<li><a class="dropdown-item" href="#"><i
@@ -92,11 +93,11 @@
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 									role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										<i class="far fa-user"></i> Bienvenido ${sessionScope.usuario.nombre} !
+										<i class="far fa-user"></i> Bienvenido <b>${sessionScope.usuario.nombre}!</b>
 								</a>
 									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<li><a class="dropdown-item" href="#"><i
-												class="fas fa-user-circle"></i> Editar Datos Personales </a></li>
+										<li><a class="dropdown-item" href="<c:url value='/VerDatos'/>"><i
+												class="fas fa-user-circle"></i> Ver Datos Personales </a></li>
 										<li><a class="dropdown-item" href="<c:url value='/Logout'/>"><i
 												class="fas fa-address-card"></i> Cerrar Sesión </a></li>
 										<li><hr class="dropdown-divider"></li>
@@ -107,10 +108,11 @@
 						</c:otherwise>
 					</c:choose>
 				</div>
-				<form class="d-flex">
-					<input class="form-control me-2" type="search"
-						placeholder="Buscar Productos" aria-label="Search">
-				</form>
+				<div class="d-flex">
+					<input class="form-control me-1 " type="text"
+						placeholder="Buscar Productos" id="btnBuscar" autocomplete="off">
+					<button type="button" class="btn btn-primary btn-sm" onclick='buscar()'>Buscar</button>
+				</div>
 			</div>
 		</div>
 	</nav>
@@ -237,24 +239,27 @@
 		style="background-color: #cf260f;">
 		<ul class="nav text-left">
 			<li class="nav-item"><a class="nav-link text-reset disabled"
-				href="#">Plaza Vea Copyright &copy; 
+				href="#">Plaza Vea Copyright &copy; <script>
+					document.write(new Date().getFullYear())
+				</script>
 			</a></li>
 			<li class="nav-item"><a class="nav-link text-reset"
 				href="https://www.facebook.com/plazaVeaOficial/" target="_blank"><i
-					class="fab fa-facebook"></i>Facebook</a></li>
+					class="fab fa-facebook"></i> Facebook</a></li>
 			<li class="nav-item"><a class="nav-link text-reset"
 				href="https://www.instagram.com/plazavea.oficial" target="_blank"><i
-					class="fab fa-instagram"></i>Instagram</a></li>
+					class="fab fa-instagram"></i> Instagram</a></li>
 			<li class="nav-item"><a class="nav-link text-reset"
 				href="https://twitter.com/plazavea" target="_blank"><i
-					class="fab fa-twitter"></i>Twitter</a></li>
+					class="fab fa-twitter"></i> Twitter</a></li>
 		</ul>
 	</footer>
-	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 		crossorigin="anonymous"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/Index.js"></script>
 </body>
 
 

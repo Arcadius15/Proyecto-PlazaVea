@@ -43,15 +43,15 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item active"><a class="nav-link" href="<c:url value='/Index'/>">Pagina
+					<li class="nav-item active"><a class="nav-link" href="<c:url value='/Index'/>">Página
 							Principal</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Categorias </a>
+							Categorías </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="#">Supermercado</a></li>
-							<li><a class="dropdown-item" href="#">Tecnologia</a></li>
+							<li><a class="dropdown-item" href="#">Tecnología</a></li>
 							<li><a class="dropdown-item" href="#">Hogar</a></li>
 							<li><a class="dropdown-item" href="#">Muebles</a></li>
 							<li><a class="dropdown-item" href="#">Deporte</a></li>
@@ -80,7 +80,7 @@
 								</a>
 									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 										<li><a class="dropdown-item" href="<c:url value='/Login'/>"><i
-												class="fas fa-user-circle"></i> Iniciar Sesion</a></li>
+												class="fas fa-user-circle"></i> Iniciar Sesión</a></li>
 										<li><a class="dropdown-item" href="<c:url value='/Registro'/>"><i
 												class="fas fa-address-card"></i> Registrar</a></li>
 										<li><hr class="dropdown-divider"></li>
@@ -94,7 +94,7 @@
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 									role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										<i class="far fa-user"></i> Bienvenido <b>${sessionScope.usuario.nombre}</b>!
+										<i class="far fa-user"></i> Bienvenido <b>${sessionScope.usuario.nombre}!</b>
 								</a>
 									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 										<li><a class="dropdown-item" href="<c:url value='/VerDatos'/>"><i
@@ -168,7 +168,7 @@
 													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
 												</a>
 												<div align="center">
-													<label for="exampleFormControlInput1" class="form-label">${producto.nombre}</label> -- 
+													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
 													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
 												</div>
 											</div>
@@ -180,7 +180,7 @@
 													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
 												</a>
 												<div align="center">
-													<label for="exampleFormControlInput1" class="form-label">${producto.nombre}</label> -- 
+													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
 													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
 												</div>
 											</div>
@@ -200,6 +200,7 @@
 							</button>
 						</div>
 
+						<h5 align="center">Categoría 1</h5>
 					</div>
 					<div class="col-md-3">
 
@@ -227,7 +228,8 @@
 								<span class="visually-hidden">Next</span>
 							</button>
 						</div>
-
+						
+						<h5 align="center">Categoría 2</h5>
 					</div>
 					<div class="col-md-3">
 
@@ -255,7 +257,8 @@
 								<span class="visually-hidden">Next</span>
 							</button>
 						</div>
-
+						
+						<h5 align="center">Categoría 3</h5>
 					</div>
 					<div class="col-md-3">
 
@@ -284,6 +287,7 @@
 							</button>
 						</div>
 
+						<h5 align="center">Categoría 4</h5>
 					</div>
 
 				</div>
