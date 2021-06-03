@@ -29,7 +29,11 @@ public class LoginController {
 	private ClienteService clienteService;
 	
 	@RequestMapping(value="/Login",method = RequestMethod.GET)
-	public String login_GET(Model model) {
+	public String login_GET(Model model, HttpSession session) {
+		if (session.getAttribute("usuario") != null) {
+			return "redirect:/Index";
+		}
+		
 		Usuario log = new Usuario();
 		model.addAttribute("login",log);
 		return "/Login/Login";
@@ -53,7 +57,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/ChangePassword",method = RequestMethod.GET)
-	public String changepassword_GET(Model model) {
+	public String changepassword_GET(Model model, HttpSession session) {
+		if (session.getAttribute("usuario") != null) {
+			return "redirect:/Index";
+		}
+		
 		Usuario log = new Usuario();
 		model.addAttribute("login",log);
 		return "/Login/ChangePassword";
@@ -72,7 +80,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/Registro",method = RequestMethod.GET)
-	public String registro_GET(Model model) {
+	public String registro_GET(Model model, HttpSession session) {
+		if (session.getAttribute("usuario") != null) {
+			return "redirect:/Index";
+		}
+		
 		model.addAttribute("cliente", new Cliente());
 		
 		return "/Login/Registro";
