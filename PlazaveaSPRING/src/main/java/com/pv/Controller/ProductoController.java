@@ -61,9 +61,14 @@ public class ProductoController {
 	}
 	
 	@RequestMapping(value = "/findProducto/{valor}",method = RequestMethod.GET)
-	public String findProducto_GET(Model model,@PathVariable String valor) {
+	public String findProducto_GET(Model model, Map map, @PathVariable String valor) {
 		Collection<Producto> productoMod = productoService.findByName(valor);
 		model.addAttribute("bProducto",productoMod);
+		model.addAttribute("valor", valor);
+		
+		map.put("bProveedor", proveedorService.findAll());
+		map.put("bCategoria", categoriaService.findAll());
+		
 		return "/Producto/FindProducto";
 		
 	}

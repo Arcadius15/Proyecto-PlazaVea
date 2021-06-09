@@ -23,7 +23,7 @@
 	href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-<title>Página Principal</title>
+<title>${valor} - Buscar Productos</title>
 </head>
 
 <!--Header-->
@@ -109,7 +109,7 @@
 				</div>
 				<div class="d-flex">
 					<input class="form-control me-1 " type="text"
-						placeholder="Buscar Productos" id="btnBuscar" autocomplete="off">
+						placeholder="Buscar Productos" id="btnBuscar" autocomplete="off" value="${valor}">
 					<button type="button" class="btn btn-primary btn-sm" onclick='buscar()'>Buscar</button>
 				</div>
 			</div>
@@ -123,7 +123,7 @@
             <div class="col-md-3" style="background: #eef111;" >
 				<form style="padding-bottom: 20px; padding-top: 10px;">
 					<input class="form-control me-2" type="search"
-						placeholder="Buscar Productos" aria-label="Search">
+						placeholder="Buscar Productos" aria-label="Search" value="${valor}">
 				</form>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
@@ -134,18 +134,14 @@
                       </h2>
                       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="Proveedor1">
-                                <label class="form-check-label" for="Proveedor1">
-                                  Proveedor 1
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="Proveedor2">
-                                <label class="form-check-label" for="Proveedor2">
-                                  Proveedor 2
-                                </label>
-                              </div>
+                        	<c:forEach var="proveedor" items="${bProveedor}">
+	                            <div class="form-check">
+	                                <input class="form-check-input" type="checkbox" value="" id="Proveedor${proveedor.proveedorId}">
+	                                <label class="form-check-label" for="Proveedor${proveedor.proveedorId}">
+	                                  ${proveedor.nombre}
+	                                </label>
+	                            </div>
+                            </c:forEach>
                         </div>
                       </div>
                     </div>
