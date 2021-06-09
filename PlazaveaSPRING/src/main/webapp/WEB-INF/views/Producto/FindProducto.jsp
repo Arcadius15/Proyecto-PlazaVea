@@ -136,7 +136,7 @@
                         <div class="accordion-body">
                         	<c:forEach var="proveedor" items="${bProveedor}">
 	                            <div class="form-check">
-	                                <input class="form-check-input" type="checkbox" value="" id="Proveedor${proveedor}">
+	                                <input class="form-check-input" type="checkbox" value="${proveedor}" id="${proveedor}" onclick="filtrar(this)">
 	                                <label class="form-check-label" for="Proveedor${proveedor}">
 	                                  ${proveedor}
 	                                </label>
@@ -155,7 +155,7 @@
                         <div class="accordion-body">
                             <c:forEach var="categoria" items="${bCategoria}">
 	                            <div class="form-check">
-	                                <input class="form-check-input" type="checkbox" value="" id="Categoria${categoria}">
+	                                <input class="form-check-input" type="checkbox" value="${categoria}" id="${categoria}" onclick="filtrar(this)">
 	                                <label class="form-check-label" for="Categoria${categoria}">
 	                                  ${categoria}
 	                                </label>
@@ -191,25 +191,25 @@
 
             </div>
             <div class="col-md-9" style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh); margin: auto;">
-                <table id="example" class="table table-hover" style="width:100%;background-color: #cf260f;">
+                <table id="tProductos" class="table table-hover" style="width:100%;background-color: #cf260f;">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Precio</th>
                             <th>Stock</th>
-                            <th>Descripcion</th>
+                            <th>Proveedor</th>
+                            <th>Categoría</th>
                             <th>Imagen</th>
                         </tr>
                     </thead>
                     <tbody>
                     	<c:forEach var="producto" items="${bProducto}">
 									<tr>
-										<td>${producto.productoId}</td>
 										<td>${producto.nombre}</td>
 										<td>${producto.precioUnidad}</td>
 										<td>${producto.stock}</td>
-										<td>${producto.descripcion}</td>
+										<td>${producto.proveedor.nombre}</td>
+										<td>${producto.categoria.nombre}</td>
 										<td>
 											<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 											<a href="<c:url value='/Producto/${producto.productoId}'/>">
@@ -251,6 +251,7 @@
 		crossorigin="anonymous"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/Index.js"></script>
+	<script type="text/javascript" src="../js/Filter.js"></script>
 </body>
 
 
