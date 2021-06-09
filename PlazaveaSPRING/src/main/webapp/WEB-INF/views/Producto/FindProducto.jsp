@@ -136,9 +136,9 @@
                         <div class="accordion-body">
                         	<c:forEach var="proveedor" items="${bProveedor}">
 	                            <div class="form-check">
-	                                <input class="form-check-input" type="checkbox" value="" id="Proveedor${proveedor.proveedorId}">
-	                                <label class="form-check-label" for="Proveedor${proveedor.proveedorId}">
-	                                  ${proveedor.nombre}
+	                                <input class="form-check-input" type="checkbox" value="" id="Proveedor${proveedor}">
+	                                <label class="form-check-label" for="Proveedor${proveedor}">
+	                                  ${proveedor}
 	                                </label>
 	                            </div>
                             </c:forEach>
@@ -153,18 +153,14 @@
                       </h2>
                       <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
                         <div class="accordion-body">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="Categoria1">
-                                <label class="form-check-label" for="Categoria1">
-                                  Categoria1
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="Categoria2" >
-                                <label class="form-check-label" for="Categoria2">
-                                    Categoria2
-                                </label>
-                              </div>
+                            <c:forEach var="categoria" items="${bCategoria}">
+	                            <div class="form-check">
+	                                <input class="form-check-input" type="checkbox" value="" id="Categoria${categoria}">
+	                                <label class="form-check-label" for="Categoria${categoria}">
+	                                  ${categoria}
+	                                </label>
+	                            </div>
+                            </c:forEach>
                         </div>
                       </div>
                     </div>
@@ -221,7 +217,7 @@
 											</a>
 										</td>
 									</tr>
-								</c:forEach>
+						</c:forEach>
                     </tbody>
                 </table>
             </div>

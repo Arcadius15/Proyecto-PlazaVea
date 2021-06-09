@@ -1,7 +1,10 @@
 package com.pv.Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,8 +69,16 @@ public class ProductoController {
 		model.addAttribute("bProducto",productoMod);
 		model.addAttribute("valor", valor);
 		
-		map.put("bProveedor", proveedorService.findAll());
-		map.put("bCategoria", categoriaService.findAll());
+		List<String> proveedores = new ArrayList<String>();
+		List<String> categorias = new ArrayList<String>();
+		
+		for (Producto producto : productoMod) {
+			proveedores.add(producto.getProveedor().getNombre());
+			categorias.add(producto.getCategoria().getNombre());
+		}
+		
+		map.put("bProveedor", new HashSet<String>(proveedores));
+		map.put("bCategoria", new HashSet<String>(categorias));
 		
 		return "/Producto/FindProducto";
 		
