@@ -136,8 +136,8 @@
                         <div class="accordion-body">
                         	<c:forEach var="proveedor" items="${bProveedor}">
 	                            <div class="form-check">
-	                                <input class="form-check-input" type="checkbox" value="${proveedor}" id="${proveedor}" onchange="filtrar(this)">
-	                                <label class="form-check-label" for="Proveedor${proveedor}">
+	                                <input class="form-check-input" type="checkbox" value="${proveedor}" id="${proveedor}" onchange="filtrarPro(this)">
+	                                <label class="form-check-label" for="${proveedor}">
 	                                  ${proveedor}
 	                                </label>
 	                            </div>
@@ -155,8 +155,8 @@
                         <div class="accordion-body">
                             <c:forEach var="categoria" items="${bCategoria}">
 	                            <div class="form-check">
-	                                <input class="form-check-input" type="checkbox" value="${categoria}" id="${categoria}" onchange="filtrar(this)">
-	                                <label class="form-check-label" for="Categoria${categoria}">
+	                                <input class="form-check-input" type="checkbox" value="${categoria}" id="${categoria}" onchange="filtrarCat(this)">
+	                                <label class="form-check-label" for="${categoria}">
 	                                  ${categoria}
 	                                </label>
 	                            </div>

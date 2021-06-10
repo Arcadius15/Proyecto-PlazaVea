@@ -1,41 +1,80 @@
-var filtros = [];
+var filtrosPro = [];
+var filtrosCat = [];
 
 function aplicarFiltro(){
-		var table = document.getElementById("tProductos");
+	var table = document.getElementById("tProductos");
 		
-		var tr = table.getElementsByTagName("tr");
+	var tr = table.getElementsByTagName("tr");
 		
-		var visible;
+	var visible;
 		
-		for (let i = 0; i < tr.length - 1; i++){
-			visible = false;
-			var td = tr[i+1].getElementsByTagName("td");
+	for (let i = 0; i < tr.length - 1; i++){
+		visible = false;
+		var td = tr[i+1].getElementsByTagName("td");
 			
-			for (let j = 0; j < td.length; j++){
-				for (let f = 0; f < filtros.length; f++){
-					if (td[j] && td[j].innerHTML.toUpperCase().indexOf(filtros[f]) > -1){
-						visible = true;
-					}
-				}
-				if (visible === true){
-					tr[i+1].style.display = "";
-				} else {
-					tr[i+1].style.display = "none";
-				}
+		for (let fp = 0; fp < filtrosPro.length; fp++){
+			if (td[3] && td[3].innerHTML.toUpperCase().indexOf(filtrosPro[fp]) > -1){
+				visible = true;
 			}
 		}
+		
+		for (let fc = 0; fc < filtrosCat.length; fc++){
+			if (td[4] && td[4].innerHTML.toUpperCase().indexOf(filtrosCat[fc]) > -1){
+				visible = true;
+			}
+		}
+		
+		if (visible === true){
+			tr[i+1].style.display = "";
+		} else {
+			tr[i+1].style.display = "none";
+		}
+	}
 }
 
-function filtrar(check){
+function filtrarPro(check){
+	const chk = check.value.toUpperCase();
+	
 	if($('#'+check.value).is(':checked')){
-		const chk = check.value.toUpperCase();
-		filtros.push(chk);
+		filtrosPro.push(chk);
 		
 		aplicarFiltro();
 	} else {
-		const chk = check.value;
-		if (filtros.indexOf(chk) > -1){
-			filtros.splice(filtros.indexOf(chk), 1);
+		filtrosPro.splice(filtrosPro.indexOf(chk), 1);
+		
+		if (filtrosPro.length === 0 && filtrosCat.length === 0) {
+			var table = document.getElementById("tProductos");
+		
+			var tr = table.getElementsByTagName("tr");
+			
+			for (let i = 0; i < tr.length - 1; i++){
+				tr[i+1].style.display = "";
+			}
+		} else {
+			aplicarFiltro();
+		}
+	}
+}
+
+function filtrarCat(check){
+	const chk = check.value.toUpperCase();
+	
+	if($('#'+check.value).is(':checked')){
+		filtrosCat.push(chk);
+		
+		aplicarFiltro();
+	} else {
+		filtrosCat.splice(filtrosCat.indexOf(chk), 1);
+		
+		if (filtrosCat.length === 0 && filtrosPro.length === 0) {
+			var table = document.getElementById("tProductos");
+		
+			var tr = table.getElementsByTagName("tr");
+			
+			for (let i = 0; i < tr.length - 1; i++){
+				tr[i+1].style.display = "";
+			}
+		} else {
 			aplicarFiltro();
 		}
 	}
