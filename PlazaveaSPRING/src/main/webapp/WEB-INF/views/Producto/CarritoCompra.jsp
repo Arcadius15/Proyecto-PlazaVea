@@ -29,7 +29,6 @@
 	<%@include file="/WEB-INF/views/shared/header.jsp"%>
 
 	<!-- Cuerpo -->
-	<!-- Cuerpo -->
 	<div class="container" style="padding: 20px;">
 		<div class="row">
 			<div class="col-md-8"
