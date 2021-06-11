@@ -7,27 +7,46 @@ function aplicarFiltro(){
 	var tr = table.getElementsByTagName("tr");
 		
 	var visible;
+	
+	var c = 0;
 		
 	for (let i = 0; i < tr.length - 1; i++){
 		visible = false;
 		var td = tr[i+1].getElementsByTagName("td");
-			
-		for (let fp = 0; fp < filtrosPro.length; fp++){
-			if (td[3] && td[3].innerHTML.toUpperCase().indexOf(filtrosPro[fp]) > -1){
-				visible = true;
-			}
-		}
 		
-		for (let fc = 0; fc < filtrosCat.length; fc++){
-			if (td[4] && td[4].innerHTML.toUpperCase().indexOf(filtrosCat[fc]) > -1){
-				visible = true;
+			if (filtrosPro.length > 0 && filtrosCat.length === 0) {
+				for (let f = 0; f < filtrosPro.length; f++){
+					if (td[3].innerHTML.toUpperCase().indexOf(filtrosPro[f]) > -1){
+						visible = true;
+					}
+				}
+			} else if (filtrosPro.length === 0 && filtrosCat.length > 0) {
+				for (let f = 0; f < filtrosCat.length; f++){
+					if (td[4].innerHTML.toUpperCase().indexOf(filtrosCat[f]) > -1){
+						visible = true;
+					}
+				}
+			} else if (filtrosPro.length > 0 && filtrosCat.length > 0) {
+				for (let fp = 0; fp < filtrosPro.length; fp++){
+					for (let fc = 0; fc < filtrosCat.length; fc++){
+						if (td[3].innerHTML.toUpperCase().indexOf(filtrosPro[fp]) > -1 && td[4].innerHTML.toUpperCase().indexOf(filtrosCat[fc]) > -1){
+							visible = true;
+						}
+					}
+				}
 			}
-		}
 		
 		if (visible === true){
 			tr[i+1].style.display = "";
 		} else {
 			tr[i+1].style.display = "none";
+			c++;
+			
+			if (c === tr.length -1) {
+				document.getElementById("zeroMsg").style.display = "";
+			} else {
+				document.getElementById("zeroMsg").style.display = "none";
+			}
 		}
 	}
 }

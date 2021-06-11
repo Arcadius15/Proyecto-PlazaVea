@@ -220,6 +220,9 @@
 						</c:forEach>
                     </tbody>
                 </table>
+                <div align="center" style="display: none;" id="zeroMsg">
+                	<h5>No se encontraron productos.</h5>
+                </div>
             </div>
         </div>
     </div>
