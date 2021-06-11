@@ -172,18 +172,26 @@
                       </h2>
                       <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
                         <div class="accordion-body">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="Precio1">
-                                <label class="form-check-label" for="Precio1">
-                                    Precio1
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="Precio2">
-                                <label class="form-check-label" for="Precio2">
-                                    Precio2
-                                </label>
-                              </div>
+                        	<form>
+	                            <div class="row">
+	                            	<div class="col-md-6">
+		                            	<label for="PrecioMin" class="form-label">
+			                                    Min.
+			                            </label>
+		                            	<input class="form-control me-2" type="number" value="0" id="PrecioMin" required>
+	                            	</div>
+	                                <div class="col-md-6">
+	                                	<label for="PrecioMax" class="form-label">
+			                                    Max.
+			                            </label>
+		                            	<input class="form-control me-2" type="number" value="9999" id="PrecioMax" required>
+	                            	</div>
+	                            </div>
+	                            <div align="center" style="padding-top: 15px">
+	                            	<button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
+	                            	<button type="button" class="btn btn-danger btn-sm">Remover Filtro</button>
+	                            </div>
+                            </form>
                         </div>
                       </div>
                     </div>
