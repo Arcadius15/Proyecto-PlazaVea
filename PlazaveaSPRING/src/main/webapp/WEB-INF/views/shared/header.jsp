@@ -77,6 +77,8 @@
 						</c:otherwise>
 					</c:choose>
 				</div>
+				<!-- Añadir Boton de Carro de compra -->
+				
 				<div class="d-flex">
 					<input class="form-control me-1 " type="text"
 						placeholder="Buscar Productos" id="btnBuscar" autocomplete="off">

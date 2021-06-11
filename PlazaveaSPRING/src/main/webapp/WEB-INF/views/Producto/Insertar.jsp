@@ -24,7 +24,7 @@
 		</form:select> <br>
 		Proveedor:
 		<form:select path="proveedor.proveedorId">
-			<form:options items="${Proveedores}" itemValue="proveedorId" itemLabel="nombre"/>
+			<form:options items="${Proveedores}" itemValue="proveedorId" itemLabel="razonSocial"/>
 		</form:select> <br>
 		<button type="submit">Guardar</button>
 		<button type="button" onclick="location.href='<c:url value="/Index"/>'">Cancelar</button>

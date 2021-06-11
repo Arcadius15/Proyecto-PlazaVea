@@ -50,6 +50,7 @@
 							<h3 class="card-title">Informacion del Producto</h3>
 							<form:form name="" method="post" modelAttribute="producto"
 								enctype="multipart/form-data">
+								<input type="hidden" value="${producto.productoId}" id="productoid"/>
 
 
 								<p style="font-size: 15pt">
@@ -68,10 +69,9 @@
 								<br>
 								<div class="btn-group" role="group"
 									aria-label="Basic mixed styles example">
-									<button type="submit" class="btn btn-primary active">Añadir
+									<button type="button" class="btn btn-primary" onclick="agregar()">Añadir
 										a Carrito</button>
-									<button type="button"
-										onclick="location.href='<c:url value="#"/>'"
+									<button type="button" onclick=""
 										class="btn btn-danger">Cancelar</button>
 
 								</div>
@@ -86,11 +86,11 @@
 	<!--Final-->
 	<%@include file="/WEB-INF/views/shared/footer.jsp" %>
 	
-	
+	<script src="../js/Carrito.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 		crossorigin="anonymous"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/Index.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 </html>
