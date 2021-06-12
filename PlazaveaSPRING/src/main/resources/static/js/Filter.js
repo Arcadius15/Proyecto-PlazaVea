@@ -14,7 +14,11 @@ function aplicarFiltro(){
 		visible = false;
 		var td = tr[i+1].getElementsByTagName("td");
 		
-			if (filtrosPro.length > 0 && filtrosCat.length === 0) {
+			if (filtrosPro.length === 0 && filtrosCat.length === 0) {
+				for (let i = 0; i < tr.length - 1; i++){
+					visible = true;
+				}
+			} else if (filtrosPro.length > 0 && filtrosCat.length === 0) {
 				for (let f = 0; f < filtrosPro.length; f++){
 					if (td[3].innerHTML.toUpperCase().indexOf(filtrosPro[f]) > -1){
 						visible = true;
@@ -42,7 +46,7 @@ function aplicarFiltro(){
 			tr[i+1].style.display = "none";
 			c++;
 			
-			if (c === tr.length -1) {
+			if (c === tr.length - 1) {
 				document.getElementById("zeroMsg").style.display = "";
 			} else {
 				document.getElementById("zeroMsg").style.display = "none";
@@ -61,17 +65,7 @@ function filtrarPro(check){
 	} else {
 		filtrosPro.splice(filtrosPro.indexOf(chk), 1);
 		
-		if (filtrosPro.length === 0 && filtrosCat.length === 0) {
-			var table = document.getElementById("tProductos");
-		
-			var tr = table.getElementsByTagName("tr");
-			
-			for (let i = 0; i < tr.length - 1; i++){
-				tr[i+1].style.display = "";
-			}
-		} else {
-			aplicarFiltro();
-		}
+		aplicarFiltro();
 	}
 }
 
@@ -85,16 +79,52 @@ function filtrarCat(check){
 	} else {
 		filtrosCat.splice(filtrosCat.indexOf(chk), 1);
 		
-		if (filtrosCat.length === 0 && filtrosPro.length === 0) {
-			var table = document.getElementById("tProductos");
+		aplicarFiltro();
+	}
+}
+
+function filtrarPre(){
+	var min = parseFloat(document.getElementById("PrecioMin").value);
+	var max = parseFloat(document.getElementById("PrecioMax").value);
+	
+	if (min > max){
+		var mid = min;
+		min = max;
+		max = mid;
 		
-			var tr = table.getElementsByTagName("tr");
-			
-			for (let i = 0; i < tr.length - 1; i++){
-				tr[i+1].style.display = "";
-			}
+		document.getElementById("PrecioMin").value = min;
+		document.getElementById("PrecioMax").value = max;
+	}
+	
+	aplicarFiltro();
+	
+	var table = document.getElementById("tProductos");
+		
+	var tr = table.getElementsByTagName("tr");
+		
+	var visible;
+	
+	var c = 0;
+	
+	for (let i = 0; i < tr.length - 1; i++){
+		visible = false;
+		var td = tr[i+1].getElementsByTagName("td");
+		
+		if(parseFloat(td[1].innerHTML) >= min && parseFloat(td[1].innerHTML) <= max){
+			visible = true;
+		}
+		
+		if (visible === true){
+			tr[i+1].style.display = "";
 		} else {
-			aplicarFiltro();
+			tr[i+1].style.display = "none";
+			c++;
+			
+			if (c === tr.length - 1) {
+				document.getElementById("zeroMsg").style.display = "";
+			} else {
+				document.getElementById("zeroMsg").style.display = "none";
+			}
 		}
 	}
 }

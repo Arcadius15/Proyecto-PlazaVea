@@ -188,7 +188,7 @@
 	                            	</div>
 	                            </div>
 	                            <div align="center" style="padding-top: 15px">
-	                            	<button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
+	                            	<button type="button" class="btn btn-primary btn-sm" onclick='filtrarPre()'>Filtrar</button>
 	                            	<button type="button" class="btn btn-danger btn-sm">Remover Filtro</button>
 	                            </div>
                             </form>
