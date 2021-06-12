@@ -1,6 +1,7 @@
 package com.pv.Controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -23,11 +24,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.pv.Entity.Cliente;
+import com.pv.Entity.Orden;
 import com.pv.Entity.OrdenDetalle;
 import com.pv.Entity.Producto;
 import com.pv.Service.CategoriaService;
+import com.pv.Service.OrdenService;
 import com.pv.Service.ProductoService;
 import com.pv.Service.ProveedorService;
+import com.pv.Service.TarjetaService;
 
 @Controller
 public class ProductoController {
@@ -40,6 +45,12 @@ public class ProductoController {
 	
 	@Autowired
 	private ProveedorService proveedorService;
+	
+	@Autowired
+	private OrdenService ordenService;
+	
+	@Autowired
+	private TarjetaService tarjetaService;
 	
 	@Autowired
 	private Gson gson;
@@ -101,14 +112,45 @@ public class ProductoController {
 	}
 	
 	@RequestMapping(value = "/VerCarritoCompra",method = RequestMethod.GET)
-	public String carroCompra_GET(HttpSession session, Map map) {
-		List<OrdenDetalle> detalles = new ArrayList<OrdenDetalle>();
-		List<Integer> carrito  = (List<Integer>) session.getAttribute("carrito");
-		for (Integer item : carrito) {
-			
-			
+	public String carroCompra_GET(HttpSession session, Map map,Model model) {
+		Cliente cliente = (Cliente) session.getAttribute("usuario");
+		if (cliente==null) {
+			return "redirect:/Index";
 		}
-		map.put("carritocompra", carrito);
+		List<Integer> carrito  = (List<Integer>) session.getAttribute("carrito");
+		Integer proximoid = ordenService.findAll().size();
+		Orden boleta = new Orden();
+		boleta.setOrdenId(proximoid);
+		boleta.setCliente(cliente);
+		boleta.setFecha(LocalDate.now());
+		boleta.setFechaEntrega(LocalDate.now().plusDays(5));
+		boleta.setDireccion(cliente.getDireccion());
+		boleta.setImpuesto(0.19);
+		List<OrdenDetalle> detalles = new ArrayList<OrdenDetalle>();
+		for (Integer item : carrito) {
+			OrdenDetalle producto = new OrdenDetalle();
+			Producto itemProducto = productoService.findById(item);
+			producto.setCantidad(10);
+			producto.setPrecio(producto.getCantidad()*itemProducto.getPrecioUnidad());
+			producto.setCantidad(10);
+			if (producto.getCantidad()>5) {
+				producto.setDescuento(0.15);
+			}else {
+				producto.setDescuento((double) 0);
+			}
+			producto.setOrden(boleta);
+			producto.setProducto(itemProducto);
+			detalles.add(producto);
+		}
+		map.put("carritocompra", detalles);
+		map.put("tarjetas", tarjetaService.findAll());
+		model.addAttribute("cliente",cliente);
+		String[] direccion = cliente.getDireccion().split("<br>");
+		String direccioncocatenado = "";
+		for (String string : direccion) {
+			direccioncocatenado = direccioncocatenado + " " + string;
+		}
+		model.addAttribute("direccion",direccioncocatenado);
 		return "/Producto/CarritoCompra";
 	}
 	

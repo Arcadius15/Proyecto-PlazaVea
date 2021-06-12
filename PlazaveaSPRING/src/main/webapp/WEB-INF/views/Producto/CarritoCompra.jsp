@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,23 +50,29 @@
 									style="color: #cf260f;">
 									<thead>
 										<tr>
-											<td style="font-style: italic;">Producto</td>
+											<td style="font-style: italic;">ID</td>
+											<td>Producto</td>
 											<td>Precio Unidad</td>
-											<td>Cantidad</td>
 											<td>Stock Disponible</td>
+											<td>Cantidad</td>
 											<td>Precio Total</td>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>aea</td>
-											<td>aea</td>
-											<td><input type="number" min="1" max="20"
-												class="form-control form-control-sm"
-												style="max-width: 80px;"></td>
-											<td>aea</td>
-											<td>1313</td>
-										</tr>
+										
+										<c:forEach var="item" items="${carritocompra}">
+											<tr>
+												<td>${item.producto.productoId}</td>
+												<td>${item.producto.nombre}</td>
+												<td>${item.producto.precioUnidad}</td>
+												<td>${item.producto.stock}</td>
+												<td><input type="number"
+													class="form-control form-control-sm"
+													style="max-width: 80px;" value="${item.cantidad}"></td>
+												<td>${item.producto.precioUnidad*item.cantidad} </td>
+											</tr>
+											<c:set var="total" value="${total = total + (item.producto.precioUnidad*item.cantidad)}"/>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
@@ -83,10 +91,11 @@
 								<label for="Payment" class="form-label">Seleccionar
 									Metodo de Pago</label> <select class="form-select form-select-sm"
 									id="Payment">
-									<option selected>Seleccione Tarjeta</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
+									<option value = "0" selected>Seleccione Tarjeta</option>
+									<c:forEach var="tarjeta" items="${tarjetas}">
+										<option value="${tarjeta.tarjetaId}" >${tarjeta.nroTarjeta}</option>
+									</c:forEach>
+									
 								</select> <a href="#" class="btn btn-warning btn-sm"
 									style="margin-top: 15px;">Agregar Metodo de Pago</a>
 							</div>
@@ -105,7 +114,7 @@
 								<label for="NewDireccion" class="form-label">Entregar
 									Compra a la Siguiente direccion:</label> <input
 									class="form-control form-control-sm" type="text"
-									id="NewDireccion" readonly> <a href="#"
+									id="NewDireccion" value="${direccion}" readonly> <a href="#"
 									class="btn btn-warning btn-sm" style="margin-top: 15px;">Cambiar
 									Direccion</a>
 							</div>
@@ -119,15 +128,20 @@
 					<div class="card-header">Datos del Cliente</div>
 					<div class="card-body">
 						<h5 class="card-title">Datos Personales</h5>
-						<p class="card-text">With supporting text below as a natural
-							lead-in to additional content.</p>
+						<p class="card-text">
+						Nombre: ${cliente.nombre} <br>
+						Apellido: ${cliente.apellido} <br>
+						Dni: ${cliente.dni} <br>
+						Telefono: ${cliente.telefono} <br>
+						
+						</p>
 						<button type="submit" class="btn btn-success">Confirmar</button>
 						<button type="button" class="btn btn-danger">Cancelar</button>
 					</div>
 					<div class="card-footer text-muted">
 						Total de Compra :
 						<h4>
-							<strong>396.96</strong>
+							<strong>${total}</strong>
 						</h4>
 					</div>
 				</div>
