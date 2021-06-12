@@ -148,7 +148,11 @@ public class ProductoController {
 		String[] direccion = cliente.getDireccion().split("<br>");
 		String direccioncocatenado = "";
 		for (String string : direccion) {
-			direccioncocatenado = direccioncocatenado + " " + string;
+			if (direccioncocatenado == "") {
+				direccioncocatenado = direccioncocatenado + " " + string;
+			}else {
+				direccioncocatenado = direccioncocatenado + ", " + string;
+			}
 		}
 		model.addAttribute("direccion",direccioncocatenado);
 		return "/Producto/CarritoCompra";
