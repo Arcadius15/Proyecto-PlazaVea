@@ -16,6 +16,15 @@ function aplicarFiltro(){
 		min = parseFloat(document.getElementById("PrecioMin").value);
 		max = parseFloat(document.getElementById("PrecioMax").value);
 		
+		if (document.getElementById("PrecioMin").value === "") {
+			min = 0;
+			document.getElementById("PrecioMin").value = min;
+		}
+		if (document.getElementById("PrecioMax").value === "") {
+			max = 0;
+			document.getElementById("PrecioMax").value = max;
+		}
+		
 		if (min > max){
 			var mid = min;
 			min = max;
@@ -65,13 +74,13 @@ function aplicarFiltro(){
 				} else {
 					tr[i+1].style.display = "none";
 					c++;
-			
-					if (c === tr.length - 1) {
-						document.getElementById("zeroMsg").style.display = "";
-					} else {
-						document.getElementById("zeroMsg").style.display = "none";
-					}
 				}
+			}
+			
+			if (c === tr.length - 1) {
+				document.getElementById("zeroMsg").style.display = "";
+			} else {
+				document.getElementById("zeroMsg").style.display = "none";
 			}
 		} else {
 			tr[i+1].style.display = "none";
