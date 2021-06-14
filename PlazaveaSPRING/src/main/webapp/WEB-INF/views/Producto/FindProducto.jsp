@@ -189,7 +189,10 @@
 	                            </div>
 	                            <div align="center" style="padding-top: 15px">
 	                            	<button type="button" class="btn btn-primary btn-sm" onclick='filtrarPre()'>Filtrar</button>
-	                            	<button type="button" class="btn btn-danger btn-sm">Remover Filtro</button>
+	                            	<button type="button" class="btn btn-danger btn-sm" onclick='quitarFiltPre()'>Remover Filtro</button>
+	                            </div>
+	                            <div align="center" style="padding-top: 10px; display: none" id="filtPreMsg">
+	                            	<h6 style="color: green">Filtro de precio aplicado</h6>
 	                            </div>
                             </form>
                         </div>
