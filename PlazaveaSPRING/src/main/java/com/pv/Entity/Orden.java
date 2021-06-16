@@ -91,7 +91,7 @@ public class Orden implements Serializable{
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "transportista_id",nullable = false,
+	@JoinColumn(name = "transportista_id",
 			foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key (transportista_id) references transportista(transportista_id)"))
 	private Transportista transportista;
 	public Transportista getTransportista() {

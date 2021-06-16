@@ -135,7 +135,7 @@
 						Telefono: ${cliente.telefono} <br>
 						
 						</p>
-						<button type="submit" class="btn btn-success">Confirmar</button>
+						<button type="submit" onclick="validar()" class="btn btn-success">Confirmar</button>
 						<button type="button" class="btn btn-danger">Cancelar</button>
 					</div>
 					<div class="card-footer text-muted">
@@ -160,6 +160,8 @@
 		crossorigin="anonymous"></script>
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript" src="js/Index.js"></script>
+	<script type="text/javascript" src="js/VerCarrito.js"></script>
 </body>
 </html>

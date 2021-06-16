@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,10 @@ import com.pv.Entity.Cliente;
 import com.pv.Entity.Orden;
 import com.pv.Entity.OrdenDetalle;
 import com.pv.Entity.Producto;
+import com.pv.Entity.Usuario;
+import com.pv.Objects.JsonOrden;
 import com.pv.Service.CategoriaService;
+import com.pv.Service.EstadoOrdenService;
 import com.pv.Service.OrdenService;
 import com.pv.Service.ProductoService;
 import com.pv.Service.ProveedorService;
@@ -53,7 +57,7 @@ public class ProductoController {
 	private TarjetaService tarjetaService;
 	
 	@Autowired
-	private Gson gson;
+	private EstadoOrdenService estadoOrdenService;
 	
 	
 	@RequestMapping(value = "/Producto/{productoId}",method = RequestMethod.GET)
@@ -118,14 +122,7 @@ public class ProductoController {
 			return "redirect:/Index";
 		}
 		List<Integer> carrito  = (List<Integer>) session.getAttribute("carrito");
-		Integer proximoid = ordenService.findAll().size();
-		Orden boleta = new Orden();
-		boleta.setOrdenId(proximoid);
-		boleta.setCliente(cliente);
-		boleta.setFecha(LocalDate.now());
-		boleta.setFechaEntrega(LocalDate.now().plusDays(5));
-		boleta.setDireccion(cliente.getDireccion());
-		boleta.setImpuesto(0.19);
+		
 		List<OrdenDetalle> detalles = new ArrayList<OrdenDetalle>();
 		for (Integer item : carrito) {
 			OrdenDetalle producto = new OrdenDetalle();
@@ -138,7 +135,6 @@ public class ProductoController {
 			}else {
 				producto.setDescuento((double) 0);
 			}
-			producto.setOrden(boleta);
 			producto.setProducto(itemProducto);
 			detalles.add(producto);
 		}
@@ -176,6 +172,26 @@ public class ProductoController {
 		carrito.add(id);
 		session.setAttribute("carrito", carrito);
 		return 1;
+	}
+	
+	@PostMapping(value = "/regcompra")
+	@Transactional
+	@ResponseBody
+	public Integer Car(@RequestBody JsonOrden jsonorden,HttpSession session) {
+		try {
+			List<OrdenDetalle> carrito = (List<OrdenDetalle>) session.getAttribute("carritocompra");
+			Cliente user = (Cliente) session.getAttribute("usuario");
+			Orden orden = new Orden();
+			orden.setCliente(user);
+			orden.setDireccion(jsonorden.getDireccion());
+			orden.setEstadoOrden(estadoOrdenService.findById(1));
+			orden.setFecha(LocalDate.now());
+			orden.setFechaEntrega(LocalDate.now().plusDays(5));
+			orden.setImpuesto(0.19);
+			return 1;
+		}catch (Exception e) {
+			return 0;
+		}
 	}
 	
 
