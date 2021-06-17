@@ -17,8 +17,10 @@ public class OrdenServiceDB implements OrdenService{
 	
 	@Override
 	@Transactional
-	public void insert(Orden orden) {
+	public Integer insert(Orden orden) {
 		repository.save(orden);
+		//se obtiene el ultimo id registrado
+		return repository.getLastId();
 		
 	}
 

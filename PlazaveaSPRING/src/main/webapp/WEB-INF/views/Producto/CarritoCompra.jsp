@@ -60,7 +60,7 @@
 									</thead>
 									<tbody>
 										
-										<c:forEach var="item" items="${carritocompra}">
+										<c:forEach var="item" items="${sessionScope.carritocompra}">
 											<tr>
 												<td>${item.producto.productoId}</td>
 												<td>${item.producto.nombre}</td>
@@ -129,10 +129,10 @@
 					<div class="card-body">
 						<h5 class="card-title">Datos Personales</h5>
 						<p class="card-text">
-						Nombre: ${cliente.nombre} <br>
-						Apellido: ${cliente.apellido} <br>
-						Dni: ${cliente.dni} <br>
-						Telefono: ${cliente.telefono} <br>
+						Nombre: ${sessionScope.usuario.nombre} <br>
+						Apellido: ${sessionScope.usuario.apellido} <br>
+						Dni: ${sessionScope.usuario.dni} <br>
+						Telefono: ${sessionScope.usuario.telefono} <br>
 						
 						</p>
 						<button type="submit" onclick="validar()" class="btn btn-success">Confirmar</button>

@@ -45,15 +45,29 @@ public class OrdenDetalle implements Serializable{
 	public void setDescuento(Double descuento) {
 		this.descuento = descuento;
 	}
-	public OrdenDetalle(Integer cantidad, Double precio, Double descuento) {
-		this.cantidad = cantidad;
-		this.precio = precio;
-		this.descuento = descuento;
+	
+	public OrdenDetalleKey getId() {
+		return id;
+	}
+	public void setId(OrdenDetalleKey id) {
+		this.id = id;
 	}
 	public OrdenDetalle() {
 	}
 	
-	
+	public OrdenDetalle(OrdenDetalleKey id, Integer cantidad, Double precio, Double descuento, Orden orden,
+			Producto producto) {
+		this.id = id;
+		this.cantidad = cantidad;
+		this.precio = precio;
+		this.descuento = descuento;
+		this.orden = orden;
+		this.producto = producto;
+	}
+
+
+
+
 	@ManyToOne
 	@MapsId("ordenId")
 	@JoinColumn(name = "orden_id")

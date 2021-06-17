@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,11 +29,13 @@ import com.google.gson.Gson;
 import com.pv.Entity.Cliente;
 import com.pv.Entity.Orden;
 import com.pv.Entity.OrdenDetalle;
+import com.pv.Entity.OrdenDetalleKey;
 import com.pv.Entity.Producto;
 import com.pv.Entity.Usuario;
 import com.pv.Objects.JsonOrden;
 import com.pv.Service.CategoriaService;
 import com.pv.Service.EstadoOrdenService;
+import com.pv.Service.OrdenDetService;
 import com.pv.Service.OrdenService;
 import com.pv.Service.ProductoService;
 import com.pv.Service.ProveedorService;
@@ -43,21 +46,18 @@ public class ProductoController {
 	
 	@Autowired
 	private ProductoService productoService;
-	
 	@Autowired
 	private CategoriaService categoriaService;
-	
 	@Autowired
 	private ProveedorService proveedorService;
-	
 	@Autowired
 	private OrdenService ordenService;
-	
 	@Autowired
 	private TarjetaService tarjetaService;
-	
 	@Autowired
 	private EstadoOrdenService estadoOrdenService;
+	@Autowired
+	private OrdenDetService ordenDetService;
 	
 	
 	@RequestMapping(value = "/Producto/{productoId}",method = RequestMethod.GET)
@@ -117,30 +117,39 @@ public class ProductoController {
 	
 	@RequestMapping(value = "/VerCarritoCompra",method = RequestMethod.GET)
 	public String carroCompra_GET(HttpSession session, Map map,Model model) {
+		//se obtiene cliente
 		Cliente cliente = (Cliente) session.getAttribute("usuario");
+		//si no se encuentra cliente redirect a index
 		if (cliente==null) {
 			return "redirect:/Index";
 		}
+		//se obtiene los id de los productos agregados
 		List<Integer> carrito  = (List<Integer>) session.getAttribute("carrito");
-		
+		if (carrito==null) {
+			return "redirect:/Index";
+		}
+		//se crea un carrito de compras completo
 		List<OrdenDetalle> detalles = new ArrayList<OrdenDetalle>();
+		//se agrega los productos a un objeto OrdenDetalle
 		for (Integer item : carrito) {
 			OrdenDetalle producto = new OrdenDetalle();
 			Producto itemProducto = productoService.findById(item);
-			producto.setCantidad(10);
-			producto.setPrecio(producto.getCantidad()*itemProducto.getPrecioUnidad());
+			producto.setProducto(itemProducto);
 			producto.setCantidad(10);
 			if (producto.getCantidad()>5) {
 				producto.setDescuento(0.15);
 			}else {
 				producto.setDescuento((double) 0);
 			}
-			producto.setProducto(itemProducto);
+			Double precio = producto.getCantidad()*itemProducto.getPrecioUnidad();
+			Double preciototal = precio - (precio * producto.getDescuento());
+			producto.setPrecio(preciototal);
 			detalles.add(producto);
 		}
-		map.put("carritocompra", detalles);
+		//carrito de compras es la lista de OrdenDetalle sin OrdenID
+		session.setAttribute("carritocompra", detalles);
+		//Tarjetas es la lista completa de CCs
 		map.put("tarjetas", tarjetaService.findAll());
-		model.addAttribute("cliente",cliente);
 		String[] direccion = cliente.getDireccion().split("<br>");
 		String direccioncocatenado = "";
 		for (String string : direccion) {
@@ -175,12 +184,13 @@ public class ProductoController {
 	}
 	
 	@PostMapping(value = "/regcompra")
-	@Transactional
 	@ResponseBody
-	public Integer Car(@RequestBody JsonOrden jsonorden,HttpSession session) {
+	@Transactional
+	public Integer RegCarrocompra(@RequestBody JsonOrden jsonorden,HttpSession session) {
 		try {
 			List<OrdenDetalle> carrito = (List<OrdenDetalle>) session.getAttribute("carritocompra");
 			Cliente user = (Cliente) session.getAttribute("usuario");
+			
 			Orden orden = new Orden();
 			orden.setCliente(user);
 			orden.setDireccion(jsonorden.getDireccion());
@@ -188,9 +198,26 @@ public class ProductoController {
 			orden.setFecha(LocalDate.now());
 			orden.setFechaEntrega(LocalDate.now().plusDays(5));
 			orden.setImpuesto(0.19);
+			orden.setTarjeta(tarjetaService.findById(jsonorden.getTarjetaId()));
+			Integer ordenreg = ordenService.insert(orden);
+			for (OrdenDetalle ordenDetalle : carrito) {
+				System.out.println("*********************************");
+				System.out.println(ordenDetalle.getProducto().getNombre());
+				System.out.println("*********************************");
+				OrdenDetalleKey key = new OrdenDetalleKey();
+				ordenDetalle.setOrden(ordenService.findById(ordenreg));
+				key.setOrdenId(ordenDetalle.getOrden().getOrdenId());
+				key.setProductoId(ordenDetalle.getProducto().getProductoId());
+				ordenDetalle.setId(key);
+				ordenDetService.insert(ordenDetalle);
+			}
 			return 1;
 		}catch (Exception e) {
+			e.printStackTrace();
 			return 0;
+		}finally {
+			session.setAttribute("carritocompra", null);
+			session.setAttribute("carrito", null);
 		}
 	}
 	

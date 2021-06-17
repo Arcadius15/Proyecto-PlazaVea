@@ -25,8 +25,11 @@ function validar() {
 			success: function(result) {
 				if (result === 1) {
 					alert("Registrado Exitosamente");
+					location.href = "/pv/Index";
+				}else{
+					alert("Ups... Algo salio Mal")
 				}
-				location.href = "/pv/Index";
+				
 			},
 			error: function(e) {
 				console.log("ERROR: ", e);

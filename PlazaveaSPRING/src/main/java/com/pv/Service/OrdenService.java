@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.pv.Entity.Orden;
 
 public interface OrdenService {
-	public abstract void insert(Orden orden);
+	public abstract Integer insert(Orden orden);
 	public abstract void update(Orden orden);
 	public abstract void delete(Integer ordenId);
 	public abstract Orden findById(Integer OrdenId);
