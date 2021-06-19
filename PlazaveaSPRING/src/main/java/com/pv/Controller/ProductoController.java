@@ -188,9 +188,10 @@ public class ProductoController {
 	@Transactional
 	public Integer RegCarrocompra(@RequestBody JsonOrden jsonorden,HttpSession session) {
 		try {
+			//obtener el cliente y carro de compras
 			List<OrdenDetalle> carrito = (List<OrdenDetalle>) session.getAttribute("carritocompra");
 			Cliente user = (Cliente) session.getAttribute("usuario");
-			
+			//creacion de nueva orden
 			Orden orden = new Orden();
 			orden.setCliente(user);
 			orden.setDireccion(jsonorden.getDireccion());
@@ -201,9 +202,6 @@ public class ProductoController {
 			orden.setTarjeta(tarjetaService.findById(jsonorden.getTarjetaId()));
 			Integer ordenreg = ordenService.insert(orden);
 			for (OrdenDetalle ordenDetalle : carrito) {
-				System.out.println("*********************************");
-				System.out.println(ordenDetalle.getProducto().getNombre());
-				System.out.println("*********************************");
 				OrdenDetalleKey key = new OrdenDetalleKey();
 				ordenDetalle.setOrden(ordenService.findById(ordenreg));
 				key.setOrdenId(ordenDetalle.getOrden().getOrdenId());
