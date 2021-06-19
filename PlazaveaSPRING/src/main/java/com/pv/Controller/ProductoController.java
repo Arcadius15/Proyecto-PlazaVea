@@ -219,6 +219,26 @@ public class ProductoController {
 		}
 	}
 	
-
+	@RequestMapping(value = "/findProductoByCat/{valor}",method = RequestMethod.GET)
+	public String findProductoByCat_GET(Model model, Map map, @PathVariable String valor) {
+		Collection<Producto> productoMod = productoService.findByCat(valor);
+		model.addAttribute("bProducto",productoMod);
+		model.addAttribute("valor", valor);
+		
+		List<String> proveedores = new ArrayList<String>();
+		
+		for (Producto producto : productoMod) {
+			proveedores.add(producto.getProveedor().getNombre());
+		}
+		
+		map.put("bProveedor", new HashSet<String>(proveedores));
+		
+		return "/Producto/FindProductoByCat";
+	}
+	
+	@RequestMapping(value = "/findProductoByCat/{valor}",method = RequestMethod.POST)
+	public String findProductoByCat_POST(@PathVariable String valor) {
+		return "redirect:/findProductoByCat/"+valor;
+	}
 
 }

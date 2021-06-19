@@ -39,4 +39,10 @@ public class ProductoServiceImpl implements ProductoService {
 		return repository.findByName(nombre);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Collection<Producto> findByCat(String nombre) {
+		return repository.findByCat(nombre);
+	}
+
 }

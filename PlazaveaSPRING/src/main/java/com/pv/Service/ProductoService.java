@@ -10,4 +10,5 @@ public interface ProductoService {
 	public abstract Collection<Producto> findAll();
 	public abstract Producto findById(Integer idProducto);
 	public abstract Collection<Producto> findByName(String nombre);
+	public abstract Collection<Producto> findByCat(String nombre);
 }
