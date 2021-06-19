@@ -19,11 +19,12 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Categorías </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="#">Supermercado</a></li>
-							<li><a class="dropdown-item" href="#">Tecnología</a></li>
-							<li><a class="dropdown-item" href="#">Hogar</a></li>
-							<li><a class="dropdown-item" href="#">Muebles</a></li>
-							<li><a class="dropdown-item" href="#">Deporte</a></li>
+							<c:forEach var="categoria" items="${sessionScope.bCategoria}">
+								<li><a class="dropdown-item" href="#">${categoria.nombre}</a></li>
+								
+							</c:forEach>
+						
+						
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="#">Lista de Marcas</a></li>
 						</ul></li>

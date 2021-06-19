@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pv.Entity.OrdenDetalle;
 import com.pv.Entity.Producto;
+import com.pv.Service.CategoriaService;
 import com.pv.Service.ProductoService;
 
 @Controller
@@ -20,11 +21,16 @@ public class HomeController {
 	
 	@Autowired
 	private ProductoService productoService;
+	@Autowired
+	private CategoriaService categoriaService;
+	
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value="/Index",method = RequestMethod.GET)
 	public String index_GET(Map map, HttpSession session) {
 		map.put("bProducto", productoService.findAll());
+		
+		session.setAttribute("bCategoria",categoriaService.findAll());
 		return "/Home/Index";
 	}
 }
