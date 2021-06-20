@@ -17,6 +17,7 @@ import com.pv.Entity.Cliente;
 import com.pv.Entity.Usuario;
 import com.pv.Service.ClienteService;
 import com.pv.Service.LoginService;
+import com.pv.Service.TransportistaService;
 
 @Controller
 public class LoginController {
@@ -27,6 +28,9 @@ public class LoginController {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private TransportistaService transportistaService;
 	
 	@RequestMapping(value="/Login",method = RequestMethod.GET)
 	public String login_GET(Model model, HttpSession session) {
@@ -44,7 +48,14 @@ public class LoginController {
 		Collection<Usuario> lista = logService.findAll();
 		for (Usuario log : lista) {
 			if (log.getCorreo().equals(login.getCorreo()) && log.getContrasenia().equals(login.getContrasenia())) {
-				session.setAttribute("usuario", clienteService.findByUserId(log.getUsuarioId()));
+				String[] correoParts = log.getCorreo().split("@");
+				
+				if (correoParts[0].substring(0, 2) == "tr" && correoParts[1] == "transportista.com") {
+					session.setAttribute("usuario", transportistaService.findByUserId(log.getUsuarioId()));
+				} else {
+					session.setAttribute("usuario", clienteService.findByUserId(log.getUsuarioId()));
+				}
+				
 				return "redirect:/Index";
 			}
 		}
