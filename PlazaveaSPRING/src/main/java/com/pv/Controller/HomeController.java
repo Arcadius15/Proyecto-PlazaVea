@@ -30,7 +30,10 @@ public class HomeController {
 	public String index_GET(Map map, HttpSession session) {
 		map.put("bProducto", productoService.findAll());
 		
-		session.setAttribute("bCategoria",categoriaService.findAll());
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
+		}
+		
 		return "/Home/Index";
 	}
 }

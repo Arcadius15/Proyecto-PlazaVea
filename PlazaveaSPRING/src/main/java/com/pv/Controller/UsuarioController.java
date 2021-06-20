@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pv.Entity.Cliente;
+import com.pv.Entity.Transportista;
 import com.pv.Service.ClienteService;
 import com.pv.Service.LoginService;
+import com.pv.Service.TransportistaService;
 
 @Controller
 public class UsuarioController {
@@ -23,6 +25,9 @@ public class UsuarioController {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private TransportistaService transportistaService;
 	
 	@RequestMapping(value = "/VerDatos", method = RequestMethod.GET)
 	public String verDatos_GET(Model model, HttpSession session) {
@@ -36,7 +41,7 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value = "/VerDatos", method = RequestMethod.POST)
-	public String verDatos_POST(Cliente cliente, HttpSession session) {
+	public String verDatos_POST(Cliente cliente, Transportista transportista, HttpSession session) {
 		logService.update(cliente.getUserCliente());
 		clienteService.update(cliente);
 		

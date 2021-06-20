@@ -20,7 +20,7 @@
 							Categorías </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<c:forEach var="categoria" items="${sessionScope.bCategoria}">
-								<li><a class="dropdown-item" href="#">${categoria.nombre}</a></li>
+								<li><a class="dropdown-item" href="<c:url value='/findProductoByCat/${categoria.nombre}'/>">${categoria.nombre}</a></li>
 								
 							</c:forEach>
 						

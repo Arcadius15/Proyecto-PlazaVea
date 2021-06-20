@@ -62,7 +62,11 @@ public class ProductoController {
 	
 	
 	@RequestMapping(value = "/Producto/{productoId}",method = RequestMethod.GET)
-	public String infoProducto(Model model,@PathVariable Integer productoId) {
+	public String infoProducto(Model model,@PathVariable Integer productoId, HttpSession session) {
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
+		}
+		
 		Producto productoMod = productoService.findById(productoId);
 		model.addAttribute("producto",productoMod);
 		return "/Producto/InfoProducto";
@@ -90,7 +94,11 @@ public class ProductoController {
 	}
 	
 	@RequestMapping(value = "/findProducto/{valor}",method = RequestMethod.GET)
-	public String findProducto_GET(Model model, Map map, @PathVariable String valor) {
+	public String findProducto_GET(Model model, Map map, @PathVariable String valor, HttpSession session) {
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
+		}
+		
 		Collection<Producto> productoMod = productoService.findByName(valor);
 		model.addAttribute("bProducto",productoMod);
 		model.addAttribute("valor", valor);
@@ -248,7 +256,11 @@ public class ProductoController {
 	}
 	
 	@RequestMapping(value = "/findProductoByCat/{valor}",method = RequestMethod.GET)
-	public String findProductoByCat_GET(Model model, Map map, @PathVariable String valor) {
+	public String findProductoByCat_GET(Model model, Map map, @PathVariable String valor, HttpSession session) {
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
+		}
+		
 		Collection<Producto> productoMod = productoService.findByCat(valor);
 		model.addAttribute("bProducto",productoMod);
 		model.addAttribute("valor", valor);

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark"
 		style="background-color: #cf260f;">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="<c:url value='/Index'/>"> <img src='<c:url value="img/vea2.png"/>' alt=""
+			<a class="navbar-brand" href="<c:url value='/Index'/>"> <img src='<c:url value="../img/vea2.png"/>' alt=""
 				width="85" height="45">
 			</a>
 			<button class="navbar-toggler" type="button"
@@ -19,11 +19,12 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Categorías </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="#">Supermercado</a></li>
-							<li><a class="dropdown-item" href="#">Tecnología</a></li>
-							<li><a class="dropdown-item" href="#">Hogar</a></li>
-							<li><a class="dropdown-item" href="#">Muebles</a></li>
-							<li><a class="dropdown-item" href="#">Deporte</a></li>
+							<c:forEach var="categoria" items="${sessionScope.bCategoria}">
+								<li><a class="dropdown-item" href="<c:url value='/findProductoByCat/${categoria.nombre}'/>">${categoria.nombre}</a></li>
+								
+							</c:forEach>
+							
+							
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="#">Lista de Marcas</a></li>
 						</ul></li>
@@ -76,6 +77,13 @@
 							</ul>
 						</c:otherwise>
 					</c:choose>
+				</div>
+				<!-- Añadir Boton de Carro de compra -->
+				
+				<div class="d-flex">
+					<input class="form-control me-1 " type="text"
+						placeholder="Buscar Productos" id="btnBuscar" autocomplete="off">
+					<button type="button" class="btn btn-primary btn-sm" onclick='buscar()'>Buscar</button>
 				</div>
 			</div>
 		</div>

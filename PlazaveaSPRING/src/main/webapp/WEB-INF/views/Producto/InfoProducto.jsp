@@ -29,7 +29,7 @@
 </head>
 <body background="../img/background.jpg" style="background-size: cover;">
 	<!-- Inicio -->
-	<%@include file="/WEB-INF/views/shared/header.jsp"%>
+	<%@include file="/WEB-INF/views/shared/headerFindProd.jsp"%>
 
 	<!-- Cuerpo -->
 	<div style="padding-top: 100px">

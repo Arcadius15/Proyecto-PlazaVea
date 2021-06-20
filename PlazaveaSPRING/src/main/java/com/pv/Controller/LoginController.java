@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pv.Entity.Cliente;
 import com.pv.Entity.Usuario;
+import com.pv.Service.CategoriaService;
 import com.pv.Service.ClienteService;
 import com.pv.Service.LoginService;
 import com.pv.Service.TransportistaService;
@@ -32,10 +33,17 @@ public class LoginController {
 	@Autowired
 	private TransportistaService transportistaService;
 	
+	@Autowired
+	private CategoriaService categoriaService;
+	
 	@RequestMapping(value="/Login",method = RequestMethod.GET)
 	public String login_GET(Model model, HttpSession session) {
 		if (session.getAttribute("usuario") != null) {
 			return "redirect:/Index";
+		}
+		
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
 		}
 		
 		Usuario log = new Usuario();
@@ -63,7 +71,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/ERROR",method = RequestMethod.GET)
-	public String error_GET() {
+	public String error_GET(HttpSession session) {
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
+		}
+		
 		return "/Home/Error";
 	}
 	
@@ -71,6 +83,10 @@ public class LoginController {
 	public String changepassword_GET(Model model, HttpSession session) {
 		if (session.getAttribute("usuario") != null) {
 			return "redirect:/Index";
+		}
+		
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
 		}
 		
 		Usuario log = new Usuario();
@@ -96,6 +112,10 @@ public class LoginController {
 			return "redirect:/Index";
 		}
 		
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
+		}
+		
 		model.addAttribute("cliente", new Cliente());
 		
 		return "/Login/Registro";
@@ -111,7 +131,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/RegSuccess",method = RequestMethod.GET)
-	public String regSuccess_GET() {
+	public String regSuccess_GET(HttpSession session) {
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
+		}
+		
 		return "/Login/RegSuccess";
 	}
 	
