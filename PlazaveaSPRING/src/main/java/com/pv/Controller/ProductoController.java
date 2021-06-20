@@ -32,6 +32,7 @@ import com.pv.Entity.OrdenDetalle;
 import com.pv.Entity.OrdenDetalleKey;
 import com.pv.Entity.Producto;
 import com.pv.Entity.Usuario;
+import com.pv.Objects.JsonCarrito;
 import com.pv.Objects.JsonOrden;
 import com.pv.Service.CategoriaService;
 import com.pv.Service.EstadoOrdenService;
@@ -64,7 +65,6 @@ public class ProductoController {
 	public String infoProducto(Model model,@PathVariable Integer productoId) {
 		Producto productoMod = productoService.findById(productoId);
 		model.addAttribute("producto",productoMod);
-		
 		return "/Producto/InfoProducto";
 	}
 	
@@ -115,6 +115,7 @@ public class ProductoController {
 		return "redirect:/findProducto/"+valor;
 	}
 	
+	
 	@RequestMapping(value = "/VerCarritoCompra",method = RequestMethod.GET)
 	public String carroCompra_GET(HttpSession session, Map map,Model model) {
 		//se obtiene cliente
@@ -124,18 +125,18 @@ public class ProductoController {
 			return "redirect:/Index";
 		}
 		//se obtiene los id de los productos agregados
-		List<Integer> carrito  = (List<Integer>) session.getAttribute("carrito");
+		List<JsonCarrito> carrito  = (List<JsonCarrito>) session.getAttribute("carrito");
 		if (carrito==null) {
 			return "redirect:/Index";
 		}
 		//se crea un carrito de compras completo
 		List<OrdenDetalle> detalles = new ArrayList<OrdenDetalle>();
 		//se agrega los productos a un objeto OrdenDetalle
-		for (Integer item : carrito) {
+		for (JsonCarrito item : carrito) {
 			OrdenDetalle producto = new OrdenDetalle();
-			Producto itemProducto = productoService.findById(item);
+			Producto itemProducto = productoService.findById(item.getProductoId());
 			producto.setProducto(itemProducto);
-			producto.setCantidad(10);
+			producto.setCantidad(item.getCantidad());
 			if (producto.getCantidad()>5) {
 				producto.setDescuento(0.15);
 			}else {
@@ -165,20 +166,24 @@ public class ProductoController {
 	
 	@PostMapping(value = "/idcompras")
 	@ResponseBody
-	public Integer CarroCompra(@RequestBody String idcompras,HttpSession session) {
-		Integer id = Integer.parseInt(idcompras);
-		List<Integer> carrito = (List<Integer>) session.getAttribute("carrito");
+	public Integer CarroCompra(@RequestBody JsonCarrito idstock,HttpSession session) {
+		List<JsonCarrito> carrito = (List<JsonCarrito>) session.getAttribute("carrito");
 		if (carrito!=null) {
-			for (Integer var : carrito) {
-				if (var == id) {
+			for (JsonCarrito var : carrito) {
+				if (var.getProductoId() == idstock.getProductoId()) {
+					if (var.getCantidad()!=idstock.getCantidad()) {
+						var.setCantidad(idstock.getCantidad());
+						session.setAttribute("carrito", carrito);
+						return 2;
+					}
 					return 0;
 				}
 			}
 		}
 		else {
-			carrito = new ArrayList<Integer>();
+			carrito = new ArrayList<JsonCarrito>();
 		}
-		carrito.add(id);
+		carrito.add(idstock);
 		session.setAttribute("carrito", carrito);
 		return 1;
 	}

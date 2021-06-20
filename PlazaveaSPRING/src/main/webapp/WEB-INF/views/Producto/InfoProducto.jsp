@@ -34,42 +34,57 @@
 	<!-- Cuerpo -->
 	<div style="padding-top: 100px">
 		<div class="container text-center"
-			style="background-color: #cf260f; padding: 50px;">
+			style="background:rgba(245, 37, 9, 0.8); padding: 50px; ">
 
-			<div class="card bg-warning border-ligth mb-3"
-				style="max-width: 10500px;">
+			<div class="card border-ligth mb-3"
+				style="max-width: 10500px;background: #95e455;padding: 30px;">
 				<div class="row g-0">
-					<div class="col-md-5">
+					<div class="col-md-4">
 						<img
 							src="data:image/${typeImage};base64,${producto.getBase64Image()}"
 							width="300" height="360" style="border: 0px solid; padding: 10px" />
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<div class="card-body">
 							<br>
-							<h3 class="card-title">Informacion del Producto</h3>
+							<h3 class="card-title" style="padding-bottom: 25px;">
+                                <i class="fas fa-info"></i>  
+                                <span style="color: #cf260f;padding-left: 20px;font-family:Helvetica;"> Informacion del Producto</span>
+                            </h3>
 							<form:form name="" method="post" modelAttribute="producto"
 								enctype="multipart/form-data">
 								<input type="hidden" value="${producto.productoId}" id="productoid"/>
 
 
-								<p style="font-size: 15pt">
-									Nombre: &nbsp <span>${producto.nombre }</span><br>
+								<p style="font-size: 15pt;font-weight: 700;">
+									<span style="padding-right: 20px;padding-left: 10px;">Nombre:</span> <span>${producto.nombre }</span>
 								</p>
-								<p style="font-size: 15pt">
-									Precio por Unidad: &nbsp<span>S./
-										${producto.precioUnidad }0</span>
+								<p style="font-size: 15pt;font-weight: 700;">
+									<span style="padding-right: 20px;padding-left: 10px;">Precio Unidad:</span> <span>S./ ${producto.precioUnidad}</span>
 								</p>
-								<p style="font-size: 15pt">
-									Stock Disponible: &nbsp<span>${producto.stock} unidades</span>
+								<p style="font-size: 15pt;font-weight: 700;">
+									<span style="padding-right: 20px;padding-left: 10px;">Stock Disponible:</span> <span>${producto.stock} unidades</span>
 								</p>
-								<p style="font-size: 15pt">
-									Descripción: &nbsp<span>${producto.descripcion }</span>
+								<p style="font-size: 15pt;font-weight: 700;">
+									<span style="padding-right: 20px;padding-left: 10px;">Descripcion:</span> <span>${producto.descripcion}</span>
 								</p>
-								<br>
+                                <div style="text-align: center;" class="btn-group"> 
+                                    <p style="font-size: 10pt;font-weight: 700;margin-right: 15px">
+                                        Seleccione Cantidad:
+                                    </p>
+                                        <select class="form-select form-select-sm" style="max-width: 80px;max-height: 40px;" id="cantidad">
+                                            <c:forEach var="i" begin="1" end="${producto.stock}">
+                                            	<option value="${i}" label="${i}"/>
+                                            </c:forEach>
+                                            
+                                        </select>
+                                    
+                                </div>
+                                <br>
+                                
 								<div class="btn-group" role="group"
-									aria-label="Basic mixed styles example">
-									<button type="button" class="btn btn-primary" onclick="agregar()">Añadir
+									style="margin-top: 20px;">
+									<button type="button" class="btn btn-primary" style="margin-right: 20px;" onclick="agregar()">Añadir
 										a Carrito</button>
 									<button type="button" onclick=""
 										class="btn btn-danger">Cancelar</button>
@@ -83,6 +98,8 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	<!--Final-->
 	<%@include file="/WEB-INF/views/shared/footer.jsp" %>
 	
@@ -92,5 +109,6 @@
 		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 		crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>

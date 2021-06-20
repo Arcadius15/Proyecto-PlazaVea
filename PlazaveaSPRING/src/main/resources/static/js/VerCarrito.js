@@ -1,8 +1,6 @@
 function validar() {
 	const formapago = $('#Payment').val();
 	const newdireccion = $('#NewDireccion').val();
-	console.log(typeof (formapago));
-	console.log(newdireccion);
 	var jsonorden ={
 		tarjetaId : formapago,
 		direccion : newdireccion
