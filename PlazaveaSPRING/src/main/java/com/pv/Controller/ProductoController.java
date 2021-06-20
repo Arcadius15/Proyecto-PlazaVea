@@ -195,6 +195,9 @@ public class ProductoController {
 		try {
 			//obtener el cliente y carro de compras
 			List<OrdenDetalle> carrito = (List<OrdenDetalle>) session.getAttribute("carritocompra");
+			if (carrito.size()==0 || carrito == null) {
+				return 2;
+			}
 			Cliente user = (Cliente) session.getAttribute("usuario");
 			//creacion de nueva orden
 			Orden orden = new Orden();
@@ -222,6 +225,20 @@ public class ProductoController {
 			session.setAttribute("carritocompra", null);
 			session.setAttribute("carrito", null);
 		}
+	}
+	
+	@PostMapping(value = "/delcompra")
+	@ResponseBody
+	public Integer delCompra_POST(@RequestBody Integer productoId,HttpSession session) {
+		List<JsonCarrito> carrito = (List<JsonCarrito>) session.getAttribute("carrito");
+		for (JsonCarrito jsonCarrito : carrito) {
+			if (jsonCarrito.getProductoId()==productoId) {
+				carrito.remove(jsonCarrito);
+				session.setAttribute("carrito",carrito);
+				return 1;
+			}
+		}
+		return 0;
 	}
 	
 	@RequestMapping(value = "/findProductoByCat/{valor}",method = RequestMethod.GET)

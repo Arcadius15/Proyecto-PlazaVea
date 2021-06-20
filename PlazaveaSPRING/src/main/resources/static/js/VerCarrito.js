@@ -1,7 +1,7 @@
 function validar() {
 	const formapago = $('#Payment').val();
 	const newdireccion = $('#NewDireccion').val();
-	var jsonorden ={
+	let jsonorden ={
 		tarjetaId : formapago,
 		direccion : newdireccion
 	};
@@ -24,7 +24,11 @@ function validar() {
 				if (result === 1) {
 					alert("Registrado Exitosamente");
 					location.href = "/pv/Index";
-				}else{
+				}
+				else if(result ===2){
+					alert("Carrito de Compras Vacio.")
+				}
+				else{
 					alert("Ups... Algo salio Mal")
 				}
 				
@@ -36,4 +40,29 @@ function validar() {
 	}
 
 
+}
+
+
+function eliminar(productoid){
+	let valor = JSON.stringify(productoid);
+	$.ajax({
+			type: "POST",
+			contentType: 'application/json; charset=utf-8',
+			dataType: 'json',
+			url: 'http://localhost:8089/pv/delcompra',
+			data: valor, // Note it is important
+			timeout: 100000,
+			success: function(result) {
+				if (result === 1) {
+					alert("Eliminado Exitosamente");
+					location.reload();
+				}else{
+					alert("Ups... Algo salio Mal")
+				}
+				
+			},
+			error: function(e) {
+				console.log("ERROR: ", e);
+			}
+		});
 }

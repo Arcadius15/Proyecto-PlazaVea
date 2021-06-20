@@ -56,10 +56,10 @@
 											<td>Stock Disponible</td>
 											<td>Cantidad</td>
 											<td>Precio Total</td>
+											<td>Acciones</td>
 										</tr>
 									</thead>
 									<tbody>
-										
 										<c:forEach var="item" items="${sessionScope.carritocompra}">
 											<tr>
 												<td>${item.producto.productoId}</td>
@@ -70,6 +70,12 @@
 													class="form-control form-control-sm"
 													style="max-width: 80px;" value="${item.cantidad}"></td>
 												<td>${item.producto.precioUnidad*item.cantidad} </td>
+												<td>
+													<div class="btn-group" role="group">
+														<a href="<c:url value='/Producto/${item.producto.productoId}'/>" class="btn btn-warning btn-sm">Editar</a>
+														<button type="button" class="btn btn-success btn-sm" onclick="eliminar(${item.producto.productoId})">Eliminar</button>
+												  	</div>
+												</td>
 											</tr>
 											<c:set var="total" value="${total = total + (item.producto.precioUnidad*item.cantidad)}"/>
 										</c:forEach>
