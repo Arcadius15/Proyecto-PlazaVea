@@ -1,11 +1,11 @@
 function validar() {
 	const formapago = $('#Payment').val();
 	const newdireccion = $('#NewDireccion').val();
-	let jsonorden ={
-		tarjetaId : formapago,
-		direccion : newdireccion
+	let jsonorden = {
+		tarjetaId: formapago,
+		direccion: newdireccion
 	};
-	var enviar=JSON.stringify(jsonorden);
+	var enviar = JSON.stringify(jsonorden);
 	if (formapago == 0 || newdireccion == "") {
 		Swal.fire({
 			icon: 'error',
@@ -22,16 +22,24 @@ function validar() {
 			timeout: 100000,
 			success: function(result) {
 				if (result === 1) {
-					alert("Registrado Exitosamente");
-					location.href = "/pv/Index";
+					Swal.fire({
+						title: "Wow!",
+						text: "Compra exitosamente registrada.",
+						icon: "success",
+						type: "success"
+					}).then(function() {
+						location.href = "/pv/Index";
+					});
+
 				}
-				else if(result ===2){
-					alert("Carrito de Compras Vacio.")
+				else {
+					Swal.fire(
+						'Error',
+						'Hubo un problema al registrar la compra.',
+						'error'
+					)
 				}
-				else{
-					alert("Ups... Algo salio Mal")
-				}
-				
+
 			},
 			error: function(e) {
 				console.log("ERROR: ", e);
@@ -43,26 +51,34 @@ function validar() {
 }
 
 
-function eliminar(productoid){
+function eliminar(productoid) {
 	let valor = JSON.stringify(productoid);
 	$.ajax({
-			type: "POST",
-			contentType: 'application/json; charset=utf-8',
-			dataType: 'json',
-			url: 'http://localhost:8089/pv/delcompra',
-			data: valor, // Note it is important
-			timeout: 100000,
-			success: function(result) {
-				if (result === 1) {
-					alert("Eliminado Exitosamente");
-					location.reload();
-				}else{
-					alert("Ups... Algo salio Mal")
-				}
-				
-			},
-			error: function(e) {
-				console.log("ERROR: ", e);
+		type: "POST",
+		contentType: 'application/json; charset=utf-8',
+		dataType: 'json',
+		url: 'http://localhost:8089/pv/delcompra',
+		data: valor, // Note it is important
+		timeout: 100000,
+		success: function(result) {
+			if (result === 1) {
+				Swal.fire(
+					'Procesado',
+					'Eliminado Exitosamente.',
+					'info'
+				);
+				location.reload();
+			} else {
+				Swal.fire(
+					'Error',
+					'Ups... Hubo algun error.',
+					'error'
+				);
 			}
-		});
+
+		},
+		error: function(e) {
+			console.log("ERROR: ", e);
+		}
+	});
 }

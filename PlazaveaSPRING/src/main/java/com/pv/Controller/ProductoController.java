@@ -193,9 +193,10 @@ public class ProductoController {
 	@Transactional
 	public Integer RegCarrocompra(@RequestBody JsonOrden jsonorden,HttpSession session) {
 		try {
+			List<JsonCarrito> carro = (List<JsonCarrito>) session.getAttribute("carrito");
 			//obtener el cliente y carro de compras
 			List<OrdenDetalle> carrito = (List<OrdenDetalle>) session.getAttribute("carritocompra");
-			if (carrito.size()==0 || carrito == null) {
+			if (carro == null) {
 				return 2;
 			}
 			Cliente user = (Cliente) session.getAttribute("usuario");
@@ -235,6 +236,11 @@ public class ProductoController {
 			if (jsonCarrito.getProductoId()==productoId) {
 				carrito.remove(jsonCarrito);
 				session.setAttribute("carrito",carrito);
+				if (carrito.size()==0) {
+					session.setAttribute("carrito",null);
+				}else {
+					session.setAttribute("carrito",carrito);
+				}
 				return 1;
 			}
 		}
