@@ -40,15 +40,13 @@
 				  <a href="<c:url value='/VerDatos'/>" class="list-group-item list-group-item-action active" aria-current="true">
 				    Datos Personales
 				  </a>
-				  <a href="<c:url value='/VerDireccion'/>" class="list-group-item list-group-item-action">Dirección</a>
-				  <a href="<c:url value='/VerMetodoPago'/>" class="list-group-item list-group-item-action">Métodos de Pago</a>
 				</div>
             </div>
             <!-- Formulario con Datos -->
             <div class="col-md-9" style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh); margin: auto;">
                 <form:form class="form-login" method="post" modelAttribute="usuarioData" accept-charset="utf-8">
 					<center><FONT FACE="impact" SIZE=6 COLOR="black"> Datos Personales - ${sessionScope.usuario.nombre}</FONT></center>
-						<form:input path="clienteId" type="hidden"/>
+						<form:input path="transportistaId" type="hidden"/>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px; padding-top: 10px">
 							<label for="exampleFormControlInput1" class="form-label">Nombre:</label>
 							<form:input class="form-control form-control-lg" type="text" path="nombre" value="${sessionScope.usuario.nombre}"
@@ -65,20 +63,30 @@
 								placeholder="Ingrese un DNI"/>
 						</div>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
-							<label for="exampleFormControlInput1" class="form-label">Número Telefónico:</label>
-							<form:input class="form-control form-control-lg" type="text" path="telefono" value="${sessionScope.usuario.telefono}"
-								placeholder="Ingrese un Número Telefónico"/>
+							<label for="exampleFormControlInput1" class="form-label">Nro. Placa del Camión:</label>
+							<form:input class="form-control form-control-lg" type="text" path="placaCamion" value="${sessionScope.usuario.placaCamion}"
+								placeholder="Placa Camión" readonly="true"/>
+						</div>
+						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+							<label for="exampleFormControlInput1" class="form-label">Centro de Transporte:</label>
+							<form:input class="form-control form-control-lg" type="text" path="centroTransporte" value="${sessionScope.usuario.centroTransporte}"
+								placeholder="Centro Transporte" readonly="true"/>
+						</div>
+						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
+							<label for="exampleFormControlInput1" class="form-label">Turno:</label>
+							<form:input class="form-control form-control-lg" type="text" path="turno" value="${sessionScope.usuario.turno}"
+								placeholder="Turno" readonly="true"/>
 						</div>
 						<hr>
-						<form:input path="userCliente.usuarioId" type="hidden"/>
+						<form:input path="userTransportista.usuarioId" type="hidden"/>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
 							<label for="exampleFormControlInput1" class="form-label">Correo Electrónico:</label>
-							<form:input class="form-control form-control-lg" type="email" path="userCliente.correo" value="${sessionScope.usuario.userCliente.correo}"
-								placeholder="Ingrese un Correo"/>
+							<form:input class="form-control form-control-lg" type="email" path="userTransportista.correo" value="${sessionScope.usuario.userTransportista.correo}"
+								placeholder="Ingrese un Correo" readonly="true"/>
 						</div>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
 							<label for="exampleFormControlInput1" class="form-label">Contraseña:</label>
-							<form:input class="form-control form-control-lg" type="password" path="userCliente.contrasenia" value="${sessionScope.usuario.userCliente.contrasenia}"
+							<form:input class="form-control form-control-lg" type="password" path="userTransportista.contrasenia" value="${sessionScope.usuario.userTransportista.contrasenia}"
 								placeholder="Ingrese una Contraseña"/>
 						</div>
 						<div class="d-grid gap-2 col-6 mx-auto">

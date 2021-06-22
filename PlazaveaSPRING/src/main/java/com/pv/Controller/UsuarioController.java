@@ -29,7 +29,7 @@ public class UsuarioController {
 	@Autowired
 	private TransportistaService transportistaService;
 	
-	@RequestMapping(value = "/VerDatos", method = RequestMethod.GET)
+	@RequestMapping(value = "/VerDatos/cliente", method = RequestMethod.GET)
 	public String verDatos_GET(Model model, HttpSession session) {
 		if (session.getAttribute("usuario") == null) {
 			return "redirect:/Index";
@@ -40,8 +40,8 @@ public class UsuarioController {
 		return "/Usuario/VerDatos";
 	}
 
-	@RequestMapping(value = "/VerDatos", method = RequestMethod.POST)
-	public String verDatos_POST(Cliente cliente, Transportista transportista, HttpSession session) {
+	@RequestMapping(value = "/VerDatos/cliente", method = RequestMethod.POST)
+	public String verDatos_POST(Cliente cliente, HttpSession session) {
 		logService.update(cliente.getUserCliente());
 		clienteService.update(cliente);
 		
@@ -94,6 +94,27 @@ public class UsuarioController {
 		session.setAttribute("usuario", cliente);
 		
 		return "redirect:/VerDireccion";
+	}
+	
+	@RequestMapping(value = "/VerDatos/transportista", method = RequestMethod.GET)
+	public String verDatosTransportista_GET(Model model, HttpSession session) {
+		if (session.getAttribute("usuario") == null) {
+			return "redirect:/Index";
+		}
+		
+		model.addAttribute("usuarioData", session.getAttribute("usuario"));
+		
+		return "/Usuario/VerDatosTransportista";
+	}
+
+	@RequestMapping(value = "/VerDatos/transportista", method = RequestMethod.POST)
+	public String verDatosTransportista_POST(Transportista transportista, HttpSession session) {
+		logService.update(transportista.getUserTransportista());
+		transportistaService.update(transportista);
+		
+		session.setAttribute("usuario", transportista);
+		
+		return "redirect:/VerDatosTransportista/transportista";
 	}
 	
 }

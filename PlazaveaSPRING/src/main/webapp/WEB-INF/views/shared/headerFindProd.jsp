@@ -39,7 +39,7 @@
 
 				<div class="collapse navbar-collapse d-flex"
 					id="navbarSupportedContent">
-					<li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrito de Compra</a></li>
+					<li class="navbar-nav ml-auto p-2"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrito de Compra</a></li>
 					<c:choose>
 						<c:when test="${sessionScope.usuario == null}">
 							<ul class="navbar-nav ml-auto p-2">

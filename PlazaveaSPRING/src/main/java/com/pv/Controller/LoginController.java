@@ -56,9 +56,9 @@ public class LoginController {
 		Collection<Usuario> lista = logService.findAll();
 		for (Usuario log : lista) {
 			if (log.getCorreo().equals(login.getCorreo()) && log.getContrasenia().equals(login.getContrasenia())) {
-				String[] correoParts = log.getCorreo().split("@");
+				String[] correoParts = login.getCorreo().split("@");
 				
-				if (correoParts[0].substring(0, 2) == "tr" && correoParts[1] == "transportista.com") {
+				if (correoParts[0].substring(0,2).equals("tr") && correoParts[1].equals("transportista.com")) {
 					session.setAttribute("usuario", transportistaService.findByUserId(log.getUsuarioId()));
 					session.setAttribute("userType", "t");
 				} else {
