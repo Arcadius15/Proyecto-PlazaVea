@@ -39,7 +39,7 @@
 
 				<div class="collapse navbar-collapse d-flex"
 					id="navbarSupportedContent">
-					
+					<li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrito de Compra</a></li>
 					<c:choose>
 						<c:when test="${sessionScope.usuario == null}">
 							<ul class="navbar-nav ml-auto p-2">
@@ -59,6 +59,25 @@
 									</ul></li>
 							</ul>
 						</c:when>
+						<c:when test="${sessionScope.userType == 't' }">
+							<ul class="navbar-nav ml-auto p-2">
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+									role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										<i class="far fa-user"></i> Bienvenido <b>${sessionScope.usuario.nombre}!</b>
+								</a>
+									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+										<li><a class="dropdown-item" href="<c:url value='/VerDatos/transportista'/>"><i
+												class="fas fa-user-circle"></i> Ver Datos Personales </a></li>
+												<li><a class="dropdown-item" href="<c:url value='/VerDatos'/>"><i
+												class="fas fa-user-circle"></i> Listar Pedidos de Delivery </a></li>
+										<li><a class="dropdown-item" href="<c:url value='/Logout'/>"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión </a></li>
+										<li><hr class="dropdown-divider"></li>
+										<li><a class="dropdown-item" href="#"><i
+												class="fas fa-archive"></i> Gestionar Pedido</a></li>
+									</ul></li>
+							</ul>
+						</c:when>
 						<c:otherwise>
 							<ul class="navbar-nav ml-auto p-2">
 								<li class="nav-item dropdown"><a
@@ -67,7 +86,7 @@
 										<i class="far fa-user"></i> Bienvenido <b>${sessionScope.usuario.nombre}!</b>
 								</a>
 									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<li><a class="dropdown-item" href="<c:url value='/VerDatos'/>"><i
+										<li><a class="dropdown-item" href="<c:url value='/VerDatos/cliente'/>"><i
 												class="fas fa-user-circle"></i> Ver Datos Personales </a></li>
 										<li><a class="dropdown-item" href="<c:url value='/Logout'/>"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión </a></li>
 										<li><hr class="dropdown-divider"></li>

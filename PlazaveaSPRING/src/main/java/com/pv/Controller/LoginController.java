@@ -60,8 +60,10 @@ public class LoginController {
 				
 				if (correoParts[0].substring(0, 2) == "tr" && correoParts[1] == "transportista.com") {
 					session.setAttribute("usuario", transportistaService.findByUserId(log.getUsuarioId()));
+					session.setAttribute("userType", "t");
 				} else {
 					session.setAttribute("usuario", clienteService.findByUserId(log.getUsuarioId()));
+					session.setAttribute("userType", "c");
 				}
 				
 				return "redirect:/Index";
