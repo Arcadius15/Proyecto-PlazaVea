@@ -35,6 +35,10 @@ public class UsuarioController {
 			return "redirect:/Index";
 		}
 		
+		if (session.getAttribute("userType").equals("t")) {
+			return "redirect:/Index";
+		}
+		
 		model.addAttribute("usuarioData", session.getAttribute("usuario"));
 		
 		return "/Usuario/VerDatos";
@@ -53,6 +57,10 @@ public class UsuarioController {
 	@RequestMapping(value = "/VerDireccion", method = RequestMethod.GET)
 	public String verDireccion_GET(HttpSession session, HttpServletRequest request) {
 		if (session.getAttribute("usuario") == null) {
+			return "redirect:/Index";
+		}
+		
+		if (session.getAttribute("userType").equals("t")) {
 			return "redirect:/Index";
 		}
 		
@@ -99,6 +107,10 @@ public class UsuarioController {
 	@RequestMapping(value = "/VerDatos/transportista", method = RequestMethod.GET)
 	public String verDatosTransportista_GET(Model model, HttpSession session) {
 		if (session.getAttribute("usuario") == null) {
+			return "redirect:/Index";
+		}
+		
+		if (session.getAttribute("userType").equals("c")) {
 			return "redirect:/Index";
 		}
 		
