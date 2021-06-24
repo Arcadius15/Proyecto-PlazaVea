@@ -37,8 +37,8 @@
                 style="background: #fff; padding: 15px 20px 15px 20px; margin: auto;">
                 <div class="card text-center" style="width: auto; height: 650px; padding: auto; margin: auto;">
                     <div class="card-body">
-                      <h5 class="card-title">Orden Nro: </h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Fecha de compra:  Fecha de Entrega:</h6>
+                      <h5 class="card-title">Orden Nro: ${orden.ordenId}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Fecha de compra: ${orden.fecha}  Fecha de Entrega: ${orden.fechaEntrega}</h6>
                       <p class="card-text">
                         <span style="font-family: Verdana;">
                             <b>
