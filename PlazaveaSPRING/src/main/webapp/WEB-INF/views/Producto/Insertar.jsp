@@ -12,7 +12,7 @@
 	<h3>Producto - Registrar!</h3>
 	<form:form name="" method="post" modelAttribute="producto" enctype="multipart/form-data">
 		Nombre: <form:input type="text" path="nombre"/><br>
-		Precio: <form:input type="number" path="precioUnidad"/><br>
+		Precio: <form:input type="number" path="precioUnidad" step="any"/><br>
 		stock: <form:input type="number" path="stock"/><br>
 		Descripcion: <form:input type="text" path="descripcion"/><br>
 		

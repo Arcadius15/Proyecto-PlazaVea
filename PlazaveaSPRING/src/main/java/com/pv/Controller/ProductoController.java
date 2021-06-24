@@ -226,6 +226,10 @@ public class ProductoController {
 				key.setProductoId(ordenDetalle.getProducto().getProductoId());
 				ordenDetalle.setId(key);
 				ordenDetService.insert(ordenDetalle);
+				
+				Producto producto = productoService.findById(ordenDetalle.getProducto().getProductoId());
+				producto.setStock(producto.getStock() - ordenDetalle.getCantidad());
+				productoService.insert(producto);
 			}
 			return 1;
 		}catch (Exception e) {

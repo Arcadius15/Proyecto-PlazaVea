@@ -86,9 +86,6 @@
 									style="margin-top: 20px;">
 									<button type="button" class="btn btn-primary" style="margin-right: 20px;" onclick="agregar()">Añadir
 										a Carrito</button>
-									<button type="button" onclick=""
-										class="btn btn-danger">Cancelar</button>
-
 								</div>
 
 							</form:form>

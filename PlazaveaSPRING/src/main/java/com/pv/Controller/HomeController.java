@@ -28,7 +28,10 @@ public class HomeController {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value="/Index",method = RequestMethod.GET)
 	public String index_GET(Map map, HttpSession session) {
-		map.put("bProducto", productoService.findAll());
+		map.put("bProductoCo", productoService.findByCat("Cocina"));
+		map.put("bProductoTec", productoService.findByCat("Tecnologia"));
+		map.put("bProductoJug", productoService.findByCat("Juguetes"));
+		map.put("bProductoBel", productoService.findByCat("Belleza"));
 		
 		if (session.getAttribute("bCategoria") == null) {
 			session.setAttribute("bCategoria",categoriaService.findAll());

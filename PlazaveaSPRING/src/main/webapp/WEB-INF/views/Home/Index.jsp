@@ -44,7 +44,7 @@
 								<div class="carousel-item active">
 									<img src="img/oferta1.jpg" class="d-block w-100" alt="...">
 								</div>
-								<c:forEach var="producto" items="${bProducto}">
+								<c:forEach var="producto" items="${bProductoCo}">
 									<div class="carousel-item">
 										<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 										<a href="<c:url value='/Producto/${producto.productoId}'/>">
@@ -68,13 +68,12 @@
 				</div>
 				<div class="row" style="padding-top: 20px;">
 					<div class="col-md-3">
-
 						<div id="Categoria1" class="carousel slide"
 							data-bs-ride="carousel">
 							<div class="carousel-inner">
-								<c:forEach var="producto" items="${bProducto}">
+								<c:forEach var="producto" items="${bProductoCo}">
 									<c:choose>
-										<c:when test="${producto == bProducto[0]}">
+										<c:when test="${producto == bProductoCo[0]}">
 											<div class="carousel-item active">
 												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 												<a href="<c:url value='/Producto/${producto.productoId}'/>">
@@ -113,22 +112,40 @@
 							</button>
 						</div>
 
-						<h5 align="center">Categoría 1</h5>
+						<h5 align="center">Cocina</h5>
 					</div>
 					<div class="col-md-3">
-
 						<div id="Categoria2" class="carousel slide"
 							data-bs-ride="carousel">
 							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
+								<c:forEach var="producto" items="${bProductoTec}">
+									<c:choose>
+										<c:when test="${producto == bProductoTec[0]}">
+											<div class="carousel-item active">
+												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
+												<a href="<c:url value='/Producto/${producto.productoId}'/>">
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+												</a>
+												<div align="center">
+													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
+													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
+												</div>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div class="carousel-item">
+												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
+												<a href="<c:url value='/Producto/${producto.productoId}'/>">
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+												</a>
+												<div align="center">
+													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
+													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
+												</div>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</div>
 							<button class="carousel-control-prev" type="button"
 								data-bs-target="#Categoria2" data-bs-slide="prev">
@@ -141,23 +158,41 @@
 								<span class="visually-hidden">Next</span>
 							</button>
 						</div>
-						
-						<h5 align="center">Categoría 2</h5>
+
+						<h5 align="center">Tecnología</h5>
 					</div>
 					<div class="col-md-3">
-
 						<div id="Categoria3" class="carousel slide"
 							data-bs-ride="carousel">
 							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
+								<c:forEach var="producto" items="${bProductoJug}">
+									<c:choose>
+										<c:when test="${producto == bProductoJug[0]}">
+											<div class="carousel-item active">
+												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
+												<a href="<c:url value='/Producto/${producto.productoId}'/>">
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+												</a>
+												<div align="center">
+													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
+													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
+												</div>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div class="carousel-item">
+												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
+												<a href="<c:url value='/Producto/${producto.productoId}'/>">
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+												</a>
+												<div align="center">
+													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
+													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
+												</div>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</div>
 							<button class="carousel-control-prev" type="button"
 								data-bs-target="#Categoria3" data-bs-slide="prev">
@@ -170,23 +205,41 @@
 								<span class="visually-hidden">Next</span>
 							</button>
 						</div>
-						
-						<h5 align="center">Categoría 3</h5>
+
+						<h5 align="center">Juguetes</h5>
 					</div>
 					<div class="col-md-3">
-
 						<div id="Categoria4" class="carousel slide"
 							data-bs-ride="carousel">
 							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img src="img/vea.jpg" class="d-block w-100" alt="...">
-								</div>
+								<c:forEach var="producto" items="${bProductoBel}">
+									<c:choose>
+										<c:when test="${producto == bProductoBel[0]}">
+											<div class="carousel-item active">
+												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
+												<a href="<c:url value='/Producto/${producto.productoId}'/>">
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+												</a>
+												<div align="center">
+													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
+													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
+												</div>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div class="carousel-item">
+												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
+												<a href="<c:url value='/Producto/${producto.productoId}'/>">
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+												</a>
+												<div align="center">
+													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
+													<label for="exampleFormControlInput1" class="form-label">S/${producto.precioUnidad}</label>
+												</div>
+											</div>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</div>
 							<button class="carousel-control-prev" type="button"
 								data-bs-target="#Categoria4" data-bs-slide="prev">
@@ -200,7 +253,7 @@
 							</button>
 						</div>
 
-						<h5 align="center">Categoría 4</h5>
+						<h5 align="center">Belleza</h5>
 					</div>
 
 				</div>
