@@ -33,32 +33,38 @@
 		<div class="row">
 			<div class="col-md-12"
 				style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh);">
-				<table class="table table-warning table-striped">
-					<thead>
-						<tr>
-							<th scope="col">ID</th>
-							<th scope="col">Cliente</th>
-							<th scope="col">Fecha de compra</th>
-							<th scope="col">Cantidad de Productos</th>
-							<th scope="col">Estado de entrega</th>
-							<th scope="col">Acciones</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="orders" items="${listOrders}">
+				<h1 align="center">Lista de Pedidos de Delivery</h1>
+				<hr>
+				<div class="table-responsive">
+					<table class="table table-warning table-striped">
+						<thead>
 							<tr>
-								<td scope="row">${orders.ordenId}</td>
-								<td>${orders.cliente.nombre}</td>
-								<td>${orders.fecha}</td>
-								<td>${quantity}</td> <!-- Es la cantidad de productos total de la orden. se espera que se obtenga mediante naiveQuery -->
-								<td>${orders.estadoOrden.descripcion}</td>
-								<td>
-									 <button type="button" class="btn btn-success btn-sm" onclick="location.href='<c:url value="/asignarTransportista/${orders.ordenId}"/>'">Asignar Transportista</button>
-								</td>
+								<th scope="col">ID</th>
+								<th scope="col">Cliente</th>
+								<th scope="col">Dirección</th>
+								<th scope="col">Fecha de compra</th>
+								<th scope="col">Cantidad de Productos</th>
+								<th scope="col">Estado de entrega</th>
+								<th scope="col">Acciones</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<c:forEach var="orders" items="${listOrders}">
+								<tr>
+									<td scope="row">${orders[0]}</td>
+									<td>${orders[3]}</td>
+									<td>${orders[1]}</td>
+									<td>${orders[2]}</td>
+									<td>${orders[6]}</td>
+									<td>${orders[5]}</td>
+									<td>
+										 <button type="button" class="btn btn-success btn-sm" onclick="location.href='<c:url value="/asignarTransportista/${orders[0]}"/>'">Asignar Transportista</button>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,6 +1,11 @@
 package com.pv.Controller;
 
 import org.springframework.stereotype.Controller;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import com.pv.Entity.Orden;
+import com.pv.Entity.OrdenDetalle;
 import com.pv.Service.EstadoOrdenService;
 import com.pv.Service.OrdenDetService;
 import com.pv.Service.OrdenService;
@@ -29,7 +35,17 @@ public class OrdenController {
 	private OrdenDetService ordenDetService;
 	
 	@RequestMapping(value = "/ListDelivery", method = RequestMethod.GET)
-	public String listarPedidos_GET(Model model) {
+	public String listarPedidos_GET(Map map, Model model, HttpSession session) {
+		if (session.getAttribute("usuario") == null) {
+			return "redirect:/Index";
+		}
+		
+		if (session.getAttribute("userType").equals("c")) {
+			return "redirect:/Index";
+		}
+		
+		map.put("listOrders", ordenService.findAllMostRecent());
+		
 		return "/Pedido/ListarPedidos";
 	}
 	

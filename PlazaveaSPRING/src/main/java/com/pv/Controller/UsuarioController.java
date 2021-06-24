@@ -51,7 +51,7 @@ public class UsuarioController {
 		
 		session.setAttribute("usuario", cliente);
 		
-		return "redirect:/VerDatos";
+		return "redirect:/VerDatos/cliente";
 	}
 	
 	@RequestMapping(value = "/VerDireccion", method = RequestMethod.GET)
@@ -126,7 +126,7 @@ public class UsuarioController {
 		
 		session.setAttribute("usuario", transportista);
 		
-		return "redirect:/VerDatosTransportista/transportista";
+		return "redirect:/VerDatos/transportista";
 	}
 	
 }

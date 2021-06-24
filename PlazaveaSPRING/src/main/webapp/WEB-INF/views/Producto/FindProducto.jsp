@@ -116,38 +116,47 @@
 
             </div>
             <div class="col-md-9" style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh); margin: auto;">
-                <table id="tProductos" class="table table-hover" style="width:100%;background-color: #cf260f;">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
-                            <th>Proveedor</th>
-                            <th>Categoría</th>
-                            <th>Imagen</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<c:forEach var="producto" items="${bProducto}">
-									<tr>
-										<td>${producto.nombre}</td>
-										<td>${producto.precioUnidad}</td>
-										<td>${producto.stock}</td>
-										<td>${producto.proveedor.nombre}</td>
-										<td>${producto.categoria.nombre}</td>
-										<td>
-											<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
-											<a href="<c:url value='/Producto/${producto.productoId}'/>">
-												<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="280px" height="150px"/>
-											</a>
-										</td>
-									</tr>
-						</c:forEach>
-                    </tbody>
-                </table>
-                <div align="center" style="display: none;" id="zeroMsg">
-                	<h5>No se encontraron productos.</h5>
-                </div>
+            	<c:choose>
+            		<c:when test="${bProducto[0] == null}">
+            			<div align="center">
+		                	<h5>No se encontraron productos.</h5>
+		                </div>
+            		</c:when>
+            		<c:otherwise>
+		                <table id="tProductos" class="table table-hover" style="width:100%;background-color: #cf260f;">
+		                    <thead>
+		                        <tr>
+		                            <th>Nombre</th>
+		                            <th>Precio</th>
+		                            <th>Stock</th>
+		                            <th>Proveedor</th>
+		                            <th>Categoría</th>
+		                            <th>Imagen</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+		                    	<c:forEach var="producto" items="${bProducto}">
+											<tr>
+												<td>${producto.nombre}</td>
+												<td>${producto.precioUnidad}</td>
+												<td>${producto.stock}</td>
+												<td>${producto.proveedor.nombre}</td>
+												<td>${producto.categoria.nombre}</td>
+												<td>
+													<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
+													<a href="<c:url value='/Producto/${producto.productoId}'/>">
+														<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="280px" height="150px"/>
+													</a>
+												</td>
+											</tr>
+								</c:forEach>
+		                    </tbody>
+		                </table>
+		                <div align="center" style="display: none;" id="zeroMsg">
+		                	<h5>No se encontraron productos.</h5>
+		                </div>
+	                </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>

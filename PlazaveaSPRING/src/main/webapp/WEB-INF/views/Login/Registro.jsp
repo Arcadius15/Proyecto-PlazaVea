@@ -42,23 +42,23 @@
 			
 				<div class="mb-3 ">
 					<form:input class="form-control form-control-lg" type="email" path="userCliente.correo" value=""
-						placeholder="Correo"/>
+						placeholder="Correo" required="true"/>
 					
 				</div>
 				
 				<div class="mb-3">
 					<form:input class="form-control form-control-lg" type="password" path="userCliente.contrasenia" value=""
-						placeholder="Contraseña"/>
+						placeholder="Contraseña" required="true"/>
 				</div>
 				<div class="mb-3">
 					<div class="row">
 						<div class="col">
 							<form:input class="form-control form-control-lg" type="text" path="nombre" value=""
-								placeholder="Nombre"/>
+								placeholder="Nombre" required="true"/>
 						</div>
 						<div class="col">
 							<form:input class="form-control form-control-lg" type="text" path="apellido" value=""
-								placeholder="Apellido"/>
+								placeholder="Apellido" required="true"/>
 						</div>
 					</div>
 				</div>
@@ -66,11 +66,11 @@
 					<div class="row">
 						<div class="col">
 							<form:input class="form-control form-control-lg" type="text"  path="dni" value="" 
-								placeholder="DNI" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="8"/>
+								placeholder="DNI" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="8" required="true"/>
 						</div>
 						<div class="col">
 							<form:input class="form-control form-control-lg" type="text" path="telefono" value="" 
-								placeholder="Número telefónico" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="9"/>
+								placeholder="Número telefónico" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="9" required="true"/>
 						</div>
 					</div>
 				</div>
