@@ -39,10 +39,11 @@
 
 				<div class="collapse navbar-collapse d-flex"
 					id="navbarSupportedContent">
-					<li class="navbar-nav ml-auto p-2"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrito de Compra</a></li>
+					
 					<c:choose>
 						<c:when test="${sessionScope.usuario == null}">
 							<ul class="navbar-nav ml-auto p-2">
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/VerCarritoCompra'/>"><i class="fas fa-shopping-cart"></i> Carrito de Compra</a></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 									role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,6 +62,7 @@
 						</c:when>
 						<c:when test="${sessionScope.userType == 't' }">
 							<ul class="navbar-nav ml-auto p-2">
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/VerCarritoCompra'/>"><i class="fas fa-shopping-cart"></i> Carrito de Compra</a></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 									role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -79,6 +81,7 @@
 						</c:when>
 						<c:otherwise>
 							<ul class="navbar-nav ml-auto p-2">
+								<li class="nav-item"><a class="nav-link" href="<c:url value='/VerCarritoCompra'/>"><i class="fas fa-shopping-cart"></i> Carrito de Compra</a></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 									role="button" data-bs-toggle="dropdown" aria-expanded="false">
