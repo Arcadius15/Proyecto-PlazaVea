@@ -143,15 +143,15 @@ public class ProductoController {
 		for (JsonCarrito item : carrito) {
 			OrdenDetalle producto = new OrdenDetalle();
 			Producto itemProducto = productoService.findById(item.getProductoId());
-			producto.setProducto(itemProducto);
 			producto.setCantidad(item.getCantidad());
+			producto.setProducto(itemProducto);
+			Double precio = producto.getCantidad()*itemProducto.getPrecioUnidad();
 			if (producto.getCantidad()>5) {
-				producto.setDescuento(0.15);
+				producto.setDescuento(precio * 0.15);
 			}else {
 				producto.setDescuento((double) 0);
 			}
-			Double precio = producto.getCantidad()*itemProducto.getPrecioUnidad();
-			Double preciototal = precio - (precio * producto.getDescuento());
+			Double preciototal = precio - producto.getDescuento();
 			producto.setPrecio(preciototal);
 			detalles.add(producto);
 		}
@@ -215,7 +215,8 @@ public class ProductoController {
 			orden.setEstadoOrden(estadoOrdenService.findById(1));
 			orden.setFecha(LocalDate.now());
 			orden.setFechaEntrega(LocalDate.now().plusDays(5));
-			orden.setImpuesto(0.19);
+			double suma = carrito.stream().mapToDouble(o->o.getPrecio()).sum();
+			orden.setImpuesto(Math.round((suma*0.19)*100)/100d);
 			orden.setTarjeta(tarjetaService.findById(jsonorden.getTarjetaId()));
 			Integer ordenreg = ordenService.insert(orden);
 			for (OrdenDetalle ordenDetalle : carrito) {
@@ -279,6 +280,19 @@ public class ProductoController {
 	@RequestMapping(value = "/findProductoByCat/{valor}",method = RequestMethod.POST)
 	public String findProductoByCat_POST(@PathVariable String valor) {
 		return "redirect:/findProductoByCat/"+valor;
+	}
+	
+	@RequestMapping(value = "/VerBoleta",method = RequestMethod.GET)
+	public String verBoleta(HttpSession session,Model model,Map map) {
+		Cliente user = (Cliente)session.getAttribute("usuario");
+		if (user==null) {
+			return "redirect:/Index";
+		}
+		Orden regcompra = ordenService.findLastOrderByClient(user.getClienteId());
+		Collection<OrdenDetalle> listado = ordenDetService.findAll(regcompra.getOrdenId());
+		model.addAttribute("orden",regcompra);
+		map.put("listado", listado);
+		return "/Producto/Boleta";
 	}
 
 }

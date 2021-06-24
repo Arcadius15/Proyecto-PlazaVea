@@ -62,5 +62,11 @@ public class OrdenServiceDB implements OrdenService{
 	public Collection<Object[]> findAllMostRecent() {
 		return repository.findAllMostRecent();
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Orden findLastOrderByClient(Integer clienteId) {
+		return repository.getLastOrden(clienteId);
+	}
 
 }

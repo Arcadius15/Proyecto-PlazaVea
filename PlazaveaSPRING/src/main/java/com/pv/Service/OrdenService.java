@@ -12,5 +12,6 @@ public interface OrdenService {
 	public abstract Collection<Orden> findAll();
 	public abstract Collection<Orden> findAllByClient(Integer clienteId);
 	public abstract Collection<Object[]> findAllMostRecent();
+	public abstract Orden findLastOrderByClient(Integer clienteId);
 	
 }

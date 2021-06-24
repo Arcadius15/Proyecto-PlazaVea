@@ -28,7 +28,7 @@ function validar() {
 						icon: "success",
 						type: "success"
 					}).then(function() {
-						location.href = "/pv/Index";
+						location.href = "/pv/VerBoleta";
 					});
 
 				}

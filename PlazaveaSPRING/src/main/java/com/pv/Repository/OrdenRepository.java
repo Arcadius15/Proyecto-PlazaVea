@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.pv.Entity.Orden;
 
@@ -20,5 +21,8 @@ public interface OrdenRepository extends JpaRepository<Orden, Integer>{
 			+ "group by o.orden_id, o.direccion, o.fecha, CONCAT(c.nombre,' ',c.apellido), o.estado_id, e.descripcion\r\n"
 			+ "order by orden_id desc",nativeQuery=true)
 	public abstract Collection<Object[]> findAllMostRecent();
+	
+	@Query(value="select * from orden where cliente_id = :cliente order by orden_id desc limit 1",nativeQuery = true)
+	public Orden getLastOrden(@Param("cliente") Integer clienteId);
 	
 }
