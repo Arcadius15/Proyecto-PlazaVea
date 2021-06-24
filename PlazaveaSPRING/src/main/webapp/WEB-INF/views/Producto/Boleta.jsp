@@ -38,7 +38,7 @@
                 <div class="card text-center" style="width: auto; height: 650px; padding: auto; margin: auto;">
                     <div class="card-body">
                       <h5 class="card-title">Orden Nro: ${orden.ordenId}</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Fecha de compra: ${orden.fecha}  Fecha de Entrega: ${orden.fechaEntrega}</h6>
+                      <h6 class="card-subtitle mb-2 text-muted">Fecha de compra: ${orden.fecha} <b>/</b> Fecha de Entrega: ${orden.fechaEntrega}</h6>
                       <p class="card-text">
                         <span style="font-family: Verdana;">
                             <b>
@@ -79,8 +79,8 @@
                             </tfoot>
                         </table>
                       </p>
-                      <a href="#" class="card-link">Volver al Inicio</a>
-                      <a href="#" class="card-link">Ver Historial de Compras</a>
+                      <a href='<c:url value="/Index"/>' class="card-link">Volver al Inicio</a>
+                      <a href='<c:url value="#"/>' class="card-link">Ver Historial de Compras</a>
                     </div>
                   </div>
 
