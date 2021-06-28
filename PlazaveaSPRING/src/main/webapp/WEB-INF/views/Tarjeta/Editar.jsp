@@ -60,16 +60,16 @@
 							<form:input type="hidden" path="cliente.clienteId"/>
 			                <div class="mb-3 col-12">
 			                  <label for="nroCTA" class="form-label">Número de Tarjeta</label>
-			                  <form:input type="text" path="nroTarjeta" class="form-control" id="nroCTA" aria-describedby="PayMethod" maxlength="20"/>
+			                  <form:input type="text" path="nroTarjeta" class="form-control" id="nroCTA" aria-describedby="PayMethod" maxlength="20" required="true"/>
 			                  <div id="PayMethod" class="form-text">Debe ingresar su número de tarjeta de Débito o Crédito.</div>
 			                </div>
 			                <div class="mb-3 col-2">
 			                  <label for="CVVinput" class="form-label">CVV</label>
-			                  <form:input type="password" path="cvv" class="form-control" id="CVVinput" maxlength="3"/>
+			                  <form:input type="password" path="cvv" class="form-control" id="CVVinput" maxlength="3" required="true"/>
 			                </div>
 			                <div class="mb-3 col-4" style="padding-bottom: 20px;">
 			                    <label for="ExpDate" class="form-label">Fecha de Expiración</label>
-			                    <form:input type="date" path="fechavencimiento" class="form-control" id="ExpDate"/>
+			                    <form:input type="date" path="fechavencimiento" class="form-control" id="ExpDate" required="true"/>
 			                  </div>
 			                <button type="submit" class="btn btn-success" style="margin-left: 15px;">Editar</button>
 			              </form:form>

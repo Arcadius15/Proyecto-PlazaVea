@@ -38,12 +38,12 @@
 				<center><FONT FACE="impact" SIZE=6 COLOR="white"> Formulario Login</FONT></center>
 					<div class="mb-3 ">
 						<form:input class="form-control form-control-lg" type="email" path="correo" value="" 
-							placeholder="Correo"  />
+							placeholder="Correo" required="true"/>
 					
 					</div>	
 					<div class="mb-3 ">
 						<form:input class="form-control form-control-lg" type="password" path="contrasenia" value=""
-							placeholder="Contraseña"/>
+							placeholder="Contraseña" required="true"/>
 					</div>
 					<div class="d-grid gap-2 col-6 mx-auto" style="padding-bottom: 10px;">
 						<input class="btn btn-primary btn-lg" type="submit" name="" value="Ingresar">
