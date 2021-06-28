@@ -33,9 +33,7 @@ public class UsuarioController {
 	public String verDatos_GET(Model model, HttpSession session) {
 		if (session.getAttribute("usuario") == null) {
 			return "redirect:/Index";
-		}
-		
-		if (session.getAttribute("userType").equals("t")) {
+		} else if (session.getAttribute("userType").equals("t")) {
 			return "redirect:/Index";
 		}
 		

@@ -74,8 +74,8 @@
 												<li><a class="dropdown-item" href="<c:url value='/ListDelivery'/>"><i class="fas fa-list"></i> Listar Pedidos de Delivery </a></li>
 										<li><a class="dropdown-item" href="<c:url value='/Logout'/>"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión </a></li>
 										<li><hr class="dropdown-divider"></li>
-										<li><a class="dropdown-item" href="#"><i
-												class="fas fa-archive"></i> Gestionar Pedido</a></li>
+										<li><a class="dropdown-item" href="<c:url value='/InsertaProducto'/>"><i
+												class="fas fa-archive"></i> Registrar Producto</a></li>
 									</ul></li>
 							</ul>
 						</c:when>

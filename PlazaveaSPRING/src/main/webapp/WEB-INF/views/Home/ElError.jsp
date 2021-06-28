@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
@@ -23,26 +24,23 @@
 	href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-	
-<title>Registro Exitoso</title>
+<title>Error</title>
 </head>
-<body background="img/background.jpg" style="background-size: cover;">
+<body background='<c:url value="img/background.jpg"/>' style="background-size: cover;">
 	<%@include file="/WEB-INF/views/shared/header.jsp"%>
-	
-	<br><br><br>
 	
 	<div class="container" style="padding: 20px;">
 		<div class="row">
 			<div class="col-md-12"
 				style="background: #fff; padding: 15px 20px 15px 20px;">
-				<h1 style='color: black;' align="center" ><b>Registro Exitoso</b></h1>
-				
+				<h1 style='color:red;' align="center"><b>ERROR</b></h1>
+				<h5 align="center">Correo o contraseña inválido(s).</h5>
 				<br><br><br>
-				<h4 align="center"><a class="nav-link" href="<c:url value='/Login'/>">Inicie Sesión Ahora</a></h4> <br><br><br>
+				<h4 align="center"><a class="nav-link" href="<c:url value='/Login'/>">Intentar de nuevo</a></h4>
 			</div>
 		</div>
 	</div>
-	
+
 	<!--Final-->
 	<%@include file="/WEB-INF/views/shared/footer.jsp" %>
 	

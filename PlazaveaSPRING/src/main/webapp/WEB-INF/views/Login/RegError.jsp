@@ -24,7 +24,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 	
-<title>Registro Exitoso</title>
+<title>Error de Registro</title>
 </head>
 <body background="img/background.jpg" style="background-size: cover;">
 	<%@include file="/WEB-INF/views/shared/header.jsp"%>
@@ -35,10 +35,10 @@
 		<div class="row">
 			<div class="col-md-12"
 				style="background: #fff; padding: 15px 20px 15px 20px;">
-				<h1 style='color: black;' align="center" ><b>Registro Exitoso</b></h1>
-				
+				<h1 style='color:red' align="center" ><b>ERROR</b></h1>
+				<h5 align="center">Correo inválido.</h5>
 				<br><br><br>
-				<h4 align="center"><a class="nav-link" href="<c:url value='/Login'/>">Inicie Sesión Ahora</a></h4> <br><br><br>
+				<h4 align="center"><a class="nav-link" href="<c:url value='/Registro'/>">Intentar de nuevo</a></h4> <br><br><br>
 			</div>
 		</div>
 	</div>

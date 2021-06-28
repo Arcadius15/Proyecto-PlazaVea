@@ -84,8 +84,24 @@
                                 
 								<div class="btn-group" role="group"
 									style="margin-top: 20px;">
-									<button type="button" class="btn btn-primary" style="margin-right: 20px;" onclick="agregar()">Añadir
-										a Carrito</button>
+									<c:choose>
+										<c:when test="${sessionScope.userType == 'c' }">
+											<button type="button" class="btn btn-primary" style="margin-right: 20px;" onclick="agregar()">Añadir
+												a Carrito</button>
+										</c:when>
+										<c:when test="${sessionScope.usuario == null }">
+											<button type="button" class="btn btn-primary" style="margin-right: 20px;" onclick="agregar()">Añadir
+												a Carrito</button>
+										</c:when>
+										<c:otherwise>
+											<button type="button" class="btn btn-primary" style="margin-right: 20px;" onclick="Swal.fire({
+												  icon: 'error',
+												  title: 'Error',
+												  text: 'Solo los clientes pueden añadir productos al carrito.'
+												})">Añadir
+												a Carrito</button>
+										</c:otherwise>
+									</c:choose>
 								</div>
 
 							</form:form>

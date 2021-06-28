@@ -32,6 +32,10 @@ public class TarjetaController {
 			return "redirect:/Index";
 		}
 		
+		if (session.getAttribute("userType").equals("t")) {
+			return "redirect:/Index";
+		}
+		
 		Cliente usuario = (Cliente) session.getAttribute("usuario");
 		model.addAttribute("tarjeta",new Tarjeta());
 		Collection <Tarjeta> tarjeta =  new ArrayList<>();
@@ -66,6 +70,10 @@ public class TarjetaController {
 	@RequestMapping(value = "/TarjetaEditar/{tarjetaId}", method = RequestMethod.GET)
 	public String tarjetaEditar_GET(Model model, Map map, HttpSession session, @PathVariable("tarjetaId") Integer tarjetaId) {
 		if (session.getAttribute("usuario") == null) {
+			return "redirect:/Index";
+		}
+		
+		if (session.getAttribute("userType").equals("t")) {
 			return "redirect:/Index";
 		}
 		

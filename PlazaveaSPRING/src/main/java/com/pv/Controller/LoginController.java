@@ -67,16 +67,25 @@ public class LoginController {
 				return "redirect:/Index";
 			}
 		}
-		return "redirect:/Home/Error";
+		return "redirect:/ELERROR";
 	}
 	
-	@RequestMapping(value="/ERROR",method = RequestMethod.GET)
+	@RequestMapping(value="/ELERROR",method = RequestMethod.GET)
 	public String error_GET(HttpSession session) {
 		if (session.getAttribute("bCategoria") == null) {
 			session.setAttribute("bCategoria",categoriaService.findAll());
 		}
 		
-		return "/Home/Error";
+		return "/Home/ElError";
+	}
+	
+	@RequestMapping(value="/REGERROR",method = RequestMethod.GET)
+	public String regerror_GET(HttpSession session) {
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
+		}
+		
+		return "/Login/RegError";
 	}
 	
 	@RequestMapping(value="/ChangePassword",method = RequestMethod.GET)
@@ -103,7 +112,7 @@ public class LoginController {
 				return "redirect:/Login";
 			}
 		}
-		return "redirect:/ERROR";
+		return "redirect:/ELERROR";
 	}
 	
 	@RequestMapping(value="/Registro",method = RequestMethod.GET)
@@ -123,6 +132,12 @@ public class LoginController {
 	
 	@RequestMapping(value="/Registro",method = RequestMethod.POST)
 	public String registro_POST(Cliente cliente) {
+		String[] correoParts = cliente.getUserCliente().getCorreo().split("@");
+		
+		if (correoParts[1].equals("transportista.com")) {
+			return "redirect:/REGERROR";
+		}
+		
 		logService.insert(cliente.getUserCliente());
 		
 		clienteService.insert(cliente);

@@ -68,7 +68,11 @@ public class ProductoController {
 	}
 	
 	@RequestMapping(value = "/InsertaProducto",method = RequestMethod.GET)
-	public String Insertar_GET(Model model,	Map map) {
+	public String Insertar_GET(Model model,	Map map, HttpSession session) {
+		if (session.getAttribute("userType").equals("c")) {
+			return "redirect:/Index";
+		}
+		
 		map.put("Proveedores", proveedorService.findAll());
 		map.put("Categorias", categoriaService.findAll());
 		Producto productoMod = new Producto();
@@ -120,13 +124,19 @@ public class ProductoController {
 	
 	
 	@RequestMapping(value = "/VerCarritoCompra",method = RequestMethod.GET)
-	public String carroCompra_GET(HttpSession session, Map map,Model model) {
+	public String carroCompra_GET(HttpSession session, Map map,Model model) {		
+		if (session.getAttribute("usuario") != null) {
+			if (session.getAttribute("userType").equals("t")) {
+				return "redirect:/Index";
+			}
+		}
+		
 		//se obtiene cliente
 		Cliente cliente = (Cliente) session.getAttribute("usuario");
 		
 		//si no se encuentra cliente redirect a index
 		if (cliente==null) {
-			return "redirect:/Index";
+			return "redirect:/Login";
 		}
 		
 		//se obtiene los id de los productos agregados

@@ -66,11 +66,11 @@
 					<div class="row">
 						<div class="col">
 							<form:input class="form-control form-control-lg" type="text"  path="dni" value="" 
-								placeholder="DNI" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="8" required="true"/>
+								placeholder="DNI" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8" maxlength="8" required="true"/>
 						</div>
 						<div class="col">
 							<form:input class="form-control form-control-lg" type="text" path="telefono" value="" 
-								placeholder="Número telefónico" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="9" required="true"/>
+								placeholder="Número telefónico" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="9" maxlength="9" required="true"/>
 						</div>
 					</div>
 				</div>
