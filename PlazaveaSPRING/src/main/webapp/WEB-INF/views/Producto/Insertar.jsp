@@ -46,23 +46,24 @@
 					enctype="multipart/form-data">
                   <div class="mb-3">
                     <label for="nombreInput" class="form-label">Nombre</label>
-                    <form:input type="text" class="form-control" id="nombreInput" path="nombre"/>
+                    <form:input type="text" class="form-control" id="nombreInput" path="nombre" required="true"/>
                   </div>
                   <div class="mb-3">
                     <label for="precioUnidad" class="form-label">Precio</label>
-                    <form:input type="number" class="form-control" id="precioUnidad" path="precioUnidad" step="any"/>
+                    <form:input type="number" class="form-control" id="precioUnidad" path="precioUnidad" step="any" required="true"/>
                   </div>
                   <div class="mb-3">
                     <label for="Stock" class="form-label">Stock</label>
-                    <form:input type="number" class="form-control" id="Stock" path="stock"/>
+                    <form:input type="number" class="form-control" id="Stock" path="stock" required="true"/>
                   </div>
                   <div class="mb-3">
                     <label for="Descripcion" class="form-label">Descripcion</label>
-                    <form:input type="text" class="form-control" id="Descripcion" path="descripcion"/>
+                    <form:input type="text" class="form-control" id="Descripcion" path="descripcion" required="true"/>
                   </div>
                   <div class="mb-3">
                     <label for="imagenInput" class="form-label">Seleccione Imagen</label>
-                    <input type="file" class="form-control form-control-sm" name="picture" accept="image/jpeg, image/png" id="imagenInput"/>
+                    <input type="file" class="form-control form-control-sm" name="picture" accept="image/jpeg, image/png" id="imagenInput"
+                    	required="required"/>
                   </div>
                   <div class="mb-3">
                     <label for="Categoria" class="form-label">Categoria</label>
