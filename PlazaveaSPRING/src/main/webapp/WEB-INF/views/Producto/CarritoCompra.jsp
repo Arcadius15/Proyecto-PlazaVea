@@ -142,7 +142,7 @@
 						
 						</p>
 						<button type="submit" onclick="validar()" class="btn btn-success">Confirmar</button>
-						<button type="button" class="btn btn-danger">Cancelar</button>
+						<button type="button" onclick="cancelar()" class="btn btn-danger" >Cancelar</button>
 					</div>
 					<div class="card-footer text-muted">
 						Total de Compra :

@@ -82,3 +82,49 @@ function eliminar(productoid) {
 		}
 	});
 }
+
+function cancelar() {
+	let valor = true;
+	let mensaje = JSON.stringify(valor);
+	Swal.fire({
+		title: 'Esta seguro de Cancelar?',
+		text: "El carro de compra quedara vacio!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, cancelar!'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				type: "POST",
+				contentType: 'application/json; charset=utf-8',
+				dataType: 'json',
+				url: 'http://localhost:8089/pv/CancelarCompra',
+				data: mensaje, // Note it is important
+				timeout: 100000,
+				success: function(result) {
+					if (result === 1) {
+						Swal.fire(
+							'Procesado',
+							'Cancelado Exitosamente.',
+							'info'
+						);
+						location.href="/pv/Index";
+					} else {
+						Swal.fire(
+							'Error',
+							'Ups... Hubo algun error.',
+							'error'
+						);
+					}
+
+				},
+				error: function(e) {
+					console.log("ERROR: ", e);
+				}
+			});
+		}
+	})
+
+}

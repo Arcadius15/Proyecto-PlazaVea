@@ -315,5 +315,24 @@ public class ProductoController {
 		map.put("listado", listado);
 		return "/Producto/Boleta";
 	}
+	
+	@PostMapping(value = "/CancelarCompra")
+	@ResponseBody
+	public Integer cancelarCompra_POST(@RequestBody Boolean valor,HttpSession session) {
+		try {
+			if (valor) {
+				session.setAttribute("carritocompra", null);
+				session.setAttribute("carrito", null);
+				return 1;
+			}else {
+				return 2;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 2;
+		}
+		
+	}
 
 }
