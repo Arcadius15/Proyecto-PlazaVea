@@ -35,7 +35,7 @@ public class TarjetaController {
 		Cliente usuario = (Cliente) session.getAttribute("usuario");
 		model.addAttribute("tarjeta",new Tarjeta());
 		Collection <Tarjeta> tarjeta =  new ArrayList<>();
-		for (Tarjeta obj : tarjetaService.findAll()) {
+		for (Tarjeta obj : tarjetaService.findAllbyCliente(usuario)) {
 			if (obj.getCliente().getClienteId().equals(usuario.getClienteId())) {
 				tarjeta.add(obj);
 			}
@@ -72,7 +72,7 @@ public class TarjetaController {
 		Cliente usuario = (Cliente) session.getAttribute("usuario");
 		model.addAttribute("tarjeta",tarjetaService.findById(tarjetaId));
 		Collection <Tarjeta> tarjeta =  new ArrayList<>();
-		for (Tarjeta obj : tarjetaService.findAll()) {
+		for (Tarjeta obj : tarjetaService.findAllbyCliente(usuario)) {
 			if (obj.getCliente().getClienteId().equals(usuario.getClienteId())) {
 				tarjeta.add(obj);
 			}

@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pv.Entity.Cliente;
 import com.pv.Entity.Tarjeta;
 import com.pv.Repository.TarjetaRepository;
 
@@ -41,8 +42,8 @@ public class TarjetaServiceImpl implements TarjetaService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Collection<Tarjeta> findAll() {
-		return repository.findAll();
+	public Collection<Tarjeta> findAllbyCliente(Cliente cliente) {
+		return repository.findByCliente(cliente);
 	}
 
 }

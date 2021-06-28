@@ -123,17 +123,21 @@ public class ProductoController {
 	public String carroCompra_GET(HttpSession session, Map map,Model model) {
 		//se obtiene cliente
 		Cliente cliente = (Cliente) session.getAttribute("usuario");
+		
 		//si no se encuentra cliente redirect a index
 		if (cliente==null) {
 			return "redirect:/Index";
 		}
+		
 		//se obtiene los id de los productos agregados
 		List<JsonCarrito> carrito  = (List<JsonCarrito>) session.getAttribute("carrito");
 		if (carrito==null) {
 			return "redirect:/Index";
 		}
+		
 		//se crea un carrito de compras completo
 		List<OrdenDetalle> detalles = new ArrayList<OrdenDetalle>();
+		
 		//se agrega los productos a un objeto OrdenDetalle
 		for (JsonCarrito item : carrito) {
 			OrdenDetalle producto = new OrdenDetalle();
@@ -150,11 +154,11 @@ public class ProductoController {
 			producto.setPrecio(preciototal);
 			detalles.add(producto);
 		}
-		//carrito de compras es la lista de OrdenDetalle sin OrdenID
-		session.setAttribute("carritocompra", detalles);
-		//Tarjetas es la lista completa de CCs
-		map.put("tarjetas", tarjetaService.findAll());
+		if (cliente.getDireccion()==null) {
+			return "redirect:/VerDireccion";
+		}
 		String[] direccion = cliente.getDireccion().split("<br>");
+		
 		String direccioncocatenado = "";
 		for (String string : direccion) {
 			if (direccioncocatenado == "") {
@@ -163,7 +167,15 @@ public class ProductoController {
 				direccioncocatenado = direccioncocatenado + ", " + string;
 			}
 		}
+		
+		System.out.println(tarjetaService.findAllbyCliente(cliente));
+		
+		//carrito de compras es la lista de OrdenDetalle sin OrdenID
+		session.setAttribute("carritocompra", detalles);
+		//Tarjetas es la lista completa de CCs
+		map.put("tarjetas", tarjetaService.findAllbyCliente(cliente));
 		model.addAttribute("direccion",direccioncocatenado);
+		
 		return "/Producto/CarritoCompra";
 	}
 	
