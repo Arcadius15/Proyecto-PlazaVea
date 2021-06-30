@@ -45,14 +45,14 @@
 							<form:input class="form-control form-control-lg" type="number" path="usuarioId" placeholder="ID"/>
 						</div>	
 						<div class="mb-3">	
-							<form:input class="form-control form-control-lg" type="email" path="correo" placeholder="Correo"/>
+							<form:input class="form-control form-control-lg" type="email" path="correo" placeholder="Correo" required="true"/>
 							
 						</div>	
 						<div class="mb-3 ">	
-							<form:input class="form-control form-control-lg" type="password" path="contrasenia" placeholder="Contraseña"/>
+							<form:input class="form-control form-control-lg" type="password" path="contrasenia" placeholder="Contraseña" required="true"/>
 						</div>	
 						<div class="mb-3 ">	
-							<input class="form-control form-control-lg" type="password" name="confPass" placeholder="Confirmar Contraseña"/>
+							<input class="form-control form-control-lg" type="password" name="confPass" placeholder="Confirmar Contraseña" required="required"/>
 						</div>		
 						
 						<div class="d-grid gap-2 col-6 mx-auto">
