@@ -1,21 +1,22 @@
 function asignar(ordenid){
 	
-	ordenid = JSON.stringify(ordenid);
+	ordenidJSON = JSON.stringify(ordenid);
 	
 	$.ajax({
 		type: "POST",
 		contentType: 'application/json; charset=utf-8',
 		dataType: 'json',
 		url: 'http://localhost:8089/pv/asignarTransportista',
-		data: ordenid,
+		data: ordenidJSON,
 		success: function(result) {
 			Swal.fire({
 				icon: 'success',
 				title: "Asignaci\u00F3n exitosa!",
 		        text: 'Usted se asign\u00F3 como transportista para esta orden.',
-		        type: "success"
 			}).then((result) => {
-				$("#tblPedidos").load("ListDelivery #tblPedidos");
+				$("#tblPedidos").load("ListDelivery #tblPedidos", function(){
+					$("#tr"+ordenid).addClass('table-info');
+				});
 			});
 		},
 		error: function(e) {

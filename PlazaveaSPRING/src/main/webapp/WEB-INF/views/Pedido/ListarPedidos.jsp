@@ -51,7 +51,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="orders" items="${listOrders}">
-								<tr>
+								<tr id="tr${orders[0]}">
 									<td scope="row">${orders[0]}</td>
 									<td>${orders[3]}</td>
 									<td>${orders[1]}</td>
