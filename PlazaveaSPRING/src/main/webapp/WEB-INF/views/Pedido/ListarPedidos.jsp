@@ -35,7 +35,7 @@
 				style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh);">
 				<h1 align="center">Lista de Pedidos de Delivery</h1>
 				<hr>
-				<div class="table-responsive">
+				<div class="table-responsive" id="tblPedidos">
 					<table class="table table-warning table-striped">
 						<thead>
 							<tr>
@@ -66,7 +66,7 @@
 									</c:if>
 									<c:if test="${orders[5] == 'Pendiente'}">
 										<td>
-											 <button type="button" class="btn btn-success btn-sm" onclick="location.href='<c:url value="/asignarTransportista/${orders[0]}"/>'">Asignar Transportista</button>
+											 <button type="button" class="btn btn-success btn-sm" onclick="asignar(${orders[0]})">Asignar Transportista</button>
 										</td>
 									</c:if>
 									<c:if test="${orders[5] != 'Pendiente'}">
@@ -90,7 +90,10 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 		crossorigin="anonymous"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript" src="js/Index.js"></script>
+	<script type="text/javascript" src="js/Transportista.js"></script>
 </body>
 </html>

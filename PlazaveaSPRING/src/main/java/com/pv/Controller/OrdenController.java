@@ -12,8 +12,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pv.Entity.Orden;
 import com.pv.Entity.OrdenDetalle;
@@ -50,15 +53,14 @@ public class OrdenController {
 		return "/Pedido/ListarPedidos";
 	}
 	
-	@RequestMapping(value="/asignarTransportista/{ordenId}", method = RequestMethod.GET)
-	public String asignarTransportista_GET(@PathVariable Integer ordenId, HttpSession session) {
+	@PostMapping(value = "/asignarTransportista")
+	@ResponseBody
+	public void asignarTransportista_GET(@RequestBody Integer ordenId, HttpSession session) {
 		Transportista transportista = (Transportista) session.getAttribute("usuario");
 		
 		Orden orden = ordenService.findById(ordenId);
 		orden.setEstadoOrden(estadoOrdenService.findById(3));
 		orden.setTransportista(transportista);
 		ordenService.update(orden);
-		
-		return "redirect:/ListDelivery";
 	}
 }
