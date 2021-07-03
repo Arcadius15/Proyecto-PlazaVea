@@ -123,5 +123,6 @@
 		crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+	<script type="text/javascript" src="../js/Index.js"></script>
+	
 </html>

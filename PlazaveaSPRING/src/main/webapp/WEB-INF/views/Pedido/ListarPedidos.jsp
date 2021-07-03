@@ -71,7 +71,7 @@
 									</c:if>
 									<c:if test="${orders[5] != 'Pendiente'}">
 										<td>
-											 <button type="button" class="btn btn-info btn-sm" onclick="location.href='<c:url value="/actualizarEstado/${orders[0]}"/>'">Actualizar Estado</button>
+											 <button type="button" class="btn btn-info btn-sm" onclick="location.href='<c:url value="/infoPedido/${orders[0]}"/>'">Actualizar Estado</button>
 										</td>
 									</c:if>
 								</tr>

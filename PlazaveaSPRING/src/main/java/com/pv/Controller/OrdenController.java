@@ -63,4 +63,12 @@ public class OrdenController {
 		orden.setTransportista(transportista);
 		ordenService.update(orden);
 	}
+	
+	@RequestMapping(value = "/infoPedido/${ordenId}", method = RequestMethod.GET)
+	public String infoPedido_GET(Model model, @PathVariable Integer ordenId) {
+		model.addAttribute("orden", ordenService.findById(ordenId));
+		model.addAttribute("estados", estadoOrdenService.findAll());
+		
+		return "/Pedido/InfoPedido";
+	}
 }
