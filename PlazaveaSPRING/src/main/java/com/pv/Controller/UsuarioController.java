@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pv.Entity.Cliente;
+import com.pv.Entity.Orden;
 import com.pv.Entity.Transportista;
 import com.pv.Service.ClienteService;
 import com.pv.Service.LoginService;
+import com.pv.Service.OrdenService;
 import com.pv.Service.TransportistaService;
 
 @Controller
@@ -28,6 +30,9 @@ public class UsuarioController {
 	
 	@Autowired
 	private TransportistaService transportistaService;
+	
+	@Autowired
+	private OrdenService ordenService;
 	
 	@RequestMapping(value = "/VerDatos/cliente", method = RequestMethod.GET)
 	public String verDatos_GET(Model model, HttpSession session) {
@@ -125,6 +130,23 @@ public class UsuarioController {
 		session.setAttribute("usuario", transportista);
 		
 		return "redirect:/VerDatos/transportista";
+	}
+	
+	@RequestMapping(value ="/VerHistorialCompras", method = RequestMethod.GET)
+	public String verHistorial_GET(Model model, HttpSession session) {
+		if (session.getAttribute("usuario") == null) {
+			return "redirect:/Index";
+		}
+		
+		if (session.getAttribute("userType").equals("t")) {
+			return "redirect:/Index";
+		}
+		
+		Cliente cliente = (Cliente) session.getAttribute("usuario");
+		
+		model.addAttribute("orden", ordenService.findAllByClient(cliente.getClienteId()));
+		
+		return "/Usuario/VerHistorialCompras";
 	}
 	
 }

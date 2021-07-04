@@ -37,7 +37,7 @@
         	<!-- List Group -->
             <div class="col-md-3" style="background: #eef111; padding-top: 15px" >
 				<div class="list-group">
-				  <a href="<c:url value='/VerDatos'/>" class="list-group-item list-group-item-action active" aria-current="true">
+				  <a href="<c:url value='/VerDatos/transportista'/>" class="list-group-item list-group-item-action active" aria-current="true">
 				    Datos Personales
 				  </a>
 				</div>

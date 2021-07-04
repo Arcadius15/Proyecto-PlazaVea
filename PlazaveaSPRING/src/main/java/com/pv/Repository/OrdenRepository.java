@@ -27,4 +27,7 @@ public interface OrdenRepository extends JpaRepository<Orden, Integer>{
 	@Query(value="select * from orden where cliente_id = :cliente order by orden_id desc limit 1",nativeQuery = true)
 	public Orden getLastOrden(@Param("cliente") Integer clienteId);
 	
+	@Query(value="select * from orden where cliente_id = :cliente order by orden_id desc",nativeQuery = true)
+	public Collection<Orden> findAllByClient(@Param("cliente") Integer clienteId);
+	
 }

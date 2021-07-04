@@ -53,8 +53,7 @@ public class OrdenServiceDB implements OrdenService{
 	@Override
 	@Transactional(readOnly = true)
 	public Collection<Orden> findAllByClient(Integer clienteId) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAllByClient(clienteId);
 	}
 
 	@Override
