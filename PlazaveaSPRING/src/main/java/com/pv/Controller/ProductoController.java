@@ -69,17 +69,22 @@ public class ProductoController {
 	
 	@RequestMapping(value = "/InsertaProducto",method = RequestMethod.GET)
 	public String Insertar_GET(Model model,	Map map, HttpSession session) {
-		if (session.getAttribute("userType").equals("c")) {
+		try {
+			if (session.getAttribute("userType").equals("c")) {
+				return "redirect:/Index";
+			}else if (session.getAttribute("userType").equals("t")) {
+				map.put("Proveedores", proveedorService.findAll());
+				map.put("Categorias", categoriaService.findAll());
+				Producto productoMod = new Producto();
+				model.addAttribute("producto",productoMod);
+				return "/Producto/Insertar";
+			}
+			return "redirect:/Index";
+			
+		}
+		catch (Exception e) {
 			return "redirect:/Index";
 		}
-		
-		map.put("Proveedores", proveedorService.findAll());
-		map.put("Categorias", categoriaService.findAll());
-		Producto productoMod = new Producto();
-		model.addAttribute("producto",productoMod);
-		
-		
-		return "/Producto/Insertar";
 	}
 	
 	@RequestMapping(value = "/InsertaProducto",method = RequestMethod.POST)

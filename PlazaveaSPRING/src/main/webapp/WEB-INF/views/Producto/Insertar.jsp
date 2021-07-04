@@ -79,7 +79,7 @@
                   </div>
                   <div style="text-align: right;">
                     <button class="btn btn-success btn-sm" type="submit">Registrar</button>
-                    <button class="btn btn-danger btn-sm" type="button" onclick="location.href='<c:url value="/listar_aerolineas"/>'">Cancelar</button>
+                    <button class="btn btn-danger btn-sm" type="button" onclick="location.href='<c:url value="/Index"/>'">Cancelar</button>
                   </div>
 
                 </form:form>
