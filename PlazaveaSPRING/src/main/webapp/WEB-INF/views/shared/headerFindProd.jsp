@@ -52,10 +52,7 @@
 										<li><a class="dropdown-item" href="<c:url value='/Login'/>"><i
 												class="fas fa-user-circle"></i> Iniciar Sesión</a></li>
 										<li><a class="dropdown-item" href="<c:url value='/Registro'/>"><i
-												class="fas fa-address-card"></i> Registrar</a></li>
-										<li><hr class="dropdown-divider"></li>
-										<li><a class="dropdown-item" href="#"><i
-												class="fas fa-archive"></i> Gestionar Pedido</a></li>
+												class="fas fa-address-card"></i> Registrarse</a></li>
 									</ul></li>
 							</ul>
 						</c:when>
@@ -91,8 +88,8 @@
 												class="fas fa-user-circle"></i> Ver Datos Personales </a></li>
 										<li><a class="dropdown-item" href="<c:url value='/Logout'/>"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión </a></li>
 										<li><hr class="dropdown-divider"></li>
-										<li><a class="dropdown-item" href="#"><i
-												class="fas fa-archive"></i> Gestionar Pedido</a></li>
+										<li><a class="dropdown-item" href="<c:url value='/VerHistorialCompras'/>"><i
+												class="fas fa-archive"></i> Historial de Compras</a></li>
 									</ul></li>
 							</ul>
 						</c:otherwise>
