@@ -33,7 +33,35 @@
 	<div class="container" style="padding: 20px;">
 		<div class="row">
 			<div class="col-md-12"
-				style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh);">
+				style="background: #fff; padding: 20px 25px 20px 25px; min-height: calc(100vh);">
+				<h1 align="center">Lista de Proveedores</h1>
+				<br><br>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Raz. Social</th>
+								<th>Fecha de Inscripción</th>
+								<th>Acción</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="proveedor" items="${bProveedor}">
+								<tr>
+									<td>${proveedor.proveedorId}</td>
+									<td>${proveedor.nombre}</td>
+									<td>${proveedor.razonSocial}</td>
+									<td>${proveedor.fechaInscripcion}</td>
+									<td>
+										<button type="button" class="btn btn-success btn-sm" onclick="location.href='<c:url value="/findProductoByProv/${proveedor.nombre}"/>'">Ver Productos</button>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -145,7 +145,7 @@
 												<td>
 													<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 													<a href="<c:url value='/Producto/${producto.productoId}'/>">
-														<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="280px" height="150px"/>
+														<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="200px" height="150px"/>
 													</a>
 												</td>
 											</tr>

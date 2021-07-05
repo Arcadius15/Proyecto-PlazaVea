@@ -23,7 +23,7 @@
 	href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-<title>${valor} - Productos por Categoría</title>
+<title>${valor} - Buscar por Proveedor</title>
 </head>
 
 <!--Header-->
@@ -31,13 +31,12 @@
 	<!-- Inicio -->
 	<%@include file="/WEB-INF/views/shared/headerFindProd.jsp"%>
 	
-	
 	<!-- Cuerpo -->
 	<div class="container" style="padding: 20px;">
         <div class="row">
             <div class="col-md-3" style="background: #eef111;" >
 				<div style="padding-top: 10px; padding-bottom: 5px;">
-					<h5>"${valor}" - Mostrando Productos por Categoría</h5>
+					<h5>"${valor}" - Mostrando Productos por Proveedor</h5>
 				</div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
@@ -48,14 +47,12 @@
                       </h2>
                       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
-                        	<c:forEach var="proveedor" items="${bProveedor}">
-	                            <div class="form-check">
-	                                <input class="form-check-input" type="checkbox" value="${proveedor}" id="${proveedor}" onchange="filtrarPro(this)">
-	                                <label class="form-check-label" for="${proveedor}">
-	                                  ${proveedor}
-	                                </label>
-	                            </div>
-                            </c:forEach>
+                        	<div class="form-check">
+	                            <input class="form-check-input" type="checkbox" value="${valor}" id="${valor}" readonly="readonly" checked onclick="javascript: return false;">
+	                            <label class="form-check-label" for="${valor}">
+	                              ${valor}
+	                            </label>
+	                        </div>
                         </div>
                       </div>
                     </div>
@@ -67,12 +64,14 @@
                       </h2>
                       <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
                         <div class="accordion-body">
-	                           <div class="form-check">
-	                               <input class="form-check-input" type="checkbox" value="${valor}" id="${valor}" readonly="readonly" checked onclick="javascript: return false;">
-	                               <label class="form-check-label" for="${valor}">
-	                                 ${valor}
-	                               </label>
-	                           </div>
+	                    	<c:forEach var="categoria" items="${bCategoria}">
+	                            <div class="form-check">
+	                                <input class="form-check-input" type="checkbox" value="${categoria}" id="${categoria}" onchange="filtrarCat(this)">
+	                                <label class="form-check-label" for="${categoria}">
+	                                  ${categoria}
+	                                </label>
+	                            </div>
+                            </c:forEach>
                         </div>
                       </div>
                     </div>
@@ -178,7 +177,6 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/Index.js"></script>
 	<script type="text/javascript" src="../js/Filter.js"></script>
+
 </body>
-
-
 </html>

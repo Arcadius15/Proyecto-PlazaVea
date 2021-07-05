@@ -45,4 +45,9 @@ public class ProductoServiceImpl implements ProductoService {
 		return repository.findByCat(nombre);
 	}
 
+	@Override
+	public Collection<Producto> findByProv(String nombre) {
+		return repository.findByProv(nombre);
+	}
+
 }

@@ -321,6 +321,27 @@ public class ProductoController {
 		return "/Producto/Boleta";
 	}
 	
+	@RequestMapping(value = "/findProductoByProv/{valor}",method = RequestMethod.GET)
+	public String findProductoByProv_GET(Model model, Map map, @PathVariable String valor, HttpSession session) {
+		if (session.getAttribute("bCategoria") == null) {
+			session.setAttribute("bCategoria",categoriaService.findAll());
+		}
+		
+		Collection<Producto> productoMod = productoService.findByProv(valor);
+		model.addAttribute("bProducto",productoMod);
+		model.addAttribute("valor", valor);
+		
+		List<String> categorias = new ArrayList<String>();
+		
+		for (Producto producto : productoMod) {
+			categorias.add(producto.getCategoria().getNombre());
+		}
+		
+		map.put("bCategoria", new HashSet<String>(categorias));
+		
+		return "/Producto/FindProductoByProv";
+	}
+	
 	@PostMapping(value = "/CancelarCompra")
 	@ResponseBody
 	public Integer cancelarCompra_POST(@RequestBody Boolean valor,HttpSession session) {
