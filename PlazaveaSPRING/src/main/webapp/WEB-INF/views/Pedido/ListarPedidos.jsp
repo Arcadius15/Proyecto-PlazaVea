@@ -36,14 +36,15 @@
 				<h1 align="center">Lista de Pedidos de Delivery</h1>
 				<hr>
 				<div class="table-responsive" id="tblPedidos">
-					<table class="table table-warning table-striped">
+					<table class="table table-warning table-striped" style="width: 100%">
 						<thead>
 							<tr>
-								<th scope="col">ID</th>
+								<th scope="col" style="width: 2%">ID</th>
 								<th scope="col">Cliente</th>
 								<th scope="col">Dirección</th>
 								<th scope="col">Fecha de compra</th>
-								<th scope="col">Cantidad de Productos</th>
+								<th scope="col" style="width: 11%">Fecha estimada</th>
+								<th scope="col" style="width: 11%">Cantidad de Productos</th>
 								<th scope="col">Estado de entrega</th>
 								<th scope="col">Transportista</th>
 								<th scope="col">Acciones</th>
@@ -52,11 +53,12 @@
 						<tbody>
 							<c:forEach var="orders" items="${listOrders}">
 								<tr id="tr${orders[0]}">
-									<td scope="row">${orders[0]}</td>
+									<td scope="row" style="width: 2%">${orders[0]}</td>
 									<td>${orders[3]}</td>
 									<td>${orders[1]}</td>
 									<td>${orders[2]}</td>
-									<td>${orders[6]}</td>
+									<td style="width: 11%">${orders[2].toLocalDate().plusDays(10)}</td>
+									<td style="width: 11%" align="center">${orders[6]}</td>
 									<td>${orders[5]}</td>
 									<c:if test="${orders[7] == null}">
 										<td>Aún sin asignar</td>

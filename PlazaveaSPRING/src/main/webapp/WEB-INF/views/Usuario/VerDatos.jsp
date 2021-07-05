@@ -62,13 +62,13 @@
 						</div>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
 							<label for="exampleFormControlInput1" class="form-label">DNI:</label>
-							<form:input class="form-control form-control-lg" type="number" path="dni" value="${sessionScope.usuario.dni}"
-								placeholder="Ingrese un DNI"/>
+							<form:input class="form-control form-control-lg" type="text" path="dni" value="${sessionScope.usuario.dni}"
+								placeholder="Ingrese un DNI" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="8" maxlength="8" required="true"/>
 						</div>
 						<div class="mb-3 " style="padding-bottom: 10px; padding-left: 50px; padding-right: 50px;">
 							<label for="exampleFormControlInput1" class="form-label">Número Telefónico:</label>
 							<form:input class="form-control form-control-lg" type="text" path="telefono" value="${sessionScope.usuario.telefono}"
-								placeholder="Ingrese un Número Telefónico"/>
+								placeholder="Ingrese un Número Telefónico" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="9" maxlength="9" required="true"/>
 						</div>
 						<hr>
 						<form:input path="userCliente.usuarioId" type="hidden"/>

@@ -149,6 +149,13 @@
 						<h4>
 							<strong>${total}</strong>
 						</h4>
+						<hr>
+						<h5>Fecha estimada de entrega : <script>
+								var fecha = new Date();
+								fecha.setDate(fecha.getDate() + 10);
+								document.write(fecha.toLocaleDateString());
+							</script>
+						</h5>
 					</div>
 				</div>
 

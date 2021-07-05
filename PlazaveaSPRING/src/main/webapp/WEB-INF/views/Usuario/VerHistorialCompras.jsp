@@ -66,7 +66,7 @@
                 				<tr>
                 					<td>${orden.ordenId}</td>
                 					<c:set var="ordenDetalle" value="${orden.itemsOrdenDetalle.iterator().next()}"></c:set>
-                					<td>
+                					<td align="center">
 	                					<img
 											src="data:image/${typeImage};base64,${ordenDetalle.producto.getBase64Image()}"
 											width="100" height="120" style="border: 0px solid; padding: 5px;" /> <br>
@@ -76,7 +76,7 @@
 										</c:if> 
 									</td>
 									<td>${orden.fecha}</td>
-									<td>${orden.fecha}</td>
+									<td>${orden.fecha.plusDays(10)}</td>
 									<td>${orden.estadoOrden.descripcion}</td>
 									<td>
 										<button type="button" class="btn btn-success btn-sm" onclick="location.href='<c:url value="/infoPedido/${orden.ordenId}"/>'">Más Información</button>
