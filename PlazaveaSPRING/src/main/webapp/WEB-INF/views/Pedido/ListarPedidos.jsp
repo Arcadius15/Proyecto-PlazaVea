@@ -55,9 +55,9 @@
 								<tr id="tr${orders[0]}">
 									<td scope="row" style="width: 2%">${orders[0]}</td>
 									<td>${orders[3]}</td>
-									<td>${orders[1]}</td>
-									<td>${orders[2]}</td>
-									<td style="width: 11%">${orders[2].toLocalDate().plusDays(10)}</td>
+									<td id="dir${orders[0]}">${orders[1]}</td>
+									<td id="fecha${orders[0]}">${orders[2]}</td>
+									<td style="width: 11%" id="estim${orders[0]}">${orders[2].toLocalDate().plusDays(10)}</td>
 									<td style="width: 11%" align="center">${orders[6]}</td>
 									<td>${orders[5]}</td>
 									<c:if test="${orders[7] == null}">

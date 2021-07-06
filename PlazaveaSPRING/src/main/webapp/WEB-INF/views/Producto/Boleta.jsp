@@ -74,7 +74,7 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="2" >Impuesto: S/. ${orden.impuesto}</td>
-                                    <td colspan="3" >Monto: S/. ${total + orden.impuesto}</td>
+                                    <td colspan="3" >Monto Total con Impuesto: S/. ${total + orden.impuesto}</td>
                                 </tr>
                             </tfoot>
                         </table>
