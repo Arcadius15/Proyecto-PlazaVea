@@ -29,17 +29,7 @@
 <body background='<c:url value="img/background.jpg"/>' style="background-size: cover;">
 	<%@include file="/WEB-INF/views/shared/header.jsp"%>
 	
-	<div class="container" style="padding: 20px;">
-		<div class="row">
-			<div class="col-md-12"
-				style="background: #fff; padding: 15px 20px 15px 20px;">
-				<h1 style='color:red;' align="center"><b>ERROR</b></h1>
-				<h5 align="center">Correo o contraseña inválido(s).</h5>
-				<br><br><br>
-				<h4 align="center"><a class="nav-link" href="<c:url value='/Login'/>">Intentar de nuevo</a></h4>
-			</div>
-		</div>
-	</div>
+	
 
 	<!--Final-->
 	<%@include file="/WEB-INF/views/shared/footer.jsp" %>
@@ -51,5 +41,13 @@
 		crossorigin="anonymous"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/Index.js"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+  
+	<script t src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<script t src="js/sweetAlertLogin.js"></script>
+	
 </body>
 </html>
