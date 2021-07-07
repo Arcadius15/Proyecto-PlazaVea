@@ -32,16 +32,9 @@
 	<br><br><br>
 	
 	<div class="container" style="padding: 20px;">
-		<div class="row">
-			<div class="col-md-12"
-				style="background: #fff; padding: 15px 20px 15px 20px;">
-				<h1 style='color: black;' align="center" ><b>Registro Exitoso</b></h1>
+		
 				
-				<br><br><br>
-				<h4 align="center"><a class="nav-link" href="<c:url value='/Login'/>">Inicie Sesión Ahora</a></h4> <br><br><br>
 			</div>
-		</div>
-	</div>
 	
 	<!--Final-->
 	<%@include file="/WEB-INF/views/shared/footer.jsp" %>
@@ -53,5 +46,15 @@
 		crossorigin="anonymous"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/Index.js"></script>
+	
+	
+	
+	<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+  
+	<script t src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<script t src="js/sweetAlert.js"></script>
 </body>
 </html>

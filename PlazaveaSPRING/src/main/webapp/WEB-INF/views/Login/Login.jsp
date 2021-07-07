@@ -37,6 +37,7 @@
 			<form:form class="form-login" method="post" modelAttribute="login" autocomplete="off">
 				<center><FONT FACE="impact" SIZE=6 COLOR="white"> Formulario Login</FONT></center>
 					<div class="mb-3 ">
+					
 						<form:input class="form-control form-control-lg" type="email" path="correo" value="" 
 							placeholder="Correo" required="true"/>
 					
@@ -46,6 +47,8 @@
 							placeholder="Contraseña" required="true"/>
 					</div>
 					<div class="d-grid gap-2 col-6 mx-auto" style="padding-bottom: 10px;">
+					
+					
 						<input class="btn btn-primary btn-lg" type="submit" name="" value="Ingresar">
 					</div>
 				
@@ -66,5 +69,10 @@
 		crossorigin="anonymous"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/Index.js"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>
