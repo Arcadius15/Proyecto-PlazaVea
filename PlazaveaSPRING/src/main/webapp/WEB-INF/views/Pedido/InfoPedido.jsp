@@ -40,7 +40,13 @@
 				</div>
 				<c:if test="${sessionScope.userType == 't'}">
 					<div class="col-md-3">
-						<!-- Combobox y botón para actualizar estado -->
+						<form:form method="post" modelAttribute="orden">
+							<label for="Estado" class="form-label">Actualizar Estado de Orden</label>
+		                    <form:select path="estadoOrden.estadoId" class="form-select form-select-sm" id="Estado">
+								<form:options items="${estados}" itemValue="estadoId" itemLabel="descripcion"/>
+							</form:select>
+							<form:button class="btn btn-success btn-sm" type="submit">Actualizar</form:button>
+						</form:form>
 					</div>
 				</c:if>
 			</div>
