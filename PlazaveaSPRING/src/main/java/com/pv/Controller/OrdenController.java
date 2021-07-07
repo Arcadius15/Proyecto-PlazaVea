@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pv.Entity.Cliente;
 import com.pv.Entity.Orden;
 import com.pv.Entity.OrdenDetalle;
 import com.pv.Entity.Transportista;
@@ -30,13 +31,9 @@ import com.pv.Service.ProductoService;
 public class OrdenController {
 	
 	@Autowired
-	private ProductoService productoService;
-	@Autowired
 	private OrdenService ordenService;
 	@Autowired
 	private EstadoOrdenService estadoOrdenService;
-	@Autowired
-	private OrdenDetService ordenDetService;
 	
 	@RequestMapping(value = "/ListDelivery", method = RequestMethod.GET)
 	public String listarPedidos_GET(Map map, Model model, HttpSession session) {
@@ -65,8 +62,26 @@ public class OrdenController {
 	}
 	
 	@RequestMapping(value = "/infoPedido/{ordenId}", method = RequestMethod.GET)
-	public String infoPedido_GET(Model model, @PathVariable Integer ordenId) {
+	public String infoPedido_GET(Model model, @PathVariable Integer ordenId, HttpSession session) {
 		Orden orden =  ordenService.findById(ordenId);
+		
+		if (session.getAttribute("usuario") == null) {
+			return "redirect:/Index";
+		}
+		
+		if (session.getAttribute("userType").equals("c")) {
+			Cliente cliente = (Cliente) session.getAttribute("usuario");
+			
+			if (orden.getCliente().getClienteId() != cliente.getClienteId()) {
+				return "redirect:/Index";
+			}
+		} else if (session.getAttribute("userType").equals("t")) {
+			Transportista transpostista = (Transportista) session.getAttribute("usuario");
+			
+			if (orden.getTransportista().getTransportistaId() != transpostista.getTransportistaId()) {
+				return "redirect:/TransportistaError";
+			}
+		}
 		
 		model.addAttribute("orden", orden);
 		model.addAttribute("estados", estadoOrdenService.findAll());
@@ -107,5 +122,10 @@ public class OrdenController {
 		ordenService.update(orden);
 		
 		return "redirect:/infoPedido/{ordenId}";
+	}
+	
+	@RequestMapping(value = "/TransportistaError", method = RequestMethod.GET)
+	public String transportistaError_GET() {
+		return "/Pedido/TransportistaError";
 	}
 }

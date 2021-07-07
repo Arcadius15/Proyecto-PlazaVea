@@ -236,7 +236,6 @@ public class ProductoController {
 			orden.setDireccion(jsonorden.getDireccion());
 			orden.setEstadoOrden(estadoOrdenService.findById(1));
 			orden.setFecha(LocalDate.now());
-			orden.setFechaEntrega(LocalDate.now().plusDays(5));
 			double suma = carrito.stream().mapToDouble(o->o.getPrecio()).sum();
 			orden.setImpuesto(Math.round((suma*0.19)*100)/100d);
 			orden.setTarjeta(tarjetaService.findById(jsonorden.getTarjetaId()));
