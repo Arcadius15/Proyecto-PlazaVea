@@ -38,7 +38,7 @@
             <div class="col-md-3" style="background: #eef111; padding-top: 15px" >
 				<div class="list-group">
 				  <a href="<c:url value='/VerDatos/cliente'/>" class="list-group-item list-group-item-action">Datos Personales</a>
-				  <a href="<c:url value='/VerDirección'/>" class="list-group-item list-group-item-action">Dirección</a>
+				  <a href="<c:url value='/VerDireccion'/>" class="list-group-item list-group-item-action">Dirección</a>
 				  <a href="<c:url value='/VerMetodoPago'/>" class="list-group-item list-group-item-action">Métodos de Pago</a>
 				  <a href="<c:url value='/VerHistorialCompras'/>" class="list-group-item list-group-item-action active" aria-current="true">
 				  	Historial de Compras

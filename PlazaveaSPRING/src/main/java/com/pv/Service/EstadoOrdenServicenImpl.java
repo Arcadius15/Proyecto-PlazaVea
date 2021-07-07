@@ -27,4 +27,10 @@ public class EstadoOrdenServicenImpl implements EstadoOrdenService{
 		return repository.findAll();
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public EstadoOrden findByName(String descripcion) {
+		return repository.findByName(descripcion);
+	}
+
 }
