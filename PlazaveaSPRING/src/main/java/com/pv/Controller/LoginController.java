@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -133,15 +134,21 @@ public class LoginController {
 	@RequestMapping(value="/Registro",method = RequestMethod.POST)
 	public String registro_POST(Cliente cliente) {
 		String[] correoParts = cliente.getUserCliente().getCorreo().split("@");
-		
+			
 		if (correoParts[1].equals("transportista.com")) {
 			return "redirect:/REGERROR";
 		}
-		
+			
+		for (Usuario usuario : logService.findAll()) {
+			if (cliente.getUserCliente().getCorreo().equals(usuario.getCorreo())) {
+				return "redirect:/REGERROR";
+			}
+		}
+			
 		logService.insert(cliente.getUserCliente());
-		
+			
 		clienteService.insert(cliente);
-		
+			
 		return "redirect:/RegSuccess";
 	}
 	
