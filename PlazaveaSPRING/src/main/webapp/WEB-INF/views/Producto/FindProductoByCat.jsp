@@ -56,6 +56,9 @@
 	                                </label>
 	                            </div>
                             </c:forEach>
+                            <div align="center" style="padding-top: 10px;">
+	                            <button type="button" class="btn btn-primary btn-sm" id="borrarProveedores" onclick="borrarProveedores()">Borrar Filtros de Proveedor</button>
+	                        </div>
                         </div>
                       </div>
                     </div>
