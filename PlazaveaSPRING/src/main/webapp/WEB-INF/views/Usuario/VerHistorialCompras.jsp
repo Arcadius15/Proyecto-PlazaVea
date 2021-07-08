@@ -64,7 +64,7 @@
                 		<tbody>
                 			<c:forEach var="orden" items="${orden}">
                 				<tr>
-                					<td>${orden.ordenId}</td>
+                					<td style="vertical-align: middle;">${orden.ordenId}</td>
                 					<c:set var="ordenDetalle" value="${orden.itemsOrdenDetalle.iterator().next()}"></c:set>
                 					<td align="center">
 	                					<img
@@ -75,10 +75,10 @@
 											<p style="color: green;">Y otro(s) ${orden.itemsOrdenDetalle.size() - 1} producto(s) más</p>
 										</c:if> 
 									</td>
-									<td>${orden.fecha}</td>
-									<td>${orden.fecha.plusDays(10)}</td>
-									<td>${orden.estadoOrden.descripcion}</td>
-									<td>
+									<td style="vertical-align: middle;">${orden.fecha}</td>
+									<td style="vertical-align: middle;">${orden.fecha.plusDays(10)}</td>
+									<td style="vertical-align: middle;">${orden.estadoOrden.descripcion}</td>
+									<td style="vertical-align: middle;">
 										<button type="button" class="btn btn-success btn-sm" onclick="location.href='<c:url value="/infoPedido/${orden.ordenId}"/>'">Más Información</button>
 									</td>
                 				</tr>	

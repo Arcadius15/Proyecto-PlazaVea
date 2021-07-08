@@ -6,6 +6,7 @@ function actualizar() {
 			title: '<strong>\u00BFEst\u00E1 seguro de cancelar el pedido?<strong>',
 			icon: 'info',
 			text: 'Si solo hubo un problema con el transporte, deje el estado actual o c\u00E1mbielo a Pendiente de ser necesario.',
+			showCancelButton: true,
 			confirmButtonText: 'Actualizar',
 			cancelButtonText: 'Cancelar'
 		}).then((resultado) => {
@@ -25,6 +26,7 @@ function actualizar() {
 			title: '<strong>\u00BFEst\u00E1 seguro de cambiar a Pendiente?<strong>',
 			icon: 'info',
 			text: 'Si procede, usted dejar\u00E1 de ser el transportista de esta orden.',
+			showCancelButton: true,
 			confirmButtonText: 'Actualizar',
 			cancelButtonText: 'Cancelar'
 		}).then((resultado) => {
@@ -44,6 +46,7 @@ function actualizar() {
 			title: '<strong>\u00BFEst\u00E1 seguro de retroceder el estado?<strong>',
 			icon: 'info',
 			text: 'Si se va a demorar m\u00E1s de lo esperado, deje el estado actual.',
+			showCancelButton: true,
 			confirmButtonText: 'Actualizar',
 			cancelButtonText: 'Cancelar'
 		}).then((resultado) => {
@@ -63,6 +66,7 @@ function actualizar() {
 			title: '<strong>\u00BFEst\u00E1 seguro de actualizar el estado?<strong>',
 			icon: 'info',
 			text: 'Revise bien la informaci\u00F3n para evitar errores.',
+			showCancelButton: true,
 			confirmButtonText: 'Actualizar',
 			cancelButtonText: 'Cancelar'
 		}).then((resultado) => {

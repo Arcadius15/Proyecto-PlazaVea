@@ -67,6 +67,7 @@
 							  				<th>Producto</th>
 							  				<th>Cantidad</th>
 							  				<th>Precio por unidad</th>
+							  				<th>Descuento</th>
 							  				<th>Precio Total</th>
 							  			</tr>
 							  		</thead>
@@ -79,12 +80,25 @@
 													width="100" height="120" style="border: 0px solid; padding: 5px;" /> <br>
 													${ordenDetalle.producto.nombre}
 							  					</td>
-							  					<td>${ordenDetalle.cantidad}</td>
-							  					<td>${ordenDetalle.producto.precioUnidad}</td>
-							  					<td>${ordenDetalle.precio}</td>
+							  					<td style="vertical-align: middle;">${ordenDetalle.cantidad}</td>
+							  					<td style="vertical-align: middle;">s/${ordenDetalle.producto.precioUnidad}</td>
+							  					<td style="vertical-align: middle;">s/${ordenDetalle.descuento}</td>
+							  					<td style="vertical-align: middle;">s/${ordenDetalle.precio}</td>
 							  				</tr>
+							  				<c:set var="total" value="${total = total + ordenDetalle.precio}"/>
 							  			</c:forEach>
 							  		</tbody>
+							  		<tfoot align="center">
+							  			<tr>
+							  				<td colspan="5"><b>SubTotal:</b> s/${total}</td>
+							  			</tr>
+							  			<tr>
+							  				<td colspan="5"><b>Impuesto:</b> s/${orden.impuesto}</td>
+							  			</tr>
+							  			<tr>
+							  				<td colspan="5"><b>Monto Total:</b> s/${total + orden.impuesto}</td>
+							  			</tr>
+							  		</tfoot>
 							  	</table>
 							  </div>
 					</div>
