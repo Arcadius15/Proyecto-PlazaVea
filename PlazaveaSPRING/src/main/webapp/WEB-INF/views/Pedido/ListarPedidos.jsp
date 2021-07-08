@@ -34,9 +34,17 @@
 			<div class="col-md-12"
 				style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh);">
 				<h1 align="center">Lista de Pedidos de Delivery</h1>
+				<c:set var="transportista" value="${sessionScope.usuario}"/>
+				<input type="hidden" id="trNombre" value="${transportista.nombre} ${transportista.apellido}">
+				<hr>
+				<div class="d-grid gap-2 d-md-block" align="center">
+				  <button class="btn btn-success" type="button" onclick="filtrarPendientes()">Mostrar Pedidos Sin Asignar</button>
+				  <button class="btn btn-info" type="button" onclick="filtrarTransportista()">Mostrar Pedidos Asignados a Mí</button>
+				  <button class="btn btn-warning" type="button" onclick="quitarFiltros()">Mostrar Todos los Pedidos</button>
+				</div>
 				<hr>
 				<div class="table-responsive" id="tblPedidos">
-					<table class="table table-warning table-striped" style="width: 100%">
+					<table id="innerTablePedidos" class="table table-warning table-striped" style="width: 100%">
 						<thead>
 							<tr>
 								<th scope="col" style="width: 2%">ID</th>
@@ -80,6 +88,9 @@
 							</c:forEach>
 						</tbody>
 					</table>
+					<div align="center" style="display: none;" id="zeroMsg">
+		                <h5>No se encontraron pedidos.</h5>
+		            </div>
 				</div>
 			</div>
 		</div>

@@ -40,10 +40,7 @@
 				<form:form   class="form-login" id="formulario"  method="post" modelAttribute="login">
 				
 					<center><FONT FACE="impact" SIZE=6 COLOR="white"> Cambiar Contraseña</FONT></center>
-					
-						<div class="mb-3 ">
-							<form:input class="form-control form-control-lg" type="number" path="usuarioId" placeholder="ID" required="true"/>
-						</div>	
+						<!--<form:input class="form-control form-control-lg" type="number" path="usuarioId" placeholder="ID" required="true"/> -->
 						<div class="mb-3">	
 							<form:input class="form-control form-control-lg" type="email" path="correo" placeholder="Correo" required="true"/>
 							

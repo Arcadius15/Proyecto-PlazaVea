@@ -12,7 +12,7 @@ function validar() {
 	text:"Los Passwords tienen que ser iguales " ,
 	icon: 'error',
 	confirmButtonColor: '#ff002f',
-	confirmButtonText: '<a class=" btn" href="/pv/ChangePassword"><b> Volver a intentar</b></a>',
+	confirmButtonText: '<b>Volver a intentar</b>',
  		
    })
  

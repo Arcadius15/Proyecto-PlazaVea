@@ -108,8 +108,9 @@ public class LoginController {
 	public String changepassword_POST(Usuario login) {
 		Collection<Usuario> lista = logService.findAll();
 		for (Usuario log : lista) {
-			if (log.getCorreo().equals(login.getCorreo()) && log.getUsuarioId().equals(login.getUsuarioId())) {
-				logService.update(login);
+			if (log.getCorreo().equals(login.getCorreo())) {
+				log.setContrasenia(login.getContrasenia());
+				logService.update(log);
 				return "redirect:/Login";
 			}
 		}

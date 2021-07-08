@@ -44,3 +44,74 @@ function asignar(ordenid){
 		}
 	});
 }
+
+function filtrarTransportista(){
+	var transportista = document.getElementById("trNombre").value;
+	
+	var table = document.getElementById("innerTablePedidos");
+	var trs = table.getElementsByTagName("tr");
+	
+	var c = 0;
+	
+	for (let i = 0; i < trs.length - 1; i++){
+		visible = false;
+		var tds = trs[i+1].getElementsByTagName("td");
+		
+		if (tds[7].innerHTML.indexOf(transportista) > -1) {
+			visible = true;
+		}
+		
+		if (visible === true) {
+			trs[i+1].style.display = "";
+		} else {
+			trs[i+1].style.display = "none";
+			c++;
+			
+			if (c === trs.length - 1) {
+				document.getElementById("zeroMsg").style.display = "";
+			} else {
+				document.getElementById("zeroMsg").style.display = "none";
+			}
+		}
+	}
+}
+
+function filtrarPendientes(){
+	var table = document.getElementById("innerTablePedidos");
+	var trs = table.getElementsByTagName("tr");
+	
+	var c = 0;
+	
+	for (let i = 0; i < trs.length - 1; i++){
+		visible = false;
+		var tds = trs[i+1].getElementsByTagName("td");
+		
+		if (tds[6].innerHTML.indexOf("Pendiente") > -1) {
+			visible = true;
+		}
+		
+		if (visible === true) {
+			trs[i+1].style.display = "";
+		} else {
+			trs[i+1].style.display = "none";
+			c++;
+			
+			if (c === trs.length - 1) {
+				document.getElementById("zeroMsg").style.display = "";
+			} else {
+				document.getElementById("zeroMsg").style.display = "none";
+			}
+		}
+	}
+}
+
+function quitarFiltros(){
+	var table = document.getElementById("innerTablePedidos");
+	var trs = table.getElementsByTagName("tr");
+	
+	for (let i = 0; i < trs.length - 1; i++){
+		trs[i+1].style.display = "";
+	}
+	
+	document.getElementById("zeroMsg").style.display = "none";
+}
