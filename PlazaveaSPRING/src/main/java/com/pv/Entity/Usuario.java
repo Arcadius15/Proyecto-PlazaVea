@@ -22,7 +22,7 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer usuarioId;
-	@Column
+	@Column(unique = true,nullable = false)
 	private String correo;
 	@Column(length = 20)
 	private String contrasenia;
