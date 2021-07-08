@@ -9,3 +9,24 @@ function buscar() {
 	}
 }
 
+function vercarcompra(user){
+	if(user==''){
+		Swal.fire(
+					'Denegado',
+					'Debe registrarse para ingresar al Carro de Compra!',
+					'error'
+				).then((result) => {
+					location.href="/pv/Login";
+					});
+	}else if(user==null){
+		Swal.fire(
+					'Denegado',
+					'Carrito de Compras Vacio',
+					'error'
+				)
+	}
+	else{
+		location.href="/pv/VerCarritoCompra";
+	}
+}
+
