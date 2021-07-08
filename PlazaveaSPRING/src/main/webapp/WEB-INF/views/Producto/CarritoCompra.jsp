@@ -23,6 +23,7 @@
 	href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+	<link rel="stylesheet" href="css/main.css" type="text/css">
 <title>Carrito de Compra</title>
 </head>
 <body background='<c:url value="img/background.jpg"/>'
@@ -66,9 +67,7 @@
 												<td>${item.producto.nombre}</td>
 												<td>${item.producto.precioUnidad}</td>
 												<td>${item.producto.stock}</td>
-												<td><input type="number"
-													class="form-control form-control-sm"
-													style="max-width: 80px;" value="${item.cantidad}"></td>
+												<td>${item.cantidad}</td>
 												<td>${item.producto.precioUnidad*item.cantidad} </td>
 												<td>
 													<div class="btn-group" role="group">

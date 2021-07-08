@@ -21,7 +21,9 @@ function agregar() {
 					'Procesado',
 					'Producto Agregado Exitosamente!',
 					'success'
-				);
+				).then((result) => {
+					location.href="/pv/Index";
+					});
 			}
 			else if (result === 2) {
 				Swal.fire(

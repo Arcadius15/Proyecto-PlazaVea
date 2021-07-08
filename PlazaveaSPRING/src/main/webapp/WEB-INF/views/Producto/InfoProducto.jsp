@@ -40,6 +40,7 @@
 				style="max-width: 10500px;background: #95e455;padding: 30px;">
 				<div class="row g-0">
 					<div class="col-md-4">
+						<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 						<img
 							src="data:image/${typeImage};base64,${producto.getBase64Image()}"
 							width="300" height="360" style="border: 0px solid; padding: 10px" />

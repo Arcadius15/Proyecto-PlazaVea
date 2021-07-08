@@ -43,7 +43,37 @@
 					<c:choose>
 						<c:when test="${sessionScope.usuario == null}">
 							<ul class="navbar-nav ml-auto p-2">
-								<li class="nav-item"><a class="nav-link" href="<c:url value='/VerCarritoCompra'/>"><i class="fas fa-shopping-cart"></i> Carrito de Compra</a></li>
+								<c:choose>
+									<c:when test = "${sessionScope.carritocount > 0}">
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+												role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												<i class="fas fa-shopping-cart"></i> Carrito de Compra : 
+							            			<span style="color: yellow;">${sessionScope.carritocount}</span>
+											</a>
+											<ul class="carrito dropdown-menu" aria-labelledby="navbarDropdown">
+												<c:forEach var="objcar" items="${sessionScope.carritohead}">
+													<c:set var="typeImage" value="${fn:substringAfter(objcar[0].nombreImagen,'.') }" />
+													<li class="text-center">
+														<img src="data:image/${typeImage};base64,${objcar[0].getBase64Image()}" width="80px" height="50px"/>
+														<a class="dropdown-item" href="#">${objcar[0].nombre}</a>
+														<span>Cantidad: ${objcar[1]}</span>
+													</li>
+												</c:forEach>
+	
+												<li><hr class="dropdown-divider"></li>
+												<li><a class="dropdown-item" href="#"><b>Ver Informacion Detallada</b></a></li>
+											</ul></li>
+									</c:when>
+									<c:otherwise>
+							            <li class="nav-item">
+							            	<a class="nav-link" href="#">
+							            		<i class="fas fa-shopping-cart"></i> Carrito de Compra : 
+							            			<span style="color: yellow;">${sessionScope.carritocount}</span></a>
+							            </li>
+							         </c:otherwise>
+														
+								</c:choose>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 									role="button" data-bs-toggle="dropdown" aria-expanded="false">
