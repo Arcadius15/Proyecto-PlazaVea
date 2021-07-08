@@ -2,6 +2,7 @@ package com.pv.Controller;
 
 import org.springframework.stereotype.Controller;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -78,7 +79,7 @@ public class OrdenController {
 		} else if (session.getAttribute("userType").equals("t")) {
 			Transportista transpostista = (Transportista) session.getAttribute("usuario");
 			
-			if (orden.getTransportista().getTransportistaId() != transpostista.getTransportistaId()) {
+			if (orden.getTransportista().getTransportistaId() == null || orden.getTransportista().getTransportistaId() != transpostista.getTransportistaId()) {
 				return "redirect:/TransportistaError";
 			}
 		}
@@ -119,6 +120,14 @@ public class OrdenController {
 	
 	@RequestMapping(value = "/infoPedido/{ordenId}", method = RequestMethod.POST)
 	public String infoPedido_POST(Orden orden) {
+		if (orden.getEstadoOrden().getEstadoId() == 1) {
+			orden.setTransportista(null);
+			ordenService.update(orden);
+			return "redirect:/ListDelivery";
+		} else if (orden.getEstadoOrden().getEstadoId() == 8) {
+			orden.setFechaEntrega(LocalDate.now());
+		}
+		
 		ordenService.update(orden);
 		
 		return "redirect:/infoPedido/{ordenId}";

@@ -36,7 +36,7 @@
 		<div style="padding-top : 150px" >
 		<div class="container" style="background-color: #cf260f; padding : 50px;">
 		
-			<form:form class="form-login" method="post" modelAttribute="cliente" autocomplete="off">
+			<form:form class="form-login" method="post" modelAttribute="cliente" autocomplete="off" accept-charset="utf-8">
 			
 				<center><FONT FACE="impact" SIZE=6 COLOR="white"> Registrar Usuario</FONT></center>
 			

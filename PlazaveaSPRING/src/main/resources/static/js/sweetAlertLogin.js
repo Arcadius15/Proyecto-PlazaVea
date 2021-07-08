@@ -7,7 +7,8 @@ Swal.fire({
 	allowOutsideClick:false,
 	alowEscapeKey: false,
 	allowEnterkey: false,
-	
-	
-
+}).then((resultado) => {
+	if (resultado.isConfirmed) {
+		location.href = '/pv/Login';
+	}
 });

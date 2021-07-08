@@ -40,9 +40,13 @@
 				<div class="row" style="padding-top: 20px;">
 					<div class="col-md-8">
 						<h5 align="center">${estadoOrden}</h5>
+						<input type="hidden" id="estadoActual" value="${orden.estadoOrden.estadoId}">
 						<div class="progress">
 						  <div class="progress-bar progress-bar-striped ${animado}" role="progressbar" style="width: ${estadoPorcentaje}%" aria-valuenow="${estadoPorcentaje}" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
+						<c:if test="${orden.fechaEntrega != null}">
+							<p align="center"><b>Entregado el: </b>${orden.fechaEntrega}</p>
+						</c:if>
 						<div class="card" style="margin-top: 25px;">
 							  <div class="card-body">
 							  		<h6><b>Dirección de Entrega:</b> ${orden.direccion}</h6>
@@ -88,21 +92,33 @@
 						<div class="col-md-4">
 							<div class="card">
 							  <div class="card-body">
-								<form:form method="post" modelAttribute="orden">
+								<form:form method="post" modelAttribute="orden" id="actualizarEstado" accept-charset="utf-8">
 									<form:input type="hidden" path="ordenId"/>
 									<form:input type="hidden" path="direccion"/>
 									<form:input type="hidden" path="impuesto"/>
 									<form:input type="hidden" path="tarjeta"/>
+									<form:input type="hidden" path="fecha"/>
 									<form:input type="hidden" path="cliente.clienteId"/>
+									<form:input type="hidden" path="transportista.transportistaId"/>
 									<label for="Estado" class="form-label">Actualizar Estado de Orden</label>
 				                    <form:select path="estadoOrden.estadoId" class="form-select form-select-sm" id="Estado">
 										<form:options items="${estados}" itemValue="estadoId" itemLabel="descripcion"/>
 									</form:select>
-									<div align="center" style="padding-top: 20px;">
-										<form:button class="btn btn-success btn-sm" type="submit">Actualizar</form:button>
-									</div>
+									<c:if test="${orden.fechaEntrega == null && orden.estadoOrden.estadoId != 9}">
+										<div align="center" style="padding-top: 20px;">
+											<form:button class="btn btn-success btn-sm" type="button" onclick="actualizar()">Actualizar</form:button>
+										</div>
+									</c:if>
+									<c:if test="${orden.fechaEntrega != null || orden.estadoOrden.estadoId == 9}">
+										<div align="center" style="padding-top: 20px;">
+											<form:button class="btn btn-success btn-sm" type="button" disabled="true">Actualizar</form:button>
+										</div>
+									</c:if>
 								</form:form>
 							  </div>
+							</div>
+							<div align="center" style="padding-top: 15px;">
+								<button class="btn btn-primary btn-md" onclick="location.href='<c:url value="/ListDelivery"/>'">Volver al Listado</button>
 							</div>
 						</div>
 					</c:if>
@@ -129,5 +145,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript" src="../js/Index.js"></script>
+	<script type="text/javascript" src="../js/Pedido.js"></script>
 </body>
 </html>
