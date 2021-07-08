@@ -48,14 +48,22 @@
                       </h2>
                       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
-                        	<c:forEach var="proveedor" items="${bProveedor}">
-	                            <div class="form-check">
-	                                <input class="form-check-input" type="checkbox" value="${proveedor}" id="${proveedor}" onchange="filtrarPro(this)">
-	                                <label class="form-check-label" for="${proveedor}">
-	                                  ${proveedor}
-	                                </label>
+                        	<c:if test="${bProveedor.isEmpty()}">
+                        		<p align="center">No hay resultados</p>
+                        	</c:if>
+                        	<c:if test="${!bProveedor.isEmpty()}">
+                        		<c:forEach var="proveedor" items="${bProveedor}">
+		                            <div class="form-check">
+		                                <input class="form-check-input" type="checkbox" value="${proveedor}" id="${proveedor}" onchange="filtrarPro(this)">
+		                                <label class="form-check-label" for="${proveedor}">
+		                                  ${proveedor}
+		                                </label>
+		                            </div>
+	                            </c:forEach>
+	                            <div align="center" style="padding-top: 10px;">
+	                            	<button type="button" class="btn btn-primary btn-sm" id="borrarProveedores" onclick="borrarProveedores()">Borrar Filtros de Proveedor</button>
 	                            </div>
-                            </c:forEach>
+                        	</c:if>
                         </div>
                       </div>
                     </div>
@@ -67,14 +75,22 @@
                       </h2>
                       <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
                         <div class="accordion-body">
-                            <c:forEach var="categoria" items="${bCategoria}">
-	                            <div class="form-check">
-	                                <input class="form-check-input" type="checkbox" value="${categoria}" id="${categoria}" onchange="filtrarCat(this)">
-	                                <label class="form-check-label" for="${categoria}">
-	                                  ${categoria}
-	                                </label>
+                        	<c:if test="${bCategoria.isEmpty()}">
+                        		<p align="center">No hay resultados</p>
+                        	</c:if>
+                        	<c:if test="${!bCategoria.isEmpty()}">
+                        		<c:forEach var="categoria" items="${bCategoria}">
+		                            <div class="form-check">
+		                                <input class="form-check-input" type="checkbox" value="${categoria}" id="${categoria}" onchange="filtrarCat(this)">
+		                                <label class="form-check-label" for="${categoria}">
+		                                  ${categoria}
+		                                </label>
+		                            </div>
+	                            </c:forEach>
+	                            <div align="center" style="padding-top: 10px;">
+	                            	<button type="button" class="btn btn-primary btn-sm" id="borrarCategorias" onclick="borrarCategorias()">Borrar Filtros de Categoría</button>
 	                            </div>
-                            </c:forEach>
+                        	</c:if>
                         </div>
                       </div>
                     </div>
