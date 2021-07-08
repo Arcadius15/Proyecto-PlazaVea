@@ -72,9 +72,6 @@
 	                                </label>
 	                            </div>
                             </c:forEach>
-                            <div align="center" style="padding-top: 10px;">
-	                            <button type="button" class="btn btn-primary btn-sm" id="borrarCategorias" onclick="borrarCategorias()">Borrar Filtros de Categoría</button>
-	                        </div>
                         </div>
                       </div>
                     </div>

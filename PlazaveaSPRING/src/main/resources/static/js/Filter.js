@@ -45,20 +45,20 @@ function aplicarFiltro(){
 			}
 		} else if (filtrosPro.length > 0 && filtrosCat.length === 0) {
 			for (let f = 0; f < filtrosPro.length; f++){
-				if (td[3].innerHTML.indexOf(filtrosPro[f]) > -1){
+				if (td[3].innerHTML.toUpperCase().indexOf(filtrosPro[f]) > -1){
 					visible = true;
 				}
 			}
 		} else if (filtrosPro.length === 0 && filtrosCat.length > 0) {
 			for (let f = 0; f < filtrosCat.length; f++){
-				if (td[4].innerHTML.indexOf(filtrosCat[f]) > -1){
+				if (td[4].innerHTML.toUpperCase().indexOf(filtrosCat[f]) > -1){
 					visible = true;
 				}
 			}
 		} else if (filtrosPro.length > 0 && filtrosCat.length > 0) {
 			for (let fp = 0; fp < filtrosPro.length; fp++){
 				for (let fc = 0; fc < filtrosCat.length; fc++){
-					if (td[3].innerHTML.indexOf(filtrosPro[fp]) > -1 && td[4].innerHTML.indexOf(filtrosCat[fc]) > -1){
+					if (td[3].innerHTML.toUpperCase().indexOf(filtrosPro[fp]) > -1 && td[4].innerHTML.toUpperCase().indexOf(filtrosCat[fc]) > -1){
 						visible = true;
 					}
 				}
@@ -96,7 +96,7 @@ function aplicarFiltro(){
 }
 
 function filtrarPro(check){
-	const chk = check.value;
+	const chk = check.value.toUpperCase();
 	
 	if($('#'+check.value).is(':checked')){
 		filtrosPro.push(chk);
@@ -110,7 +110,7 @@ function filtrarPro(check){
 }
 
 function filtrarCat(check){
-	const chk = check.value;
+	const chk = check.value.toUpperCase();
 	
 	if($('#'+check.value).is(':checked')){
 		filtrosCat.push(chk);
@@ -131,30 +131,6 @@ function filtrarPre(){
 
 function quitarFiltPre(){
 	document.getElementById("filtPreMsg").style.display = "none";
-	
-	aplicarFiltro();
-}
-
-function borrarProveedores(){
-	for (let bp = 0; bp < filtrosPro.length; bp++) {
-		if (document.getElementById(filtrosPro[bp]).checked) {
-			document.getElementById(filtrosPro[bp]).checked = false;
-		}
-	}
-	
-	filtrosPro.length = 0;
-	
-	aplicarFiltro();
-}
-
-function borrarCategorias(){
-	for (let bc = 0; bc < filtrosCat.length; bc++) {
-		if (document.getElementById(filtrosCat[bc]).checked) {
-			document.getElementById(filtrosCat[bc]).checked = false;
-		}
-	}
-	
-	filtrosCat.length = 0;
 	
 	aplicarFiltro();
 }
