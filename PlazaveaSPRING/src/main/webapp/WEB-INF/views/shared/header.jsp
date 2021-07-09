@@ -41,7 +41,7 @@
 					id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto p-2">
 						<c:choose>
-									<c:when test = "${sessionScope.carritocount > 0}">
+									<c:when test = "${sessionScope.carritocount > 0 && sessionScope.userType != 't'}">
 										<li class="nav-item dropdown">
 											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 												role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,17 +59,39 @@
 												</c:forEach>
 	
 												<li><hr class="dropdown-divider"></li>
-												<li><button type="button" class="dropdown-item" onClick="vercarcompra('${sessionScope.usuario.nombre}')"><b>Ver Informacion Detallada</b></button></li>
+												<li><button type="button" class="dropdown-item" onClick="vercarcompra('${sessionScope.usuario.nombre}')"><b>Ver en el Carrito</b></button></li>
+											</ul></li>
+									</c:when>
+									<c:when test="${sessionScope.userType == 't' }">
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+												role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												<i class="fas fa-shopping-cart"></i> Carrito de Compra
+											</a>
+											<ul class="carrito dropdown-menu" aria-labelledby="navbarDropdown">
+										
+													<li class="text-center">
+														<a class="dropdown-item disabled" href="#">Los transportistas no pueden comprar.</a>
+													</li>
+
 											</ul></li>
 									</c:when>
 									<c:otherwise>
-							            <li class="nav-item">
-							            	<a class="nav-link" href="#" onClick="vercarcompra()">
-							            		<i class="fas fa-shopping-cart"></i> Carrito de Compra</a>
-							            </li>
+							            <li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+												role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												<i class="fas fa-shopping-cart"></i> Carrito de Compra
+											</a>
+											<ul class="carrito dropdown-menu" aria-labelledby="navbarDropdown">
+										
+													<li class="text-center">
+														<a class="dropdown-item disabled" href="#">No hay productos en el carrito</a>
+													</li>
+
+											</ul></li>
 							         </c:otherwise>
 														
-								</c:choose>
+						</c:choose>
 					<c:choose>
 						<c:when test="${sessionScope.usuario == null}">
 							

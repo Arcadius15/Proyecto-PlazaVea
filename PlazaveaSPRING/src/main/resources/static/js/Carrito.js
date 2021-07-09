@@ -30,7 +30,9 @@ function agregar() {
 					'Actualizado',
 					'Se cambio el Stock del Producto!',
 					'info'
-				);
+				).then((result) => {
+					location.href="/pv/Index";
+					});
 			}
 			else {
 				Swal.fire(

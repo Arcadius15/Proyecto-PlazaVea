@@ -78,7 +78,7 @@
 											<div class="carousel-item active">
 												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 												<a href="<c:url value='/Producto/${producto.productoId}'/>">
-													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="140px"/>
 												</a>
 												<div align="center">
 													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
@@ -90,7 +90,7 @@
 											<div class="carousel-item">
 												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 												<a href="<c:url value='/Producto/${producto.productoId}'/>">
-													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="140px"/>
 												</a>
 												<div align="center">
 													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
@@ -125,7 +125,7 @@
 											<div class="carousel-item active">
 												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 												<a href="<c:url value='/Producto/${producto.productoId}'/>">
-													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="140px"/>
 												</a>
 												<div align="center">
 													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
@@ -137,7 +137,7 @@
 											<div class="carousel-item">
 												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 												<a href="<c:url value='/Producto/${producto.productoId}'/>">
-													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="140px"/>
 												</a>
 												<div align="center">
 													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
@@ -172,7 +172,7 @@
 											<div class="carousel-item active">
 												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 												<a href="<c:url value='/Producto/${producto.productoId}'/>">
-													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="140px"/>
 												</a>
 												<div align="center">
 													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
@@ -184,7 +184,7 @@
 											<div class="carousel-item">
 												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 												<a href="<c:url value='/Producto/${producto.productoId}'/>">
-													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="140px"/>
 												</a>
 												<div align="center">
 													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
@@ -219,7 +219,7 @@
 											<div class="carousel-item active">
 												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 												<a href="<c:url value='/Producto/${producto.productoId}'/>">
-													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="140px"/>
 												</a>
 												<div align="center">
 													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
@@ -231,7 +231,7 @@
 											<div class="carousel-item">
 												<c:set var="typeImage" value="${fn:substringAfter(producto.nombreImagen,'.') }" />
 												<a href="<c:url value='/Producto/${producto.productoId}'/>">
-													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="125px"/>
+													<img src="data:image/${typeImage};base64,${producto.getBase64Image()}" width="250px" height="140px"/>
 												</a>
 												<div align="center">
 													<label for="exampleFormControlInput1" class="form-label" style="color: blue;"><b>${producto.nombre}</b></label> <br>
