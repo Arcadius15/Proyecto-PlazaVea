@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,19 +25,21 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css" type="text/css">
-<title>Carrito de Compra</title>
+<title>Insertar</title>
 </head>
-<body background='<c:url value="img/background.jpg"/>'
+<body background='<c:url value="/img/background.jpg"/>'
 	style="background-size: cover;">
 	<!--Header-->
 	<%@include file="/WEB-INF/views/shared/header.jsp"%>
 	<div class="container" style="padding: 20px;">
       <div class="row">
         <div class="col-md-2" style="padding-right: 20px;">
-				<h5>Insertar Producto <i class="fas fa-plus-circle"></i></h5>
+				<h5>Producto <i class="fas fa-plus-circle"></i></h5>
 				<div class="list-group">
 					<a class="list-group-item list-group-item-action active"
 						href='#'>Inserta Producto</a>
+					<a class="list-group-item list-group-item-action"
+						href='#'>Editar Producto</a>
 				</div>
 			</div>
         <div class="col-md-10" style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh - 60px - 40px - 35px);">

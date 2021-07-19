@@ -27,7 +27,7 @@
 
 <title>Informacion del Producto</title>
 </head>
-<body background="../img/background.jpg" style="background-size: cover;">
+<body background='<c:url value="/img/background.jpg"/>' style="background-size: cover;">
 	<!-- Inicio -->
 	<%@include file="/WEB-INF/views/shared/headerFindProd.jsp"%>
 
@@ -95,12 +95,7 @@
 												a Carrito</button>
 										</c:when>
 										<c:otherwise>
-											<button type="button" class="btn btn-primary" style="margin-right: 20px;" onclick="Swal.fire({
-												  icon: 'error',
-												  title: 'Error',
-												  text: 'Solo los clientes pueden añadir productos al carrito.'
-												})">Añadir
-												a Carrito</button>
+											<a href="<c:url value='/EditarProducto/${producto.productoId}'/>" class="btn btn-info" style="margin-right: 20px;">Editar Producto</a>
 										</c:otherwise>
 									</c:choose>
 								</div>

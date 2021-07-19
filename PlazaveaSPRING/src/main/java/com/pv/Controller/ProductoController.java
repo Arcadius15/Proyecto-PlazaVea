@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -96,6 +97,37 @@ public class ProductoController {
 		productoService.insert(producto);
 		return "redirect:/InsertaProducto";
 	}
+	
+	@RequestMapping(value = "/EditarProducto/{idProducto}",method = RequestMethod.GET)
+	public String Editar_GET(Model model,	Map map, HttpSession session,@PathVariable Integer idProducto) {
+		try {
+			if (session.getAttribute("userType").equals("c")) {
+				return "redirect:/Index";
+			}else if (session.getAttribute("userType").equals("t")) {
+				map.put("Proveedores", proveedorService.findAll());
+				map.put("Categorias", categoriaService.findAll());
+				Producto productoMod = productoService.findById(idProducto);
+				model.addAttribute("producto",productoMod);
+				return "/Producto/Editar";
+			}
+			return "redirect:/Index";
+			
+		}
+		catch (Exception e) {
+			return "redirect:/Index";
+		}
+	}
+	
+	@RequestMapping(value = "/EditarProducto/{idProducto}",method = RequestMethod.POST)
+	public String Editar_POST
+	(@RequestPart("picture") MultipartFile picture,Producto producto,@PathVariable Integer idProducto) 
+	throws IOException{
+		producto.setNombreImagen(picture.getOriginalFilename());
+		producto.setFile(picture.getBytes());
+		productoService.insert(producto);
+		return "redirect:/Producto/" + idProducto;
+	}
+	
 	
 	@RequestMapping(value = "/findProducto/{valor}",method = RequestMethod.GET)
 	public String findProducto_GET(Model model, Map map, @PathVariable String valor, HttpSession session) {
