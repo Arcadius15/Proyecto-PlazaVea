@@ -8,6 +8,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="<c:url value='/img/pvlogo.png'/>"/>
 <!--BootsTrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
@@ -86,13 +87,23 @@
 								<div class="btn-group" role="group"
 									style="margin-top: 20px;">
 									<c:choose>
-										<c:when test="${sessionScope.userType == 'c' }">
+										<c:when test="${sessionScope.userType == 'c' && producto.stock != 0}">
 											<button type="button" class="btn btn-primary" style="margin-right: 20px;" onclick="agregar()">Añadir
 												a Carrito</button>
 										</c:when>
-										<c:when test="${sessionScope.usuario == null }">
+										<c:when test="${sessionScope.usuario == null && producto.stock != 0}">
 											<button type="button" class="btn btn-primary" style="margin-right: 20px;" onclick="agregar()">Añadir
 												a Carrito</button>
+										</c:when>
+										<c:when test="${sessionScope.userType == 'c' && producto.stock == 0}">
+											<button type="button" class="btn btn-primary" style="margin-right: 20px;" disabled="disabled">Añadir
+												a Carrito</button>
+											<p style="color: red;">Fuera de Stock</p>
+										</c:when>
+										<c:when test="${sessionScope.usuario == null && producto.stock == 0}">
+											<button type="button" class="btn btn-primary" style="margin-right: 20px;" disabled="disabled">Añadir
+												a Carrito</button>
+											<p style="color: red;">Fuera de Stock</p>
 										</c:when>
 										<c:otherwise>
 											<a href="<c:url value='/EditarProducto/${producto.productoId}'/>" class="btn btn-info" style="margin-right: 20px;">Editar Producto</a>

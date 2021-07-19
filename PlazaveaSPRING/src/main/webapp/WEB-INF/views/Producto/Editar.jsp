@@ -8,6 +8,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="<c:url value='/img/pvlogo.png'/>"/>
 <!--BootsTrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
@@ -78,10 +79,10 @@
                           <tr>
                             <td align="center">
                             	<c:set var="typeImg" value="${fn:substringAfter(producto.nombreImagen,'.')}"/>
-								<img src="data:image/${typeImg};base64,${producto.getBase64Image()}" width="70" height="100"/>
+								<img src="data:image/${typeImg};base64,${producto.getBase64Image()}" width="100" height="100"/>
 							</td>
 							<td align="center">
-								<img id="imagenPrevisualizacion" width="70" height="100"/>
+								<img id="imagenPrevisualizacion" width="100" height="100"/>
 							</td>
                           </tr>
                         </tbody>

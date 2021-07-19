@@ -13,7 +13,7 @@ function vercarcompra(user){
 	if(user==''){
 		Swal.fire(
 					'Denegado',
-					'Debe registrarse para ingresar al Carro de Compra!',
+					'Debe iniciar sesi\u00F3n para ingresar al Carro de Compra!',
 					'error'
 				).then((result) => {
 					location.href="/pv/Login";

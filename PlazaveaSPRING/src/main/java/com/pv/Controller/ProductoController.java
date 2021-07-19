@@ -129,6 +129,7 @@ public class ProductoController {
 			producto.setNombreImagen(productoService.findById(idProducto).getNombreImagen());
 			producto.setFile(productoService.findById(idProducto).getFile());
 		}
+		
 		productoService.insert(producto);
 		return "redirect:/Producto/" + idProducto;
 	}
