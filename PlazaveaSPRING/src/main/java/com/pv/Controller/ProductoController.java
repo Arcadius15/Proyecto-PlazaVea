@@ -122,8 +122,13 @@ public class ProductoController {
 	public String Editar_POST
 	(@RequestPart("picture") MultipartFile picture,Producto producto,@PathVariable Integer idProducto) 
 	throws IOException{
-		producto.setNombreImagen(picture.getOriginalFilename());
-		producto.setFile(picture.getBytes());
+		if (!picture.isEmpty()) {
+			producto.setNombreImagen(picture.getOriginalFilename());
+			producto.setFile(picture.getBytes());
+		} else {
+			producto.setNombreImagen(productoService.findById(idProducto).getNombreImagen());
+			producto.setFile(productoService.findById(idProducto).getFile());
+		}
 		productoService.insert(producto);
 		return "redirect:/Producto/" + idProducto;
 	}

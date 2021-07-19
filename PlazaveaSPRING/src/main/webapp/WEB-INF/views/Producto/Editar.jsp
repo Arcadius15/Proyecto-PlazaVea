@@ -33,28 +33,22 @@
 	<%@include file="/WEB-INF/views/shared/headerFindProd.jsp"%>
 	<div class="container" style="padding: 20px;">
       <div class="row">
-        <div class="col-md-2" style="padding-right: 20px;">
-				<h5>Producto <i class="fas fa-plus-circle"></i></h5>
-				<div class="list-group">
-					<a class="list-group-item list-group-item-action"
-						href='#'>Inserta Producto</a>
-					<a class="list-group-item list-group-item-action active"
-						href='#'>Editar Producto</a>
-				</div>
+        <div class="col-md-2" style="padding-right: 20px; padding-top: 20px;background: #eef111;">
+				<h5>Editar Producto <i class="fas fa-plus-circle"></i></h5>
 			</div>
         <div class="col-md-10" style="background: #fff; padding: 15px 20px 15px 20px; min-height: calc(100vh - 60px - 40px - 35px);">
-            <h3>Registro</h3>
+            <h3>Editar</h3>
             <div style="padding-top: 10px;">
               <div class="container bg-dark text-white" style="padding: 20px 100px 20px 100px ;">
                 <form:form name="" method="post" modelAttribute="producto" 
 					enctype="multipart/form-data">
 				  <div class="mb-3">
                     <label for="idInput" class="form-label">ID</label>
-                    <form:input type="text" class="form-control" id="idInput" path="productoId" readonly="true"/>
+                    <form:input type="text" class="form-control" id="idInput" path="productoId" readonly="true" maxlength="255"/>
                   </div>
                   <div class="mb-3">
                     <label for="nombreInput" class="form-label">Nombre (*)</label>
-                    <form:input type="text" class="form-control" id="nombreInput" path="nombre" required="true"/>
+                    <form:input type="text" class="form-control" id="nombreInput" path="nombre" required="true" maxlength="255"/>
                   </div>
                   <div class="mb-3">
                     <label for="precioUnidad" class="form-label">Precio (*)</label>
@@ -62,16 +56,37 @@
                   </div>
                   <div class="mb-3">
                     <label for="Stock" class="form-label">Stock (*)</label>
-                    <form:input type="number" class="form-control" id="Stock" path="stock" required="true"/>
+                    <form:input type="text" class="form-control" id="Stock" onkeypress='return event.charCode >= 48 && event.charCode <= 57' path="stock" required="true" maxlength="9"/>
                   </div>
                   <div class="mb-3">
                     <label for="Descripcion" class="form-label">Descripcion (*)</label>
-                    <form:input type="text" class="form-control" id="Descripcion" path="descripcion" required="true"/>
+                    <form:input type="text" class="form-control" id="Descripcion" path="descripcion" required="true" maxlength="255"/>
                   </div>
                   <div class="mb-3">
-                    <label for="imagenInput" class="form-label">Seleccione Imagen (*)</label>
+                    <label for="imagenInput" class="form-label">Seleccione Imagen</label>
                     <input type="file" class="form-control form-control-sm" name="picture" accept="image/jpeg, image/png" id="imagenInput"
                     	required="required"/>
+                    <div class="table-responsive" style="padding: 10px 140px 0px 140px">
+                      <table class="table table-success table-stripped">
+                        <thead>
+                          <tr>
+                            <th scope="col" style="text-align: center;">Imagen Actual</th>
+                            <th scope="col" style="text-align: center;">Nueva Imagen</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td align="center">
+                            	<c:set var="typeImg" value="${fn:substringAfter(producto.nombreImagen,'.')}"/>
+								<img src="data:image/${typeImg};base64,${producto.getBase64Image()}" width="70" height="100"/>
+							</td>
+							<td align="center">
+								<img id="imagenPrevisualizacion" width="70" height="100"/>
+							</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label for="Categoria" class="form-label">Categoria</label>
@@ -86,8 +101,8 @@
 					</form:select>
                   </div>
                   <div style="text-align: right;">
-                    <button class="btn btn-success btn-sm" type="submit">Guardar</button>
-                    <button class="btn btn-danger btn-sm" type="button" onclick="location.href='<c:url value="/Index"/>'">Cancelar</button>
+                    <button class="btn btn-success btn-sm" type="button" id="btnEdit">Guardar</button>
+                    <button class="btn btn-danger btn-sm" type="button" onclick="location.href='<c:url value="/Producto/${producto.productoId}"/>'">Cancelar</button>
                   </div>
 
                 </form:form>
@@ -110,5 +125,61 @@
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script type="text/javascript">
+		$(document).ready(function (){
+			$('form #btnEdit').click(function (e) {
+				let $form = $(this).closest('form');
+				
+				var v = true;
+				
+				$form.find(':input').each(function(){
+					var elemento = this;
+					if (elemento.id === 'btnEdit' || elemento.id.length === 0 || elemento.id === 'imagenInput') {
+						;
+					} else if (elemento.value.length === 0) {
+						v = false;
+					};
+				})
+				
+				if (v === false) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Complete los campos faltantes',
+						confirmButtonText: 'Volver a intentar'
+					})
+				} else {
+					Swal.fire({
+						icon: 'success',
+						title: 'Producto editado',
+						confirmButtonText: 'OK'
+					}).then((result) => {
+						$form.submit();
+					})
+				}
+				
+			})
+		})
+	</script>
+	<script type="text/javascript">
+		const $seleccionArchivos = document.querySelector("#imagenInput"),
+		  $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
+	
+	
+		  $seleccionArchivos.addEventListener("change", () => {
+		  
+		  const archivos = $seleccionArchivos.files;
+		  
+		  if (!archivos || !archivos.length) {
+		    $imagenPrevisualizacion.src = "";
+		    return;
+		  }
+		  
+		  const primerArchivo = archivos[0];
+		  
+		  const objectURL = URL.createObjectURL(primerArchivo);
+		  
+		  $imagenPrevisualizacion.src = objectURL;
+		});
+	</script>
 </body>
 </html>
