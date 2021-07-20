@@ -28,10 +28,6 @@
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="<c:url value='/ListProveedores'/>">Lista de Proveedores</a></li>
 						</ul></li>
-					<li class="nav-item"><a class="nav-link" href="#">Ofertas</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Lanzamientos</a>
-					</li>
 					<li class="nav-item"><a class="nav-link" href="#">Servicio
 							al Cliente</a></li>
 				</ul>

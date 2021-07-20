@@ -57,7 +57,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="Stock" class="form-label">Stock (*)</label>
-                    <form:input type="text" class="form-control" id="Stock" onkeypress='return event.charCode >= 48 && event.charCode <= 57' path="stock" required="true" maxlength="9"/>
+                    <form:input type="text" class="form-control" id="Stock" onkeypress='return event.charCode >= 48 && event.charCode <= 57' path="stock" required="true" maxlength="5"/>
                   </div>
                   <div class="mb-3">
                     <label for="Descripcion" class="form-label">Descripcion (*)</label>
@@ -66,7 +66,7 @@
                   <div class="mb-3">
                     <label for="imagenInput" class="form-label">Seleccione Imagen</label>
                     <input type="file" class="form-control form-control-sm" name="picture" accept="image/jpeg, image/png" id="imagenInput"
-                    	required="required"/>
+                    	/>
                     <div class="table-responsive" style="padding: 10px 140px 0px 140px">
                       <table class="table table-success table-stripped">
                         <thead>
