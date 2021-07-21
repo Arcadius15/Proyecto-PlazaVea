@@ -114,5 +114,15 @@ public class Transportista implements Serializable{
 		this.itemsOrden = itemsOrden;
 	}
 	
+	@OneToMany(mappedBy = "transportista")
+	private Collection<Reporte> itemReporte = new ArrayList<>();
+	public Collection<Reporte> getItemReporte() {
+		return itemReporte;
+	}
+	public void setItemReporte(Collection<Reporte> itemReporte) {
+		this.itemReporte = itemReporte;
+	}
+	
+	
 
 }
