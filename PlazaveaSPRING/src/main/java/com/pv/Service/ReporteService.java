@@ -12,5 +12,6 @@ public interface ReporteService {
 	public abstract void delete (Integer reporteId);
 	public abstract Reporte findById (Integer reporteId);
 	public abstract List<Reporte> findByTransp (Transportista transportista);
+	public abstract List<Reporte> findAll ();
 	
 }

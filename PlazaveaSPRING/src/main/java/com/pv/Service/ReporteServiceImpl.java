@@ -48,4 +48,10 @@ public class ReporteServiceImpl implements ReporteService{
 		return repository.findByTransportista(transportista);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<Reporte> findAll() {
+		return repository.findAll();
+	}
+
 }
