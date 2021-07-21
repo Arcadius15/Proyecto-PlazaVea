@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +26,10 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css" type="text/css">
-
-<title>Lista de Proveedores</title>
+<title>Registrar Reporte</title>
 </head>
-<body background="img/background.jpg" style="background-size: cover;">
+<body background='<c:url value="/img/background.jpg"/>'
+	style="background-size: cover;">
 	<!--Header-->
 	<%@include file="/WEB-INF/views/shared/header.jsp"%>
 	
@@ -38,34 +38,31 @@
 		<div class="row">
 			<div class="col-md-12"
 				style="background: #fff; padding: 20px 25px 20px 25px; min-height: calc(100vh);">
-				<h1 align="center">Lista de Proveedores</h1>
-				<br><br>
-				<div class="table-responsive">
-					<table class="table table-hover table-striped">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Nombre</th>
-								<th>Raz. Social</th>
-								<th>Fecha de Inscripción</th>
-								<th>Acción</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="proveedor" items="${bProveedor}">
-								<tr>
-									<td>${proveedor.proveedorId}</td>
-									<td>${proveedor.nombre}</td>
-									<td>${proveedor.razonSocial}</td>
-									<td>${proveedor.fechaInscripcion}</td>
-									<td>
-										<button type="button" class="btn btn-success btn-sm" onclick="location.href='<c:url value="/findProductoByProv/${proveedor.nombre}"/>'">Ver Productos</button>
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
+				<h1 align="center">Registrar un Reporte</h1>
+				<h6 align="center">sobre el funcionamiento del sistema</h6>
+				<hr>
+				<form:form name="" method="post" modelAttribute="reporte">
+					<div class="row" style="padding-top: 20px;">
+						<div class="col-md-9">
+								  <div class="mb-3">
+				                    <label for="titulo" class="form-label">Título (*)</label>
+				                    <form:input type="text" class="form-control" id="titulo" path="titulo" required="true" maxlength="150"/>
+				                  </div>
+				                  <div class="mb-3">
+				                    <label for="comentario" class="form-label">Comentario (*)</label>
+				                    <form:textarea class="form-control" id="comentario" path="comentario" style="height: 150px" required="required" maxlength="255"></form:textarea>
+				                  </div>
+						</div>
+						<div class="col-md-3" align="center">
+							<div>
+								<button type="submit" class="btn btn-success btn-md">Registrar</button>
+							</div>
+							<div style="padding-top: 15px;">
+								<button type="button" class="btn btn-danger btn-md" onclick="location.href='<c:url value="/reporte_listar"/>'">Cancelar</button>
+							</div>
+						</div>
+					</div>
+				</form:form>
 			</div>
 		</div>
 	</div>

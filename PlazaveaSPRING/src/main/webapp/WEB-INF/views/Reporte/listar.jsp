@@ -26,8 +26,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css" type="text/css">
-
-<title>Lista de Proveedores</title>
+<title>Lista de Reportes</title>
 </head>
 <body background="img/background.jpg" style="background-size: cover;">
 	<!--Header-->
@@ -38,33 +37,35 @@
 		<div class="row">
 			<div class="col-md-12"
 				style="background: #fff; padding: 20px 25px 20px 25px; min-height: calc(100vh);">
-				<h1 align="center">Lista de Proveedores</h1>
-				<br><br>
-				<div class="table-responsive">
-					<table class="table table-hover table-striped">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Nombre</th>
-								<th>Raz. Social</th>
-								<th>Fecha de Inscripción</th>
-								<th>Acción</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="proveedor" items="${bProveedor}">
-								<tr>
-									<td>${proveedor.proveedorId}</td>
-									<td>${proveedor.nombre}</td>
-									<td>${proveedor.razonSocial}</td>
-									<td>${proveedor.fechaInscripcion}</td>
-									<td>
-										<button type="button" class="btn btn-success btn-sm" onclick="location.href='<c:url value="/findProductoByProv/${proveedor.nombre}"/>'">Ver Productos</button>
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+				<h1 align="center">Listado de Reportes</h1>
+				<h6 align="center">sobre el funcionamiento del sistema</h6>
+				<hr>
+				<div class="row" style="padding-top: 20px;">
+					<div class="col-md-9">
+						<div class="table-responsive">
+							<table class="table table-striped table-bordered">
+								<c:forEach var="reporte" items="${listReporte}">
+									<thead>
+										<tr>
+											<td rowspan="2" width="3%"><b>ID:</b> ${reporte.reporteId}</td>
+											<td><b>Título:</b> ${reporte.titulo}</td>
+										</tr>
+										<tr>
+											<td><b>Autor:</b> ${reporte.transportista.nombre} ${reporte.transportista.apellido}</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="2">"${reporte.comentario}"</td>
+										</tr>
+									</tbody>
+								</c:forEach>
+							</table>
+						</div>
+					</div>
+					<div class="col-md-3" align="center">
+						<button class="btn btn-primary btn-md" onclick="location.href='<c:url value="/reporte_registrar"/>'">Registrar un Reporte</button>
+					</div>
 				</div>
 			</div>
 		</div>
