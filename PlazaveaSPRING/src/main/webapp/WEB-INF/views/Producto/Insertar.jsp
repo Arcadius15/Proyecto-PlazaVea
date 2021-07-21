@@ -53,7 +53,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="Stock" class="form-label">Stock (*)</label>
-                    <form:input type="text" class="form-control" id="Stock" onkeypress='return event.charCode >= 48 && event.charCode <= 57' path="stock" required="true" maxlength="9"/>
+                    <form:input type="text" class="form-control" id="Stock" onkeypress='return event.charCode >= 48 && event.charCode <= 57' path="stock" required="true" maxlength="5"/>
                   </div>
                   <div class="mb-3">
                     <label for="Descripcion" class="form-label">Descripcion (*)</label>

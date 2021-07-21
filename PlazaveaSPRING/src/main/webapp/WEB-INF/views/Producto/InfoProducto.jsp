@@ -75,9 +75,16 @@
                                         Seleccione Cantidad:
                                     </p>
                                         <select class="form-select form-select-sm" style="max-width: 80px;max-height: 40px;" id="cantidad">
-                                            <c:forEach var="i" begin="1" end="${producto.stock}">
-                                            	<option value="${i}" label="${i}"/>
-                                            </c:forEach>
+                                        	<c:if test="${producto.stock <= 10}">
+                                        		<c:forEach var="i" begin="1" end="${producto.stock}">
+	                                            	<option value="${i}" label="${i}"/>
+	                                            </c:forEach>
+                                        	</c:if>
+                                            <c:if test="${producto.stock > 10}">
+                                            	<c:forEach var="i" begin="1" end="${10}">
+	                                            	<option value="${i}" label="${i}"/>
+	                                            </c:forEach>
+                                            </c:if>
                                             
                                         </select>
                                     
