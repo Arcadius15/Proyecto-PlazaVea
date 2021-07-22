@@ -70,7 +70,7 @@
 								<p style="font-size: 15pt;font-weight: 700;">
 									<span style="padding-right: 20px;padding-left: 10px;">Descripcion:</span> <span>${producto.descripcion}</span>
 								</p>
-                                <div style="text-align: center;" class="btn-group"> 
+                                <div style="text-align: center; padding: 1px 0;" class="btn-group"> 
                                     <p style="font-size: 10pt;font-weight: 700;margin-right: 15px">
                                         Seleccione Cantidad:
                                     </p>
@@ -87,7 +87,13 @@
                                             </c:if>
                                             
                                         </select>
-                                    
+                                        
+                                        <div style="padding-left: 20px; margin-top: 5px;">
+										  <h5 class="d-inline-block" id="popo" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" 
+										  	data-bs-content="Por política de la tienda, solo puede agregar 10 unidades como máximo en una misma compra.">
+										  	<i class="fas fa-question-circle"></i>
+										  </h5>
+										</div>
                                 </div>
                                 <br>
                                 
@@ -130,7 +136,7 @@
 	<!--Final-->
 	<%@include file="/WEB-INF/views/shared/footer.jsp" %>
 	
-	<script src="../js/Carrito.js"></script>
+	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
@@ -138,5 +144,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript" src="../js/Index.js"></script>
-	
+	<script src="../js/Carrito.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#popo").popover();
+		})
+	</script>
 </html>

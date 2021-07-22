@@ -37,11 +37,16 @@
 		<div class="row">
 			<div class="col-md-12"
 				style="background: #fff; padding: 20px 25px 20px 25px; min-height: calc(100vh);">
+				<c:set var="empleado" value="${sessionScope.usuario}"/>
 				<h1 align="center">Listado de Reportes</h1>
 				<h6 align="center">sobre el funcionamiento del sistema</h6>
 				<hr>
 				<div class="row" style="padding-top: 20px;">
 					<div class="col-md-9">
+						<div class="d-grid gap-2 d-md-block" align="center" style="padding-bottom: 20px;">
+							<button class="btn btn-success btn-md" onclick="location.href='<c:url value="/reporte_listarSortByEmployee"/>'">Mostrar Solo Mis Reportes</button>
+							<button class="btn btn-warning btn-md" onclick="location.href='<c:url value="/reporte_listar"/>'">Mostrar Todos Los Reportes</button>
+						</div>
 						<div class="table-responsive">
 							<table class="table table-striped table-bordered">
 								<c:forEach var="reporte" items="${listReporte}">
@@ -56,7 +61,14 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td colspan="2">"${reporte.comentario}"</td>
+											<td colspan="2">
+												"${reporte.comentario}"
+												<c:if test="${reporte.transportista.transportistaId == empleado.transportistaId}">
+													<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+													  <button class="btn btn-info" type="button" onclick="location.href='<c:url value="/reporte_editar/${reporte.reporteId}"/>'">Editar</button>
+													</div>
+												</c:if>
+											</td>
 										</tr>
 									</tbody>
 								</c:forEach>

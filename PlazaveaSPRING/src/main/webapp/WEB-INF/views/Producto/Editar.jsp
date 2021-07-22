@@ -42,7 +42,7 @@
             <div style="padding-top: 10px;">
               <div class="container bg-dark text-white" style="padding: 20px 100px 20px 100px ;">
                 <form:form name="" method="post" modelAttribute="producto" 
-					enctype="multipart/form-data">
+					enctype="multipart/form-data" acceptCharset="utf-8">
 				  <div class="mb-3">
                     <label for="idInput" class="form-label">ID</label>
                     <form:input type="text" class="form-control" id="idInput" path="productoId" readonly="true" maxlength="255"/>

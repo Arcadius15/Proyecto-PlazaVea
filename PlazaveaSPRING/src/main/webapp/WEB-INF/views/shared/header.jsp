@@ -117,8 +117,7 @@
 										<li><hr class="dropdown-divider"></li>
 										<li><a class="dropdown-item" href="<c:url value='/InsertaProducto'/>"><i
 												class="fas fa-archive"></i> Registrar Producto</a></li>
-										<li><a class="dropdown-item" href="<c:url value='/reporte_listar'/>"><i
-												class="fas fa-archive"></i> Reportes sobre el sistema</a></li>
+										<li><a class="dropdown-item" href="<c:url value='/reporte_listar'/>"><i class="fas fa-file-signature"></i> Reportes sobre el sistema</a></li>
 									</ul></li>
 						</c:when>
 						<c:otherwise>

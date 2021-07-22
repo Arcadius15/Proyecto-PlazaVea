@@ -44,8 +44,8 @@ public class ReporteServiceImpl implements ReporteService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Reporte> findByTransp(Transportista transportista) {
-		return repository.findByTransportista(transportista);
+	public List<Reporte> findByTransp(Integer transportista_id) {
+		return repository.findByTransportista(transportista_id);
 	}
 
 	@Override

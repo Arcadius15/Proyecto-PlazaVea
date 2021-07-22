@@ -31,19 +31,22 @@
 <body background='<c:url value="/img/background.jpg"/>'
 	style="background-size: cover;">
 	<!--Header-->
-	<%@include file="/WEB-INF/views/shared/header.jsp"%>
+	<%@include file="/WEB-INF/views/shared/headerFindProd.jsp"%>
 	
 	<!-- Cuerpo -->
 	<div class="container" style="padding: 20px;">
 		<div class="row">
 			<div class="col-md-12"
 				style="background: #fff; padding: 20px 25px 20px 25px; min-height: calc(100vh);">
-				<h1 align="center">Registrar un Reporte</h1>
+				<h1 align="center">Editar un Reporte</h1>
 				<h6 align="center">sobre el funcionamiento del sistema</h6>
 				<hr>
 				<form:form name="" method="post" modelAttribute="reporte" acceptCharset="utf-8">
 					<div class="row" style="padding-top: 20px;">
 						<div class="col-md-9">
+								<form:input type="hidden" path="reporteId"/>
+								<form:input type="hidden" path="transportista.transportistaId"/>
+						
 								  <div class="mb-3">
 				                    <label for="titulo" class="form-label">Título (*)</label>
 				                    <form:input type="text" class="form-control" id="titulo" path="titulo" required="true" maxlength="150"/>
@@ -55,7 +58,7 @@
 						</div>
 						<div class="col-md-3" align="center">
 							<div>
-								<button type="submit" class="btn btn-success btn-md">Registrar</button>
+								<button type="submit" class="btn btn-success btn-md">Editar</button>
 							</div>
 							<div style="padding-top: 15px;">
 								<button type="button" class="btn btn-danger btn-md" onclick="location.href='<c:url value="/reporte_listar"/>'">Cancelar</button>
@@ -75,6 +78,6 @@
 		integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 		crossorigin="anonymous"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/Index.js"></script>
+	<script type="text/javascript" src="/js/Index.js"></script>
 </body>
 </html>
