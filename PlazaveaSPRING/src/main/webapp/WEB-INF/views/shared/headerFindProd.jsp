@@ -131,8 +131,7 @@
 												class="fas fa-user-circle"></i> Ver Datos Personales </a></li>
 										<li><a class="dropdown-item" href="<c:url value='/Logout'/>"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión </a></li>
 										<li><hr class="dropdown-divider"></li>
-										<li><a class="dropdown-item" href="<c:url value='/VerHistorialCompras'/>"><i
-												class="fas fa-archive"></i> Historial de Compras</a></li>
+										<li><a class="dropdown-item" href="<c:url value='/VerHistorialCompras'/>"><i class="far fa-calendar-alt"></i> Historial de Compras</a></li>
 									</ul></li>
 							
 						</c:otherwise>

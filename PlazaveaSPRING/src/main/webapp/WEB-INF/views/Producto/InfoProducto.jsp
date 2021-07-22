@@ -26,7 +26,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 
-<title>Informacion del Producto</title>
+<title>Información del Producto</title>
 </head>
 <body background='<c:url value="/img/background.jpg"/>' style="background-size: cover;">
 	<!-- Inicio -->
@@ -51,7 +51,7 @@
 							<br>
 							<h3 class="card-title" style="padding-bottom: 25px;">
                                 <i class="fas fa-info"></i>  
-                                <span style="color: #cf260f;padding-left: 20px;font-family:Helvetica;"> Informacion del Producto</span>
+                                <span style="color: #cf260f;padding-left: 20px;font-family:Helvetica;"> Información del Producto</span>
                             </h3>
 							<form:form name="" method="post" modelAttribute="producto"
 								enctype="multipart/form-data">
@@ -74,19 +74,26 @@
                                     <p style="font-size: 10pt;font-weight: 700;margin-right: 15px">
                                         Seleccione Cantidad:
                                     </p>
-                                        <select class="form-select form-select-sm" style="max-width: 80px;max-height: 40px;" id="cantidad">
-                                        	<c:if test="${producto.stock <= 10}">
-                                        		<c:forEach var="i" begin="1" end="${producto.stock}">
-	                                            	<option value="${i}" label="${i}"/>
-	                                            </c:forEach>
-                                        	</c:if>
-                                            <c:if test="${producto.stock > 10}">
-                                            	<c:forEach var="i" begin="1" end="${10}">
-	                                            	<option value="${i}" label="${i}"/>
-	                                            </c:forEach>
-                                            </c:if>
-                                            
-                                        </select>
+                                    	<c:if test="${producto.stock > 0}">
+	                                        <select class="form-select form-select-sm" style="max-width: 80px;max-height: 40px;" id="cantidad">
+	                                        	<c:if test="${producto.stock <= 10}">
+	                                        		<c:forEach var="i" begin="1" end="${producto.stock}">
+		                                            	<option value="${i}" label="${i}"/>
+		                                            </c:forEach>
+	                                        	</c:if>
+	                                            <c:if test="${producto.stock > 10}">
+	                                            	<c:forEach var="i" begin="1" end="${10}">
+		                                            	<option value="${i}" label="${i}"/>
+		                                            </c:forEach>
+	                                            </c:if>
+	                                            
+	                                        </select>
+                                        </c:if>
+                                        <c:if test="${producto.stock == 0}">
+                                        	<select class="form-select form-select-sm" style="max-width: 80px;max-height: 40px;" id="cantidad" disabled="disabled">
+                                        		<option value="0" label="0"/>
+                                        	</select>
+                                        </c:if>
                                         
                                         <div style="padding-left: 20px; margin-top: 5px;">
 										  <h5 class="d-inline-block" id="popo" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" 
@@ -111,12 +118,12 @@
 										<c:when test="${sessionScope.userType == 'c' && producto.stock == 0}">
 											<button type="button" class="btn btn-primary" style="margin-right: 20px;" disabled="disabled">Añadir
 												a Carrito</button>
-											<p style="color: red;">Fuera de Stock</p>
+											<p style="color: red; margin-top: 5px;">Fuera de Stock</p>
 										</c:when>
 										<c:when test="${sessionScope.usuario == null && producto.stock == 0}">
 											<button type="button" class="btn btn-primary" style="margin-right: 20px;" disabled="disabled">Añadir
 												a Carrito</button>
-											<p style="color: red;">Fuera de Stock</p>
+											<p style="color: red; margin-top: 5px;">Fuera de Stock</p>
 										</c:when>
 										<c:otherwise>
 											<a href="<c:url value='/EditarProducto/${producto.productoId}'/>" class="btn btn-info" style="margin-right: 20px;">Editar Producto</a>
