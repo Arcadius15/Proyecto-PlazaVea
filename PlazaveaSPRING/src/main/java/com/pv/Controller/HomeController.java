@@ -51,4 +51,9 @@ public class HomeController {
 		
 		return "/Home/Index";
 	}
+	
+	@RequestMapping(value="/Servicio", method=RequestMethod.GET)
+	public String servicio_GET() {
+		return "/Home/Servicio";
+	}
 }
