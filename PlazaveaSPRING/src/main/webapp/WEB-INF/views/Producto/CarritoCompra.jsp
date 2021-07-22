@@ -102,7 +102,7 @@
 										<option value="${tarjeta.tarjetaId}" >${tarjeta.nroTarjeta}</option>
 									</c:forEach>
 									
-								</select> <a href="#" class="btn btn-warning btn-sm"
+								</select> <a href='<c:url value="/VerMetodoPago"/>' class="btn btn-warning btn-sm"
 									style="margin-top: 15px;">Agregar Metodo de Pago</a>
 							</div>
 						</div>
@@ -120,7 +120,7 @@
 								<label for="NewDireccion" class="form-label">Entregar
 									Compra a la Siguiente direccion:</label> <input
 									class="form-control form-control-sm" type="text"
-									id="NewDireccion" value="${direccion}" readonly> <a href="#"
+									id="NewDireccion" value="${direccion}" readonly> <a href='<c:url value="/VerDireccion"/>'
 									class="btn btn-warning btn-sm" style="margin-top: 15px;">Cambiar
 									Direccion</a>
 							</div>
