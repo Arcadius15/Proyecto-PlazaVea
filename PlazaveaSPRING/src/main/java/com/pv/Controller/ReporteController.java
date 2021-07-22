@@ -88,6 +88,12 @@ public class ReporteController {
 			return "redirect:/Index";
 		}
 		
+		Transportista transportista = (Transportista) session.getAttribute("usuario");
+		
+		if (transportista.getTransportistaId() != reporteService.findById(reporteId).getTransportista().getTransportistaId()) {
+			return "redirect:/reporte_listar";
+		}
+		
 		model.addAttribute("reporte", reporteService.findById(reporteId));
 		
 		return "/Reporte/editar";

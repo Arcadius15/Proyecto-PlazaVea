@@ -91,7 +91,7 @@
                                         <div style="padding-left: 20px; margin-top: 5px;">
 										  <h5 class="d-inline-block" id="popo" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" 
 										  	data-bs-content="Por política de la tienda, solo puede agregar 10 unidades como máximo en una misma compra.">
-										  	<i class="fas fa-question-circle"></i>
+										  	<i class="fas fa-info-circle"></i>
 										  </h5>
 										</div>
                                 </div>

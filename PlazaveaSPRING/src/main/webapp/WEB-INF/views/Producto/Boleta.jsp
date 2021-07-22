@@ -82,7 +82,7 @@
                         </table>
                       </p>
                       <a href='<c:url value="/Index"/>' class="card-link">Volver al Inicio</a>
-                      <a href='<c:url value="#"/>' class="card-link">Ver Historial de Compras</a>
+                      <a href='<c:url value="/VerHistorialCompras"/>' class="card-link">Ver Historial de Compras</a>
                     </div>
                   </div>
 
