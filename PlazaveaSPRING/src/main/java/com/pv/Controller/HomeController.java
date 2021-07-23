@@ -46,6 +46,7 @@ public class HomeController {
 			session.setAttribute("carritohead", carritohead);
 			session.setAttribute("carritocount", carritohead.size());
 		}else {
+			session.setAttribute("carritohead", null);
 			session.setAttribute("carritocount", 0);
 		}
 		

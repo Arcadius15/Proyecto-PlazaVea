@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.SessionEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -297,6 +298,7 @@ public class ProductoController {
 		}finally {
 			session.setAttribute("carritocompra", null);
 			session.setAttribute("carrito", null);
+			session.setAttribute("carritohead", null);
 		}
 	}
 	
@@ -386,6 +388,7 @@ public class ProductoController {
 			if (valor) {
 				session.setAttribute("carritocompra", null);
 				session.setAttribute("carrito", null);
+				session.setAttribute("carritohead", null);
 				return 1;
 			}else {
 				return 2;
