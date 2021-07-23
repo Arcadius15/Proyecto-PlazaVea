@@ -26,7 +26,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css" type="text/css">
-<title>Registrar Reporte</title>
+<title>Editar Reporte</title>
 </head>
 <body background='<c:url value="/img/background.jpg"/>'
 	style="background-size: cover;">
